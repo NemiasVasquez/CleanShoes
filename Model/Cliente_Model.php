@@ -9,6 +9,29 @@ class Cliente_Model{
     }
 
     /* Falta validar para que retorne TRUE en caso sea todo correcto o FALSE en caso algo haya fallado -> Evitar Anidaciones */
+    public function ValidarRegistro($registro1,$registro2,$registro3){
+        if($registro1==NULL){
+            return false;
+        }
+        if($registro2 == NULL){
+            return false;
+        }
+        if($registro3 == NULL){
+            return false;
+        }
+        return true;
+    } 
+
+    public function ValidarDNI($dni){
+        $consulta_lista_DNI = $this->dataBase->query("SELECT dni FROM persona WHERE persona.dni = '$dni'");
+        if ($consulta_lista_DNI->fetch_assoc()) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
     public function setCliente($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol){
         $Registro_Persona = $this->dataBase->query("INSERT INTO persona(nombres,apellidos,dni,correo,celular,fecha_nac) VALUES ('$nombre','$apellidos','$dni','$correo','$celular','$fechaNac')");
         
@@ -26,6 +49,11 @@ class Cliente_Model{
 
         $Registro_Cliente = $this->dataBase->query("INSERT INTO cliente(id_Persona,id_Usuario) VALUES ('$codigo_Persona','$codigo_Usuario')");
         
+        if($this->ValidarRegistro($Registro_Cliente,$Registro_Persona,$Registro_Usuario)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
 ?>
