@@ -9,7 +9,7 @@ class Cliente_Model{
     }
 
     public function Registrar($nombre,$apellidos,$dni,$correo,$celular,$fechaNac){
-        
+        /* CODIGO LLENO */
     }
 }
 ?>
