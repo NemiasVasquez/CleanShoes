@@ -12,6 +12,6 @@ el cuál solo acepta caraceteres de la "a" a la "z" en minúsculas y mayúsculas
 - Alba:
 
 - Xavi:
-
+.
 - Jeremy:
 Hola!!!!
