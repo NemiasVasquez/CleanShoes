@@ -7,6 +7,10 @@ class Cliente_Controller{
         $this->Cliente_Modelo = new Cliente_Model();
     }
 
+    public function index(){
+        /* Requiere vista del Menu General de Clean Shoes */
+    }
+
     public function ValidarRegistro($nombre,$apellidos,$dni,$celular,$fechaNac,$usuario,$contraseña, $rol){
         if($nombre==""){
             return $mensaje="Debe ingresar un nombre"; 
@@ -72,6 +76,10 @@ class Cliente_Controller{
                 /* Require_once Registrar */
             }
         }
+    }
+
+    public function DesactivarCliente($id){
+        
     }
 
 }
