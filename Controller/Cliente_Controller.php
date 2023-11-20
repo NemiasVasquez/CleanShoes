@@ -78,8 +78,13 @@ class Cliente_Controller{
         }
     }
 
-    public function DesactivarCliente($id){
-        
+    public function DesactivarActivarCliente($id){
+        $consulta = $this->Cliente_Modelo->DesactivarActivarCliente($id);
+        if($consulta){
+            return $mensaje ="Estado cambiado";
+        }else{
+            return $mensaje ="Ha ocurrido un error, estado no cambiado";
+        }
     }
 
 }

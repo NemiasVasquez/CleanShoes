@@ -58,5 +58,24 @@ class Cliente_Model{
             return false;
         }
     }
+
+    public function DesactivarActivarCliente($id){
+        $consulta_idUsuario_Estado = $this->dataBase->query("SELECT usuario.estado cliente.id_usuario FROM cliente 
+        INNER JOIN usuario ON cliente.id_usuario = usuario.id_usuario 
+        WHERE id_cliente = '$id'");
+        while($fila = $consulta_idUsuario_Estado->fetch_assoc()){
+            $idUsuario_estado[]=$fila;
+        }
+        $estado_Actualizado = "Activo";
+        if($idUsuario_estado[0]["estado"]=="Activo"){
+            $estado_Actualizado = "Inactivado";
+        }
+        $consulta_Cambio = $this->dataBase->query("UPDATE usuario SET estado ='$estado_Actualizado' WHERE id_usuario = '$idUsuario_estado[0]["id_usuario"]'");
+        if($consulta_Cambio){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 ?>
