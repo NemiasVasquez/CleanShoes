@@ -24,15 +24,18 @@ class Cliente_Model{
 
     public function ValidarDNI($dni){
         $consulta_lista_DNI = $this->dataBase->query("SELECT dni FROM persona WHERE persona.dni = '$dni'");
-        if ($consulta_lista_DNI->fetch_assoc()) {
-            return true;
-        } else {
+        while ($fila = $consulta_lista_DNI->fetch_assoc()) {
+           $datos[]=$fila;
+        } 
+        if($datos!=NULL){
             return false;
+        }else{
+            return true;
         }
-        
     }
 
     public function setCliente($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol){
+
         $Registro_Persona = $this->dataBase->query("INSERT INTO persona(nombres,apellidos,dni,correo,celular,fecha_nac) VALUES ('$nombre','$apellidos','$dni','$correo','$celular','$fechaNac')");
         
         $Consulta_id_Persona = $this->dataBase->query("SELECT id_Persona FROM persona WHERE dni = '$dni'");
