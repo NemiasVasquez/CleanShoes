@@ -45,6 +45,9 @@ class Cliente_Controller{
 
     public function Registrar($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol){
         $mensaje=$this->ValidarRegistro($nombre,$apellidos,$dni,$celular,$fechaNac,$usuario,$contraseña, $rol);
+        if($this->Cliente_Modelo->ValidarDNI($dni)){
+            $Mensaje = "Debe ingresar un DNI NUEVO";
+        }
         if($mensaje!=""){
             /* Debe estar un Require_One para llamar al formulario y pasar el mensaje de alerta */
 
