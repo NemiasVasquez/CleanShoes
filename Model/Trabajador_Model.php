@@ -15,7 +15,7 @@ class Trabajador_Model{
         
         $i =0;
         while($fila = $consulta_Trabajadors->fetch_assoc()){
-            $this->Trabajador[$i]=$fila
+            $this->Trabajador[$i]=$fila;
             $i++;
         }
 
