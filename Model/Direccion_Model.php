@@ -17,6 +17,19 @@ class Direccion_Model{
         }
     }
 
-    
+    public function getDireccion_Cliente($id){
+        $consulta_Direccion = $this->dataBase->query("SELECT *FROM direccion_envio WHERE id_Cliente = '$id'");
+        $i = 0;
+        while($fila = $consulta_Direccion->fetch_assoc()){
+            $this->Direccion[$i]=$fila;
+        }
+
+        if($this->Direccion != NULL){
+            return $this->Direccion;
+        }else{
+            return false;
+        }
+    }
+
 }
 ?>

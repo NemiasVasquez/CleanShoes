@@ -30,6 +30,7 @@ class Direccion_Controller{
     public function Registrar($id_cliente){
         $mensaje = $this->ValidarRegistro($_POST["departamento"],$_POST["provincia"], $_POST["distrito"],$_POST["direccion"],$_POST["referencia"]);
         if($mensaje != ""){
+
             $departamento = $_POST["departamento"];
             $provincia = $_POST["provincia"];
             $distrito = $_POST["distrito"];
@@ -45,5 +46,15 @@ class Direccion_Controller{
         }
         require_once ""; /* Vista donde se registra la Dirección */
     }
+
+    public function ListarDireccionCliente($id){
+        $data["Direccion"] = $this->Direccion_Modelo->getDireccion_Cliente($id);
+        if($data["Direccion"] == false){
+            $mensaje ="No se han encontrado direcciones registradas.";
+        }
+        require_once ""; /* Vista donde se llama a listar direcciones por cliente */
+    }
+
+    
 }
 ?>
