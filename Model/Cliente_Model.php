@@ -15,7 +15,7 @@ class Cliente_Model{
         
         $i =0;
         while($fila = $consulta_Clientes->fetch_assoc()){
-            $this->Cliente[$i]=$fila
+            $this->Cliente[$i]=$fila;
             $i++;
         }
 
