@@ -1,26 +1,26 @@
 <?php
-class Cliente_Model{
+class Trabajador_Model{
     private $dataBase;
-    private $Cliente;
+    private $Trabajador;
 
     public function __construct(){
         $this->dataBase = Conexion::Conexion();
-        $this->Cliente=[];
+        $this->Trabajador=[];
     }
 
-    public function getClientes(){
-        $consulta_Clientes = $this->dataBase->query("SELECT persona.nombres,persona.apellidos,persona.dni,usuario.usuario,usuario.rol,usuario.estado,cliente.id_cliente FROM cliente
-        INNER JOIN persona ON persona.id_persona = cliente.id_persona
-        INNER JOIN usuario ON usuario.id_usuario = cliente.id_usuario");
+    public function getTrabajadores(){
+        $consulta_Trabajadors = $this->dataBase->query("SELECT persona.nombres,persona.apellidos,persona.dni,usuario.usuario,usuario.rol,usuario.estado,Trabajador.id_Trabajador FROM Trabajador
+        INNER JOIN persona ON persona.id_persona = trabajador.id_persona
+        INNER JOIN usuario ON usuario.id_usuario = trabajador.id_usuario");
         
         $i =0;
-        while($fila = $consulta_Clientes->fetch_assoc()){
-            $this->Cliente[$i]=$fila
+        while($fila = $consulta_Trabajadors->fetch_assoc()){
+            $this->Trabajador[$i]=$fila
             $i++;
         }
 
         if($fila != NULL){
-            return $this->Cliente;
+            return $this->Trabajador;
         }else{
             return false;
         }
@@ -52,7 +52,7 @@ class Cliente_Model{
         }
     }
 
-    public function setCliente($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol){
+    public function setTrabajador($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol){
 
         $Registro_Persona = $this->dataBase->query("INSERT INTO persona(nombres,apellidos,dni,correo,celular,fecha_nac) VALUES ('$nombre','$apellidos','$dni','$correo','$celular','$fechaNac')");
         
@@ -68,19 +68,19 @@ class Cliente_Model{
             $codigo_Usuario = $fila_Usuario['id_Usuario'];    
         }
 
-        $Registro_Cliente = $this->dataBase->query("INSERT INTO cliente(id_Persona,id_Usuario) VALUES ('$codigo_Persona','$codigo_Usuario')");
+        $Registro_Trabajador = $this->dataBase->query("INSERT INTO trabajador(id_Persona,id_Usuario,estado) VALUES ('$codigo_Persona','$codigo_Usuario','Activo')");
         
-        if($this->ValidarRegistro($Registro_Cliente,$Registro_Persona,$Registro_Usuario)){
+        if($this->ValidarRegistro($Registro_Trabajador,$Registro_Persona,$Registro_Usuario)){
             return true;
         }else{
             return false;
         }
     }
 
-    public function DesactivarActivarCliente($id){
-        $consulta_idUsuario_Estado = $this->dataBase->query("SELECT usuario.estado cliente.id_usuario FROM cliente 
-        INNER JOIN usuario ON cliente.id_usuario = usuario.id_usuario 
-        WHERE id_cliente = '$id'");
+    public function DesactivarActivarTrabajador($id){
+        $consulta_idUsuario_Estado = $this->dataBase->query("SELECT usuario.estado Trabajador.id_usuario FROM Trabajador 
+        INNER JOIN usuario ON Trabajador.id_usuario = usuario.id_usuario 
+        WHERE id_Trabajador = '$id'");
         while($fila = $consulta_idUsuario_Estado->fetch_assoc()){
             $idUsuario_estado[]=$fila;
         }
@@ -96,13 +96,13 @@ class Cliente_Model{
         }
     }
 
-    public function BuscarCliente($id){
-        $consulta_Cliente = $this->dataBase->query("SELECT persona.nombres,persona.apellidos,persona.dni,usuario.usuario,usuario.rol,usuario.estado,cliente.id_cliente FROM cliente
-        INNER JOIN persona ON persona.id_persona = cliente.id_persona
-        INNER JOIN usuario ON usuario.id_usuario = cliente.id_usuario
-        WHERE cliente.id_cliente = '$id'");
-        if($fila = $consulta_Cliente->fetch_assoc()){
-            return $this->Cliente[]=$fila;
+    public function BuscarTrabajador($id){
+        $consulta_Trabajador = $this->dataBase->query("SELECT persona.nombres,persona.apellidos,persona.dni,usuario.usuario,usuario.rol,usuario.estado,Trabajador.id_Trabajador FROM Trabajador
+        INNER JOIN persona ON persona.id_persona = Trabajador.id_persona
+        INNER JOIN usuario ON usuario.id_usuario = Trabajador.id_usuario
+        WHERE Trabajador.id_Trabajador = '$id'");
+        if($fila = $consulta_Trabajador->fetch_assoc()){
+            return $this->Trabajador[]=$fila;
         }else{
             return false;
         }
