@@ -81,14 +81,14 @@ class Cliente_Model{
         $consulta_idUsuario_Estado = $this->dataBase->query("SELECT usuario.estado cliente.id_usuario FROM cliente 
         INNER JOIN usuario ON cliente.id_usuario = usuario.id_usuario 
         WHERE id_cliente = '$id'");
-        while($fila = $consulta_idUsuario_Estado->fetch_assoc()){
-            $idUsuario_estado[]=$fila;
+        if($fila = $consulta_idUsuario_Estado->fetch_assoc()){
+            $idUsuario_estado=$fila["id_usuario"];
         }
         $estado_Actualizado = "Activo";
-        if($idUsuario_estado[0]["estado"]=="Activo"){
+        if($idUsuario_estado=="Activo"){
             $estado_Actualizado = "Inactivado";
         }
-        $consulta_Cambio = $this->dataBase->query("UPDATE usuario SET estado ='$estado_Actualizado' WHERE id_usuario = '$idUsuario_estado[0]["id_usuario"]'");
+        $consulta_Cambio = $this->dataBase->query("UPDATE usuario SET estado ='$estado_Actualizado' WHERE id_usuario = '$idUsuario_estado'");
         if($consulta_Cambio){
             return true;
         }else{

@@ -58,7 +58,7 @@ class Cliente_Controller{
 
     public function Registrar(){
         $mensaje=$this->ValidarRegistro($_POST["nombre"],$_POST["apellidos"],$_POST["dni"],$_POST["celular"],$_POST["fechaNac"],$_POST["usuario"],$_POST["contraseña"], $_POST["rol"]);
-        if($this->Cliente_Modelo->ValidarDNI($dni)){
+        if($this->Cliente_Modelo->ValidarDNI($_POST["dni"])){
             $mensaje = "Debe ingresar un DNI NUEVO";
         }
         if($mensaje!=""){
