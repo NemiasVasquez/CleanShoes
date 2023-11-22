@@ -29,9 +29,6 @@ class Servicio_Controller{
         if(strlen($tiempo_entrega)!=9){
             return $mensaje ="Debe ingresar el tiempo de entrega aproximada.";
         }
-        if($fechaNac == ""){
-            return $mensaje ="Debe ingresar una fecha de nacimiento.";
-        }
         if($estado =="NA"){
             return $mensaje ="Debe seleccionar un estado.";
         }
