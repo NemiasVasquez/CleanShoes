@@ -9,6 +9,7 @@ class Cliente_Controller{
 
     public function index(){
         /* Requiere vista del Menu General de Clean Shoes */
+        require_once "";
     }
 
     public function ListarClientes(){
@@ -16,7 +17,7 @@ class Cliente_Controller{
         if($data["Cliente"]==false){
             $mensaje="Lista de clientes vacía.";
         }
-        require_once "";
+        require_once ""; /* Vista donde se llama la lista de clientes */
     }
 
     public function ValidarRegistro($nombre,$apellidos,$dni,$celular,$fechaNac,$usuario,$contraseña, $rol){
@@ -55,10 +56,10 @@ class Cliente_Controller{
         return $mensaje="";
     }
 
-    public function Registrar($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol){
-        $mensaje=$this->ValidarRegistro($nombre,$apellidos,$dni,$celular,$fechaNac,$usuario,$contraseña, $rol);
+    public function Registrar(){
+        $mensaje=$this->ValidarRegistro($_POST["nombre"],$_POST["apellidos"],$_POST["dni"],$_POST["celular"],$_POST["fechaNac"],$_POST["usuario"],$_POST["contraseña"], $_POST["rol"]);
         if($this->Cliente_Modelo->ValidarDNI($dni)){
-            $Mensaje = "Debe ingresar un DNI NUEVO";
+            $mensaje = "Debe ingresar un DNI NUEVO";
         }
         if($mensaje!=""){
             /* Debe estar un Require_One para llamar al formulario y pasar el mensaje de alerta */
