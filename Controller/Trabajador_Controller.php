@@ -1,23 +1,19 @@
 <?php
-class Cliente_Controller{
-    private $Cliente_Modelo;
+class Trabajador_Controller{
+    private $Trabajador_Modelo;
+
     public function __construct(){
         session_start();
-        require_once "Model/Cliente_Model.php";
-        $this->Cliente_Modelo = new Cliente_Model();
+        require_once "Model/Trabajador_Model.php";
+        $this->Trabajador_Modelo = new Trabajador_Model();
     }
 
-    public function index(){
-        /* Requiere vista del Menu General de Clean Shoes */
-        require_once "";
-    }
-
-    public function ListarClientes(){
-        $data["Cliente"]=$this->Cliente_Modelo->getClientes();
-        if($data["Cliente"]==false){
-            $mensaje="Lista de clientes vacía.";
+    public function ListarTrabajadores(){
+        $data["Trabajador"]=$this->Trabajador_Modelo->getTrabajadores();
+        if($data["Trabajador"]==false){
+            $mensaje="Lista de Trabajadors vacía.";
         }
-        require_once ""; /* Vista donde se llama la lista de clientes */
+        require_once "";
     }
 
     public function ValidarRegistro($nombre,$apellidos,$dni,$celular,$fechaNac,$usuario,$contraseña, $rol){
@@ -56,10 +52,10 @@ class Cliente_Controller{
         return $mensaje="";
     }
 
-    public function Registrar(){
-        $mensaje=$this->ValidarRegistro($_POST["nombre"],$_POST["apellidos"],$_POST["dni"],$_POST["celular"],$_POST["fechaNac"],$_POST["usuario"],$_POST["contraseña"], $_POST["rol"]);
-        if($this->Cliente_Modelo->ValidarDNI($dni)){
-            $mensaje = "Debe ingresar un DNI NUEVO";
+    public function Registrar($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol){
+        $mensaje=$this->ValidarRegistro($nombre,$apellidos,$dni,$celular,$fechaNac,$usuario,$contraseña, $rol);
+        if($this->Trabajador_Modelo->ValidarDNI($dni)){
+            $Mensaje = "Debe ingresar un DNI NUEVO";
         }
         if($mensaje!=""){
             /* Debe estar un Require_One para llamar al formulario y pasar el mensaje de alerta */
@@ -75,20 +71,20 @@ class Cliente_Controller{
             $contraseña = $_POST["contraseña"];
             $rol = $_POST["rol"];
 
-            $consulta_Registro = $this->Cliente_Modelo->setCliente($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol);
+            $consulta_Registro = $this->Trabajador_Modelo->setTrabajador($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol);
             
             if($consulta_Registro){
                 $mensaje="Registro exitoso.";
                 /* Require_once Registrar */
             }else{
-                $mensaje="No se ha logrado registrar el cliente.";
+                $mensaje="No se ha logrado registrar el Trabajador.";
                 /* Require_once Registrar */
             }
         }
     }
 
-    public function DesactivarActivarCliente($id){
-        $consulta = $this->Cliente_Modelo->DesactivarActivarCliente($id);
+    public function DesactivarActivarTrabajador($id){
+        $consulta = $this->Trabajador_Modelo->DesactivarActivarTrabajador($id);
         if($consulta){
             return $mensaje ="Estado cambiado";
         }else{
@@ -96,16 +92,16 @@ class Cliente_Controller{
         }
     }
 
-    public function BuscarCliente(){
+    public function BuscarTrabajador(){
         if($_POST[""]!=""){
             $id_Buscador = $_POST[""];/* Como esté definida en la Vista */
-            $consulta_Buscar = $this->Cliente_Modelo->BuscarCliente($id_Buscador);
+            $consulta_Buscar = $this->Trabajador_Modelo->BuscarTrabajador($id_Buscador);
             if($consulta_Buscar ==false){
-                $mensaje = "El cliente no ha sido encontrado.";
+                $mensaje = "El Trabajador no ha sido encontrado.";
             }
             require_once ""; /* Vista donde se está llamando la búsqueda */
         }else{
-            return $mensaje = "Debe ingresar un código de cliente para buscar.";
+            return $mensaje = "Debe ingresar un código de Trabajador para buscar.";
         }
     }
 

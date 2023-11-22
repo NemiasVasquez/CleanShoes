@@ -6,11 +6,12 @@ el cuál solo acepta caraceteres de la "a" a la "z" en minúsculas y mayúsculas
 
 hola
 - Nemias:
-
+   
 - Cueva:
 
 - Alba:
 
 - Xavi:
-
+.
 - Jeremy:
+Hola!!!!
