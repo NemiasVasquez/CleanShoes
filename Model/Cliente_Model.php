@@ -85,7 +85,7 @@ class Cliente_Model{
             $idUsuario_estado=$fila["id_usuario"];
         }
         $estado_Actualizado = "Activo";
-        if($idUsuario_estado=="Activo"){
+        if($idUsuario_estado == "Activo"){
             $estado_Actualizado = "Inactivado";
         }
         $consulta_Cambio = $this->dataBase->query("UPDATE usuario SET estado ='$estado_Actualizado' WHERE id_usuario = '$idUsuario_estado'");
