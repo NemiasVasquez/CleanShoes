@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <?php include 'Plantillas/Favicon.php'; ?>
+    <?php include 'Plantillas/Links.php'; ?>
+
     <script src="JavaScript/JsInicio.Js"></script>
 
-    <link rel="stylesheet" href="Style/Plantilla_Style.css">
     <link rel="stylesheet" href="Style/Principal_Style.css">
+
     <title>Clean Shoes</title>
 </head>
 <body>

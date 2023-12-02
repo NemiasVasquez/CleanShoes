@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel = "icon" type="image/x-icon" href="/img/favicon.ico">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <?php include 'Plantillas/Favicon.php'; ?>
+    <?php include 'Plantillas/Links.php'; ?>
+
     <script src="JavaScript/JsQuienesSomos.js"></script>
 
-    <link rel="stylesheet" href="Style/Plantilla_Style.css">
     <link rel="stylesheet" href="Style/QuienesSomos_Style.css">
 
     <title>¿Quiénes Somos?</title>

@@ -3,183 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados - Clean Shoes</title>
 
-    <link rel="stylesheet" href="Style/Plantilla_Style.css">
+    <?php include 'Plantillas/Favicon.php'; ?>
+
+    <?php include 'Plantillas/Links.php'; ?>
+
     <link rel="stylesheet" href="Style/Resultados_Style.css">
+
+    <title>Resultados</title>
 </head>
 <body>
     <div class ="contenedor">
         <header>
             <?php include 'Plantillas/Header.php'; ?>
         </header>
-        <main>
-            <div class="interior">
-                <div class="contenedorGeneral row">
-                    <div class="col-s-12">
-                        <div class="cabecera">
-                            <h1>LAVADO <br> SIMPLE</h1>
-                        </div>
-                    </div>
-
-                    <div class="bloqueResultados col-s-6 col-4">
-                        <div class="bloqueAntes">
-                            <h2> ANTES</h2>
-                        </div>
-                        <div class="bloqueContenido">
-                        <div class="bloqueImagen">
-                            <img src="Imagenes/Resultados/Lavado Simple/1 muestra/1.jpg" alt="Imagen 1.1 Antes">
-                            <img src="Imagenes/Resultados/Lavado Simple/1 muestra/2.jpg" alt="Imagen 1.2 Despues">
-                        </div>
-                        </div>
-                        <div class="bloqueDespues">
-                            <h2>DESPUES</h2>
-                        </div>
-                    </div>
-                    <div class="rp-medium1">
-                        <div class="bloqueResultados col-s-6 col-4">
-                            <div class="bloqueAntes">
-                                <h2> ANTES</h2>
-                            </div>
-                            <div class="bloqueContenido">
-                            <div class="bloqueImagen">
-                                <img src="Imagenes/Resultados/Lavado Simple/2 muestra/1.jpg" alt="Imagen 2.1 Antes">
-                                <img src="Imagenes/Resultados/Lavado Simple/2 muestra/2.jpg" alt="Imagen 2.2 Despues">
-                            </div>
-                            </div>
-                            <div class="bloqueDespues">
-                                <h2>DESPUES</h2>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="rp-medium2">
-                        <div class="bloqueResultados col-s-6 col-4">
-                            <div class="bloqueAntes">
-                                <h2> ANTES</h2>
-                            </div>
-                            <div class="bloqueContenido">
-                            <div class="bloqueImagen">
-                                <img src="Imagenes/Resultados/Lavado Simple/3 muestra/1.jpg" alt="Imagen 3.1 Antes">
-                                <img src="Imagenes/Resultados/Lavado Simple/3 muestra/2.jpg" alt="Imagen 3.2 Despues">
-                            </div>
-                            </div>
-                            <div class="bloqueDespues">
-                                <h2>DESPUES</h2>
-                            </div>
-                        </div>
-                    </div>
+        <main id="resultado" class="contenedor">
+            <input type="radio" name="filtroLavado" id="btnSimple" checked="yes">
+            <input type="radio" name="filtroLavado" id="btnEstandar" >
+            <input type="radio" name="filtroLavado" id="btnPremium">
+            <div id=bloqueEtiquetasResultado class="row">
+                <div id="bloqueSimple" class="bloqueEtiquetaR">
+                    <label id="titutloSimple" class="etiquetaR" for="btnSimple">LAVADO SIMPLE</label>
+                </div>
+                <div id="bloqueEstandar" class="bloqueEtiquetaR">
+                    <label id="titutloEstandar" class="etiquetaR" for="btnEstandar">LAVADO ESTÁNDAR</label>
+                </div>
+                <div id="bloquePremium" class="bloqueEtiquetaR">
+                    <label id="titutloPremium" class="etiquetaR" for="btnPremium">LAVADO PREMIUM</label>
                 </div>
             </div>
-            <div class="row contenedorGeneral">
-                <div class="col-s-12">
-                    <div class="cabecera">
-                        <h1>LAVADO <br> PREMIUM</h1>
-                    </div>
-                </div>
 
-                <div class="bloqueResultados col-s-6 col-4">
-                    <div class="bloqueAntes">
-                        <h2> ANTES</h2>
-                    </div>
-                    <div class="bloqueContenido">
-                    <div class="bloqueImagen">
-                        <img src="Imagenes/Resultados/Lavado Premium/1 muestra/1.jpg" alt="Imagen 1.1 Antes">
-                        <img src="Imagenes/Resultados/Lavado Premium/1 muestra/2.jpg" alt="Imagen 1.2 Despues">
-                    </div>
-                    </div>
-                    <div class="bloqueDespues">
-                        <h2>DESPUES</h2>
-                    </div>
-                </div>
-                <div class="rp-medium1">
-                    <div class="bloqueResultados col-s-6 col-4">
-                        <div class="bloqueAntes">
-                            <h2> ANTES</h2>
+            <div id="bloqueResultados" class="row">
+                <div class="col-m-6">
+                    <div class="bloqueResultadoLavado">
+                        <div class="bloqueTituloAntes ">
+                            <h4 class="tituloAntesDespues">ANTES</h4>
                         </div>
-                        <div class="bloqueContenido">
-                        <div class="bloqueImagen">
-                            <img src="Imagenes/Resultados/Lavado Premium/2 muestra/1.jpg" alt="Imagen 2.1 Antes">
-                            <img src="Imagenes/Resultados/Lavado Premium/2 muestra/2.jpg" alt="Imagen 2.2 Despues">
+                        <div class="cajaImgResultados">
+                            <img class="simple" src="Imagenes/Resultados/Lavado Simple/1 muestra/1.jpg" alt="Foto de zatapillas antes del servicio">
+                            <img class="simple" src="Imagenes/Resultados/Lavado Simple/1 muestra/2.jpg" alt="Foto de zatapillas después del servicio">
+
+                            <img class="estandar"  src="Imagenes/Resultados/Lavado Estándar/2 muestra/1.jpg" alt="Foto de zatapillas antes del servicio">
+                            <img class="estandar"  src="Imagenes/Resultados/Lavado Estándar/2 muestra/2.jpg" alt="Foto de zatapillas después del servicio">
+
+                            <img class="premium"  src="Imagenes/Resultados/Lavado Premium/2 muestra/1.jpg" alt="Foto de zatapillas antes del servicio">
+                            <img class="premium"  src="Imagenes/Resultados/Lavado Premium/2 muestra/2.jpg" alt="Foto de zatapillas después del servicio">
                         </div>
-                        </div>
-                        <div class="bloqueDespues">
-                            <h2>DESPUES</h2>
+                        <div class="bloqueTituloDespues">
+                            <h4 class="tituloAntesDespues">DESPUÉS</h4>
                         </div>
                     </div>
                 </div>
-                <div class="rp-medium2">
-                    <div class="bloqueResultados col-s-6 col-4">
-                        <div class="bloqueAntes">
-                            <h2> ANTES</h2>
+                <div class="col-m-6">
+                    <div class="bloqueResultadoLavado">
+                        <div class="bloqueTituloAntes">
+                            <h4 class="tituloAntesDespues">ANTES</h4>
                         </div>
-                        <div class="bloqueContenido">
-                        <div class="bloqueImagen">
-                            <img src="Imagenes/Resultados/Lavado Premium/3 muestra/1.jpg" alt="Imagen 3.1 Antes">
-                            <img src="Imagenes/Resultados/Lavado Premium/3 muestra/2.jpg" alt="Imagen 3.2 Despues">
+                        <div class="cajaImgResultados">
+                            <img class="simple"  src="Imagenes/Resultados/Lavado Simple/2 muestra/1.jpg" alt="Foto de zatapillas antes del servicio">
+                            <img class="simple"  src="Imagenes/Resultados/Lavado Simple/2 muestra/2.jpg" alt="Foto de zatapillas después del servicio">
+
+                            <img class="estandar"  src="Imagenes/Resultados/Lavado Estándar/1 muestra/1.jpg" alt="Foto de zatapillas antes del servicio">
+                            <img class="estandar"  src="Imagenes/Resultados/Lavado Estándar/1 muestra/2.jpg" alt="Foto de zatapillas después del servicio">
+
+                            <img class="premium" src="Imagenes/Resultados/Lavado Premium/3 muestra/1.jpg" alt="Foto de zatapillas antes del servicio">
+                            <img class="premium" src="Imagenes/Resultados/Lavado Premium/3 muestra/2.jpg" alt="Foto de zatapillas después del servicio">
                         </div>
+                        <div class="bloqueTituloDespues">
+                            <h4 class="tituloAntesDespues">DESPUÉS</h4>
                         </div>
-                        <div class="bloqueDespues">
-                            <h2>DESPUES</h2>
+                    </div>
+                </div>
+                <div class="col-m-6">
+                    <div class="bloqueResultadoLavado">
+                        <div class="bloqueTituloAntes">
+                            <h4 class="tituloAntesDespues">ANTES</h4>
+                        </div>
+                        <div class="cajaImgResultados">
+                            <img class="simple"  src="Imagenes/Resultados/Lavado Simple/3 muestra/1.jpg" alt="Foto de zatapillas antes del servicio">
+                            <img class="simple" src="Imagenes/Resultados/Lavado Simple/3 muestra/2.jpg" alt="Foto de zatapillas después del servicio">
+                        
+                            <img class="estandar" src="Imagenes/Resultados/Lavado Estándar/3 muestra/1.jpg" alt="Foto de zatapillas antes del servicio">
+                            <img class="estandar" src="Imagenes/Resultados/Lavado Estándar/3 muestra/2.jpg" alt="Foto de zatapillas después del servicio">
+                        
+                            <img class="premium" src="Imagenes/Resultados/Lavado Premium/1 muestra/1.jpg" alt="Foto de zatapillas antes del servicio">
+                            <img class="premium" src="Imagenes/Resultados/Lavado Premium/1 muestra/2.jpg" alt="Foto de zatapillas después del servicio">
+                        </div>
+                        <div class="bloqueTituloDespues">
+                            <h4 class="tituloAntesDespues">DESPUÉS</h4>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row contenedorGeneral">
-                <div class="col-s-12">
-                    <div class="cabecera">
-                        <h1>LAVADO <br> ESTANDAR</h1>
-                    </div>
-                </div>
-
-                <div class="bloqueResultados col-s-6 col-4">
-                    <div class="bloqueAntes">
-                        <h2> ANTES</h2>
-                    </div>
-                    <div class="bloqueContenido">
-                    <div class="bloqueImagen">
-                        <img src="Imagenes/Resultados/Lavado Estándar/1 muestra/1.jpg" alt="Imagen 1.1 Antes">
-                        <img src="Imagenes/Resultados/Lavado Estándar/1 muestra/2.jpg" alt="Imagen 1.2 Despues">
-                    </div>
-                    </div>
-                    <div class="bloqueDespues">
-                        <h2>DESPUES</h2>
-                    </div>
-                </div>
-                <div class="rp-medium1">
-                    <div class="bloqueResultados col-s-6 col-4">
-                        <div class="bloqueAntes">
-                            <h2> ANTES</h2>
-                        </div>
-                        <div class="bloqueContenido">
-                        <div class="bloqueImagen">
-                            <img src="Imagenes/Resultados/Lavado Estándar/2 muestra/1.jpg" alt="Imagen 2.1 Antes">
-                            <img src="Imagenes/Resultados/Lavado Estándar/2 muestra/2.jpg" alt="Imagen 2.2 Despues">
-                        </div>
-                        </div>
-                        <div class="bloqueDespues">
-                            <h2>DESPUES</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="rp-medium2">
-                    <div class="bloqueResultados col-s-6 col-4">
-                        <div class="bloqueAntes">
-                            <h2> ANTES</h2>
-                        </div>
-                        <div class="bloqueContenido">
-                        <div class="bloqueImagen">
-                            <img src="Imagenes/Resultados/Lavado Estándar/3 muestra/1.jpg" alt="Imagen 3.1 Antes">
-                            <img src="Imagenes/Resultados/Lavado Estándar/3 muestra/2.jpg" alt="Imagen 3.2 Despues">
-                        </div>
-                        </div>
-                        <div class="bloqueDespues">
-                            <h2>DESPUES</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
         <aside class="row">
             <?php include 'Plantillas/Enlaces.php'; ?>
