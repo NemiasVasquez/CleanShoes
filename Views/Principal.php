@@ -24,12 +24,12 @@
         <section id="section1" class="row">
             <div id="contenedorSec1">
                 <div id="bloqueSection1" class="slider-container">
-                        <div class="slick-slide"><img src="./Imagenes/Inicio/seccion1/4.png" alt="Imagen 1"></div>
-                        <div class="slick-slide"><img src="./Imagenes/Inicio/seccion1/2.png" alt="Imagen 2"></div>
-                        <div class="slick-slide"><img src="./Imagenes/Inicio/seccion1/3.png" alt="Imagen 3"></div>
-                        <div class="slick-slide"><img src="./Imagenes/Inicio/seccion1/4.png" alt="Imagen 4"></div>
-                        <div class="slick-slide"><img src="./Imagenes/Inicio/seccion1/5.png" alt="Imagen 4"></div>
-                        <div class="slick-slide"><img src="./Imagenes/Inicio/seccion1/6.png" alt="Imagen 4"></div>
+                        <div class="slick-slide"><img src="Imagenes/Inicio/seccion1/4.png" alt="Imagen 1"></div>
+                        <div class="slick-slide"><img src="Imagenes/Inicio/seccion1/2.png" alt="Imagen 2"></div>
+                        <div class="slick-slide"><img src="Imagenes/Inicio/seccion1/3.png" alt="Imagen 3"></div>
+                        <div class="slick-slide"><img src="Imagenes/Inicio/seccion1/4.png" alt="Imagen 4"></div>
+                        <div class="slick-slide"><img src="Imagenes/Inicio/seccion1/5.png" alt="Imagen 4"></div>
+                        <div class="slick-slide"><img src="Imagenes/Inicio/seccion1/6.png" alt="Imagen 4"></div>
                 </div>
                 <div id="contenidoImagenInicio">
                     <div id="textoSect1" class="col-">
@@ -46,7 +46,7 @@
         <section id="section2" class="row">
             <div id="s2_grupoImagenes" class="col-6">
                 <div id="s2_img1">
-                    <img src="imagenes/Inicio/seccion2/2.jpg" alt="Imagen pequeña zapatillas">
+                    <img src="Imagenes/Inicio/seccion2/2.jpg" alt="Imagen pequeña zapatillas">
                 </div>
                 <div id="s2_textoPromo">
                     <p>¡ 3x2 !</p>
@@ -73,28 +73,28 @@
                 <div id="grupoCajas_s3">
                     <div class="caja_s3 col-3">
                         <div>
-                            <img src="imagenes/Inicio/seccion3/icons8-calendario-100.png" alt="Imagen calendario">
+                            <img src="Imagenes/Inicio/seccion3/icons8-calendario-100.png" alt="Imagen calendario">
                             <h2>RESERVAR EL SERVICIO</h2>
                         </div>
                         <p>Contáctanos a través de nuestra web o déjanos un mensaje en nuestras redes sociales.</p>
                     </div>
                     <div class="caja_s3 col-3">
                         <div>
-                            <img src="imagenes/Inicio/seccion3/icons8-scooter-100.png" alt="Imagen Moto Lineal">
+                            <img src="Imagenes/Inicio/seccion3/icons8-scooter-100.png" alt="Imagen Moto Lineal">
                             <h2>RECOJO DEL CALZADO</h2>
                         </div>
                         <p>Confirmanos la reserva y enviamos personal a recoger tus pares o los recibimos en la tienda.</p>
                     </div>
                     <div class="caja_s3 col-3">
                         <div>
-                            <img src="imagenes/Inicio/seccion3/icons8-zapatos-veganos-100.png" alt="Limpieza Zapatilla">
+                            <img src="Imagenes/Inicio/seccion3/icons8-zapatos-veganos-100.png" alt="Limpieza Zapatilla">
                             <h2>LIMPIEZA</h2>
                         </div>
                         <p>Uno de nuestros colaboradores especializados realiza la limpieza de calidad del par.</p>
                     </div>
                     <div class="caja_s3 col-3">
                         <div>
-                            <img src="imagenes/Inicio/seccion3/icons8-caja-128.png" alt="Icono Entrega">
+                            <img src="Imagenes/Inicio/seccion3/icons8-caja-128.png" alt="Icono Entrega">
                             <h2>ENTREGA</h2>
                         </div>
                         <p>Tus pares limpios serán empaquetados y entregados por nuestro personal, previa coordinación.</p>

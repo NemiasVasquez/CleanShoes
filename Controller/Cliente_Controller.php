@@ -9,7 +9,7 @@ class Cliente_Controller{
 
     public function index(){
         /* Requiere vista del Menu General de Clean Shoes */
-        require_once "";
+        require_once "Views/Principal.php";
     }
 
     public function ListarClientes(){
