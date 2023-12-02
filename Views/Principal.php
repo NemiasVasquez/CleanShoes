@@ -11,7 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="JavaScript/JsInicio.Js"></script>
 
-    <link rel="stylesheet" href="Style/Principal.css">
+    <link rel="stylesheet" href="Style/Plantilla_Style.css">
+    <link rel="stylesheet" href="Style/Principal_Style.css">
     <title>Clean Shoes</title>
 </head>
 <body>

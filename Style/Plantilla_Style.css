@@ -152,6 +152,12 @@ footer{
     margin: 4% 0 5% 0;
 }
 
+.menuFoot li a{
+    text-decoration: none;
+    color: #000000;
+}
+
+
 #copyright{
     text-align: center;
     margin: -5% auto 0 auto;

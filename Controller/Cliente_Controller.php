@@ -13,7 +13,7 @@ class Cliente_Controller{
     }
 
     public function QuienesSomos(){
-        /* Requiere vista del Menu General de Clean Shoes */
+        
         require_once "Views/QuienesSomos.php";
     }
 
