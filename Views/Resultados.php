@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados - Clean Shoes</title>
-    <link rel="stylesheet" href="Estilos/Resultados.css">
+
+    <link rel="stylesheet" href="Style/Plantilla_Style.css">
+    <link rel="stylesheet" href="Style/Resultados_Style.css">
 </head>
 <body>
     <div class ="contenedor">
         <header>
-            <?php include 'Plantillas/Header.html'; ?>
+            <?php include 'Plantillas/Header.php'; ?>
         </header>
         <main>
             <div class="interior">
@@ -180,10 +182,10 @@
             </div>
         </main>
         <aside class="row">
-            <?php include 'Plantillas/Enlaces.html'; ?>
+            <?php include 'Plantillas/Enlaces.php'; ?>
         </aside>
         <footer >
-            <?php include 'Plantillas/Footer.html'; ?>
+            <?php include 'Plantillas/Footer.php'; ?>
          </footer>
     </div>    
 </body>

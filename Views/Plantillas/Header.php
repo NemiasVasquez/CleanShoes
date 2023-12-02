@@ -11,7 +11,7 @@
                     <li><a href="index.php?c=Cliente_Controller&a=QuienesSomos" <?php if(isset($QuienesSomos)){echo 'class="activo"';} ?>>¿Quiénes Somos?</a></li>
                     <li><a href="">Servicios</a></li>
                     <li><a href="">Promociones</a></li>
-                    <li><a href="">Resultados</a></li>
+                    <li><a href="index.php?c=Cliente_Controller&a=Resultados" <?php if(isset($Resultados)){echo 'class="activo"';} ?>>Resultados</a></li>
                 </ul>
             </nav>
         </div>
