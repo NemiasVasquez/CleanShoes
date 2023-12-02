@@ -19,11 +19,15 @@ class Servicio_Model{
 
     public function getServicios(){
         $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio ");
+        $consulta_detalle_Descripcion = $this->dataBase->query();
         $i=0;
         while($fila = $consulta_Servicio->fetch_assoc()){
             $this->Servicio[$i]=$fila;
+            $consulta_Descrip[$i]=$fila["descripcion"];
             $i++;
         }
+
+
         if($this->Servicio != NULL){
             return $this->Servicio;
         }else{

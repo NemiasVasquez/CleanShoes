@@ -11,11 +11,14 @@ class Servicio_Controller{
     public function Servicios(){
         $Servicios = true;
         $data["Servicio"]=$this->Servicio_Modelo->getServicios();
+
         require_once "Views/Servicios.php";
     }
 
     public function ListarServicios(){
-        $data["Servicio"]=$this->Servicio_Modelo->getServicios();
+        $data=$this->Servicio_Modelo->getServicios();
+        /* data["descripcion"][1][]
+            data["Servicio][0][precio] */
         if($data["Servicio"]==false){
             $mensaje ="No se ha encontrado servicios registrados.";
         }

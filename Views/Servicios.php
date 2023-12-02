@@ -16,9 +16,7 @@
         <?php include 'Plantillas/Header.php'; ?>
     </header>
     <main>
-
-        <?php var_dump($data["Servicio"]) ?>
-            
+<?php echo var_dump($data["Servicio"]) ?>      
             <div class="row caja-General">
                 <div>
                 <div class="col-3 col-s-6 col-m-6 col-l-3 caja-zapatilla-1">
@@ -44,27 +42,20 @@
                     <div class="interior">
                         <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicios">
                             <div class="cajita-tituloLavado">
-                                <h2><?php echo $data["Servicio"]["nombre"]; ?></h2>
+                                <h2><?php echo $S["nombre"]; ?></h2>
                             </div>
 
                             <div class="cajitainfo-lavado">
                                 <div class="cajita-precio">
-                                    <h2> <?php echo $data["Servicio"]["precio"]; ?></h2>
+                                    <h2> s/<?php echo $S["precio"]; ?>.00</h2>
                                 </div> 
                                 <div class="cajita-descripcion">
-                                    <p>
+                                    <p> <?php echo $S["descripcion"] ?></p>
                                 </div>
-                                <div  class="cajita-lista-descripcion">
-                                    <ul>
-                                        <li>Cuerpo Exterior</li>
-                                        <li>Media Suela</li>
-                                        <li>Secado delicado</li>
-                                    </ul>
-                                    
-                                </div>
+                                
                             </div>
                             <div class="cajita-reservarServicio" >
-                                <a href="ReservarServicio.html"><h2>Reservar <br> Servicio</h2></a>
+                                <a href=""><h2>Reservar <br> Servicio</h2></a>
                             </div>
                         </div>
                     </div>
