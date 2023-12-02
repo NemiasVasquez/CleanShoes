@@ -39,7 +39,6 @@ body h2, form h2{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 img{
 	max-width:100%;
 }
@@ -72,7 +71,6 @@ header{
 	display: inline-block;
 	margin:20px 17px;
     align-items: center;
-    
 }
 
 #menu_h ul {
@@ -118,17 +116,15 @@ header{
 /*** ASIDE ***/
 #grupoEnlacesRedes{
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column;
     position: fixed;
     right: -4%;
     top: 40%;
-    margin: 0 1% 0 0;
 }
 
 /*** FOOTER ***/
 footer{
     background:linear-gradient(360deg,#43aee8 ,#6bda40);
-    
 }
 
 #cajaSubmenuFooter{
