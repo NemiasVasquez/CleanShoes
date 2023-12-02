@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Quiénes Somos? | Clean Shoes </title>
     <link rel = "icon" type="image/x-icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="Style/QuienesSomos.css">
+
+    
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="JavaScript/JsQuienesSomos.js"></script>
+
+    <link rel="stylesheet" href="Style/QuienesSomos.css">
 
 </head>
 <body>
