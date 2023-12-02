@@ -8,6 +8,12 @@ class Servicio_Controller{
         $this->Servicio_Modelo = new Servicio_Model();
     }
 
+    public function Servicios(){
+        $Servicios = true;
+        $data["Servicio"]=$this->Servicio_Modelo->getServicios();
+        require_once "Views/Servicios.php";
+    }
+
     public function ListarServicios(){
         $data["Servicio"]=$this->Servicio_Modelo->getServicios();
         if($data["Servicio"]==false){

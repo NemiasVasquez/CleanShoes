@@ -8,7 +8,7 @@
                 <ul id="" class="menuFoot">
                     <li><a href="index.php?">Inicio</a></li>
                     <li><a href="index.php?c=Cliente_Controller&a=QuienesSomos">¿Quiénes somos?</a></li>
-                    <li><a href="index.php?c=Cliente_Controller&a=Servicios">Servicios</a></li>
+                    <li><a href="index.php?c=Servicio_Controller&a=Servicios">Servicios</a></li>
                 </ul>
             </div>
             

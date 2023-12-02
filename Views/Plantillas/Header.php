@@ -10,7 +10,7 @@
                 <ul>
                     <li><a href="index.php?" <?php if(isset($Inicio)){echo 'class="activo"';} ?>>Inicio</a></li>
                     <li><a href="index.php?c=Cliente_Controller&a=QuienesSomos" <?php if(isset($QuienesSomos)){echo 'class="activo"';} ?>>¿Quiénes Somos?</a></li>
-                    <li><a href="index.php?c=Cliente_Controller&a=Servicios" <?php if(isset($Servicios)){echo 'class="activo"';} ?>>Servicios</a></li>
+                    <li><a href="index.php?c=Servicio_Controller&a=Servicios" <?php if(isset($Servicios)){echo 'class="activo"';} ?>>Servicios</a></li>
                     <li><a href="">Promociones</a></li>
                     <li><a href="index.php?c=Cliente_Controller&a=Resultados" <?php if(isset($Resultados)){echo 'class="activo"';} ?>>Resultados</a></li>
                 </ul>

@@ -16,6 +16,9 @@
         <?php include 'Plantillas/Header.php'; ?>
     </header>
     <main>
+
+        <?php var_dump($data["Servicio"]) ?>
+            
             <div class="row caja-General">
                 <div>
                 <div class="col-3 col-s-6 col-m-6 col-l-3 caja-zapatilla-1">
@@ -35,35 +38,37 @@
                             <img src="Imagenes/Servicios/zapatillas3-PhotoRoom.png-PhotoRoom.png" alt="">
                         </div>
                 </div>
-                <div class="interior">
-                   
 
-                    <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicios">
-                        <div class="cajita-tituloLavado"><h2>LAVADO SIMPLE</h2></div>
-                        <div class="cajitainfo-lavado">
-                            <div class="cajita-precio">
-                                <h2>S/15.00</h2>
-                            </div> 
-                            <div class="cajita-descripcion">
-                                <p>2 días hábiles</p>
-                                <p class="lineaTipoLavado">---------------------------</p>
-                                <p>Limpieza superficial</p>
+                <?php foreach($data["Servicio"] as $S) {?>
+
+                    <div class="interior">
+                        <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicios">
+                            <div class="cajita-tituloLavado">
+                                <h2><?php echo $data["Servicio"]["nombre"]; ?></h2>
                             </div>
-                            <div  class="cajita-lista-descripcion">
-                                <ul>
-                                    <li>Cuerpo Exterior</li>
-                                    <li>Media Suela</li>
-                                    <li>Secado delicado</li>
-                                </ul>
-                                
+
+                            <div class="cajitainfo-lavado">
+                                <div class="cajita-precio">
+                                    <h2> <?php echo $data["Servicio"]["precio"]; ?></h2>
+                                </div> 
+                                <div class="cajita-descripcion">
+                                    <p>
+                                </div>
+                                <div  class="cajita-lista-descripcion">
+                                    <ul>
+                                        <li>Cuerpo Exterior</li>
+                                        <li>Media Suela</li>
+                                        <li>Secado delicado</li>
+                                    </ul>
+                                    
+                                </div>
                             </div>
-                        </div>
-                        <div class="cajita-reservarServicio" >
-                            <a href="ReservarServicio.html"><h2>Reservar <br> Servicio</h2></a>
+                            <div class="cajita-reservarServicio" >
+                                <a href="ReservarServicio.html"><h2>Reservar <br> Servicio</h2></a>
+                            </div>
                         </div>
                     </div>
-
-                </div>
+                <?php }?>
             </div>
     
             <div class="row">
