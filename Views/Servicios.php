@@ -17,12 +17,27 @@
     </header>
     <main>
             <div class="row caja-General">
-                <div class="interior">
-                    <div class="col-3 col-s-6 col-m-6 col-l-3 caja-zapatilla-1">
+                <div>
+                <div class="col-3 col-s-6 col-m-6 col-l-3 caja-zapatilla-1">
                         <div class="caja-zapatilla" id="imagen-zapatilla">
                             <img src="Imagenes/Servicios/zapatilla.png" alt="">
                         </div>
                     </div>
+
+                    <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
+                        <div class="caja-zapatilla" id="imagen-zapatilla">
+                            <img src="Imagenes/Servicios/zapatillas2-PhotoRoom.png-PhotoRoom.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
+                        <div class="caja-zapatilla" id="imagen-zapatilla ">
+                            <img src="Imagenes/Servicios/zapatillas3-PhotoRoom.png-PhotoRoom.png" alt="">
+                        </div>
+                </div>
+                <div class="interior">
+                   
+
                     <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicios">
                         <div class="cajita-tituloLavado"><h2>LAVADO SIMPLE</h2></div>
                         <div class="cajitainfo-lavado">
@@ -47,74 +62,7 @@
                             <a href="ReservarServicio.html"><h2>Reservar <br> Servicio</h2></a>
                         </div>
                     </div>
-    
-                    <div class="row1" ></div>
-    
-                    <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicios">
-                        <div class="cajita-tituloLavado"><h2>LAVADO ESTANDAR</h2></div>
-                        <div class="cajitainfo-lavado">
-                            <div class="cajita-precio">
-                                <h2>S/25.00</h2>
-                            </div> 
-                            <div class="cajita-descripcion">
-                                <p>3 días hábiles</p>
-                                <p class="lineaTipoLavado">---------------------------</p>
-                                <p>Limpieza interior y exterio</p>
-                            </div>
-                            <div  class="cajita-lista-descripcion">
-                                <ul>
-                                    <li>Cuerpo exterior e interior</li>
-                                    <li>Media Suela</li>
-                                    <li>Pasadores</li>
-                                    <li>Secado delicado</li>
-                                    <li>Desodorización</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="cajita-reservarServicio" >
-                            <a href="ReservarServicio.html"><h2>Reservar <br> Servicio</h2></a>
-                        </div>
-                    </div>
-                    <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
-                        <div class="caja-zapatilla" id="imagen-zapatilla">
-                            <img src="Imagenes/Servicios/zapatillas2-PhotoRoom.png-PhotoRoom.png" alt="">
-                        </div>
-                    </div>
-    
-                    <div class="row1" ></div>
-                    
-                    <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
-                        <div class="caja-zapatilla" id="imagen-zapatilla ">
-                            <img src="Imagenes/Servicios/zapatillas3-PhotoRoom.png-PhotoRoom.png" alt="">
-                        </div>
-                    </div>
-                    <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicios">
-                        <div class="cajita-tituloLavado"><h2>LAVADO PREMIUM</h2></div>
-                        <div class="cajitainfo-lavado">
-                            <div class="cajita-precio">
-                                <h2>S/35.00</h2>
-                            </div> 
-                            <div class="cajita-descripcion">
-                                <p>3 - 4 días hábiles</p>
-                                <p class="lineaTipoLavado">---------------------------</p>
-                                <p>Limpieza profunda</p>
-                            </div>
-                            <div  class="cajita-lista-descripcion">
-                                <ul>
-                                    <li>Cuerpo exterior e interior</li>
-                                    <li>Media Suela</li>
-                                    <li>Pasadores</li>
-                                    <li>Suela</li>
-                                    <li>Plantillas</li>
-                                    <li>Secado delicado</li>
-                                    <li>Desodorización</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="cajita-reservarServicio" >
-                            <a href="ReservarServicio.html"><h2>Reservar <br> Servicio</h2></a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
     
