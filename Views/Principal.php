@@ -18,7 +18,7 @@
 <body>
 
     <header>
-        <?php include 'Plantillas/Header.html'; ?>
+        <?php include 'Plantillas/Header.php'; ?>
     </header>
 
     <main>
@@ -105,10 +105,10 @@
         </section>
     </main>
     <aside>
-        <?php include 'Plantillas/Enlaces.html'; ?>
+        <?php include 'Plantillas/Enlaces.php'; ?>
     </aside>
     <footer>
-        <?php include 'Plantillas/Footer.html'; ?>
+        <?php include 'Plantillas/Footer.php'; ?>
     </footer>
 </body>
 </html>

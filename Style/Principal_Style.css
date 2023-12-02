@@ -4,7 +4,7 @@
 #section2{
     height: 100%;
     display: flex;
-    margin: 75px 0 0 0 ;
+    margin: 95px 0 0 0 ;
 }
 
 #s2_oferta{
@@ -28,7 +28,7 @@
 }
 
 #textoSect1{
-    padding-top: 10%;
+    padding-top: 55px;
     color: rgb(255, 255, 255);
     text-align: center;
 }
@@ -71,7 +71,6 @@
 #textoSect1 h2 {
     font-size: 30px;
 }
-
 
 .slick-dots {
     position: absolute;

@@ -1,13 +1,13 @@
 <div class="row">
     <div  id="cajaLogoSubmenu" class="col-s-12 col-4">
         <div id="logoOscuro">
-            <a href="Index.html"> <img src="Imagenes/CleanShoes_LogoOscuro.png" alt="Logo oscuro de Clean Shoes"></a>
+            <a href="index.php?"> <img src="Imagenes/CleanShoes_LogoOscuro.png" alt="Logo oscuro de Clean Shoes"></a>
         </div>
         <div id="cajaSubmenuFooter">
             <div class="col-6">
                 <ul id="" class="menuFoot">
-                    <li><a href="Index.html">Inicio</a></li>
-                    <li><a href="QuienesSomos.html">¿Quiénes somos?</a></li>
+                    <li><a href="index.php?">Inicio</a></li>
+                    <li><a href="index.php?c=Cliente_Controller&a=QuienesSomos">¿Quiénes somos?</a></li>
                     <li><a href="Servicios.html">Servicios</a></li>
                 </ul>
             </div>

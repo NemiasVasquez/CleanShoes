@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quiénes Somos? | Clean Shoes </title>
+    
     <link rel = "icon" type="image/x-icon" href="/img/favicon.ico">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="Style/Plantilla_Style.css">
     <link rel="stylesheet" href="Style/QuienesSomos_Style.css">
 
+    <title>¿Quiénes Somos?</title>
+
 </head>
 <body>
     <div class ="contenedor">
         <header>
-            <?php include 'Plantillas/Header.html'; ?>
+            <?php include 'Plantillas/Header.php'; ?>
         </header>
 
         <main>
@@ -82,10 +84,10 @@
         </main>
        
         <aside class="row">
-            <?php include 'Plantillas/Enlaces.html'; ?>
+            <?php include 'Plantillas/Enlaces.php'; ?>
         </aside>
         <footer >
-            <?php include 'Plantillas/Footer.html'; ?>
+            <?php include 'Plantillas/Footer.php'; ?>
         </footer>
     </div>
 </body>

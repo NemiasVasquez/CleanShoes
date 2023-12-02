@@ -9,11 +9,12 @@ class Cliente_Controller{
 
     public function index(){
         /* Requiere vista del Menu General de Clean Shoes */
+        $Inicio=true;
         require_once "Views/Principal.php";
     }
 
     public function QuienesSomos(){
-        
+        $QuienesSomos = true;
         require_once "Views/QuienesSomos.php";
     }
 
