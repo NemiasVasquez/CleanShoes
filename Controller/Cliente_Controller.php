@@ -12,6 +12,11 @@ class Cliente_Controller{
         require_once "Views/Principal.php";
     }
 
+    public function QuienesSomos(){
+        /* Requiere vista del Menu General de Clean Shoes */
+        require_once "Views/QuienesSomos.php";
+    }
+
     public function ListarClientes(){
         $data["Cliente"]=$this->Cliente_Modelo->getClientes();
         if($data["Cliente"]==false){

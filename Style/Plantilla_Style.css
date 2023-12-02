@@ -118,7 +118,7 @@ header{
     display: flex;
     flex-flow: column;
     position: fixed;
-    right: -4%;
+    right: -3.5%;
     top: 40%;
 }
 
@@ -129,6 +129,10 @@ footer{
 
 #cajaSubmenuFooter{
     margin: -7% auto 0 auto;
+}
+
+#logoOscuro{
+    margin-left: 16%;
 }
 
 #logoOscuro img{
