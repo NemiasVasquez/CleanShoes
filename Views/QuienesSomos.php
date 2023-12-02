@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="Style/QuienesSomos_Style.css">
 
-    <title>¿Quiénes Somos?</title>
+    <title>¿Quiénes Somos? / Clean Shoes</title>
 
 </head>
 <body>

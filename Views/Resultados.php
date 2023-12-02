@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="Style/Resultados_Style.css">
 
-    <title>Resultados</title>
+    <title>Resultados / Clean Shoes</title>
 </head>
 <body>
     <div class ="contenedor">

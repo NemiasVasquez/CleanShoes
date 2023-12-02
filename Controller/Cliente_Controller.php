@@ -23,6 +23,11 @@ class Cliente_Controller{
         require_once "Views/Resultados.php";
     }
 
+    public function Servicios(){
+        $Servicios = true;
+        require_once "Views/Servicios.php";
+    }
+
     public function ListarClientes(){
         $data["Cliente"]=$this->Cliente_Modelo->getClientes();
         if($data["Cliente"]==false){
