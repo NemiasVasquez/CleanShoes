@@ -16,29 +16,29 @@
         <?php include 'Plantillas/Header.php'; ?>
     </header>
     <main>
-<?php echo var_dump($data["Servicio"]) ?>      
-            <div class="row caja-General">
-                <div>
+        <div class="row caja-General">
+            <div class="bloque_Imagenes">
                 <div class="col-3 col-s-6 col-m-6 col-l-3 caja-zapatilla-1">
-                        <div class="caja-zapatilla" id="imagen-zapatilla">
-                            <img src="Imagenes/Servicios/zapatilla.png" alt="">
-                        </div>
+                    <div class="caja-zapatilla" id="imagen-zapatilla">
+                        <img src="Imagenes/Servicios/zapatilla.png" alt="">
                     </div>
-
-                    <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
-                        <div class="caja-zapatilla" id="imagen-zapatilla">
-                            <img src="Imagenes/Servicios/zapatillas2-PhotoRoom.png-PhotoRoom.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
-                        <div class="caja-zapatilla" id="imagen-zapatilla ">
-                            <img src="Imagenes/Servicios/zapatillas3-PhotoRoom.png-PhotoRoom.png" alt="">
-                        </div>
                 </div>
 
-                <?php foreach($data["Servicio"] as $S) {?>
+                <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
+                    <div class="caja-zapatilla" id="imagen-zapatilla">
+                        <img src="Imagenes/Servicios/zapatillas2-PhotoRoom.png-PhotoRoom.png" alt="">
+                    </div>
+                </div>
 
+                <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
+                    <div class="caja-zapatilla" id="imagen-zapatilla ">
+                        <img src="Imagenes/Servicios/zapatillas3-PhotoRoom.png-PhotoRoom.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <?php foreach($data["Servicio"] as $S) {?>
                     <div class="interior">
                         <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicios">
                             <div class="cajita-tituloLavado">
@@ -50,7 +50,9 @@
                                     <h2> s/<?php echo $S["precio"]; ?>.00</h2>
                                 </div> 
                                 <div class="cajita-descripcion">
-                                    <p> <?php echo $S["descripcion"] ?></p>
+                                    <?php foreach ($S["Descripcion"] as $P){  ?>
+                                        <p> <?php echo $P["nombre"] ?></p>
+                                    <?php } ?>
                                 </div>
                                 
                             </div>
@@ -61,56 +63,58 @@
                     </div>
                 <?php }?>
             </div>
-    
-            <div class="row">
-                <div class="interior">
-                    <div class="col-4 caja-imagenAdicional col-l-4">
-                        <div class="cajita-adicional">
-                            <img id="imagen-adicional" src="Imagenes/Servicios/adicionales.jpg" alt="">
-                        </div>
+            
+        </div>
+
+        <div class="row">
+            <div class="interior">
+                <div class="col-4 caja-imagenAdicional col-l-4">
+                    <div class="cajita-adicional">
+                        <img id="imagen-adicional" src="Imagenes/Servicios/adicionales.jpg" alt="">
                     </div>
-                    <div class="col-8 caja-adicionales col-l-8">
-                        <div class="cajita-tituloLavado">
-                            <h2>SERVICIOS ADICIONALES</h2>
-                        </div>
-                        <div class="cajita-lista-adicional">
-                            <table>
-                                <tr>
-                                    <td><li id="text-lista">Blanqueamiento con UV de medida suela</li></td>
-                                    <td>         </td>
-                                    <td id="precio">S/20.00</tr>
-                                </tr>
-                                <tr>
-                                    <td><li id="text-lista">Repintado de zapatillas (parte pequeña)</li></td>
-                                    <td>         </td>
-                                    <td id="precio">S/19.00</td>
-                                </tr>
-                                <tr>
-                                    <td><li id="text-lista">Repintado de zapatillas (parte grande)</li></td>
-                                    <td>         </td>
-                                    <td id="precio">S/29.00</td>
-                                </tr>
-                                <tr>
-                                    <td><li id="text-lista">Repintado de zapatilla (todo el calzado)</li></td>
-                                    <td>         </td>
-                                    <td id="precio">S/30.00</td>
-                                </tr>
-                                <tr>
-                                    <td><li id="text-lista">Cambio de color</li></td>
-                                    <td>         </td>
-                                    <td id="precio">S/59.00</td>
-                                </tr>
-                                <tr>
-                                    <td><li id="text-lista">Restauración de gamuza</li></td>
-                                    <td>         </td>
-                                    <td id="precio">S/10.00</td>
-                                </tr>
-                            </table>
-                        </div>
+                </div>
+                <div class="col-8 caja-adicionales col-l-8">
+                    <div class="cajita-tituloLavado">
+                        <h2>SERVICIOS ADICIONALES</h2>
+                    </div>
+                    <div class="cajita-lista-adicional">
+                        <table>
+                            <tr>
+                                <td><li id="text-lista">Blanqueamiento con UV de medida suela</li></td>
+                                <td>         </td>
+                                <td id="precio">S/20.00</tr>
+                            </tr>
+                            <tr>
+                                <td><li id="text-lista">Repintado de zapatillas (parte pequeña)</li></td>
+                                <td>         </td>
+                                <td id="precio">S/19.00</td>
+                            </tr>
+                            <tr>
+                                <td><li id="text-lista">Repintado de zapatillas (parte grande)</li></td>
+                                <td>         </td>
+                                <td id="precio">S/29.00</td>
+                            </tr>
+                            <tr>
+                                <td><li id="text-lista">Repintado de zapatilla (todo el calzado)</li></td>
+                                <td>         </td>
+                                <td id="precio">S/30.00</td>
+                            </tr>
+                            <tr>
+                                <td><li id="text-lista">Cambio de color</li></td>
+                                <td>         </td>
+                                <td id="precio">S/59.00</td>
+                            </tr>
+                            <tr>
+                                <td><li id="text-lista">Restauración de gamuza</li></td>
+                                <td>         </td>
+                                <td id="precio">S/10.00</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
     <footer>
         <?php include 'Plantillas/Footer.php'; ?>
     </footer>
