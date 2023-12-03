@@ -1,21 +1,35 @@
 
 /***** MAIN ****/
 
-#imagen-zapatilla{
-    display: none;
-    justify-content: center;
-} 
-
-.caja-zapatilla{
+/* Sección 1 */
+.caja-General{
     display: flex;
     flex-flow: column;
+    justify-content: center;
+}
+
+.bloque_Imagenes{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+.caja-zapatilla-1{
     align-items: center;
-    height:  400px;
-    max-width: 260px;
+    max-width: 460px;
 } 
 
-.caja-zapatilla-l{
-    display: none;
+/* Sección 2 - Servicios */
+
+.bloque_Servicios{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+}
+
+.caja-servicio{
+    width: 400px;
+    max-width: 400px;
 }
 
 .cajita-tituloLavado{
@@ -43,16 +57,16 @@
 
 .cajita-descripcion p{
     text-align: center;
-    font-size: 15pt;
+    font-size: 13pt;
     margin: -1px 0;
 }
 
-.cajita-lista-descripcion ul{
+.cajita-descripcion ul{
     margin: 40px 10% 100px 10%;
-    font-size: 15pt;
+    font-size: 13pt;
 }
 
-.cajita-lista-descripcion ul li{
+.cajita-descripcion ul li{
     margin: 5px 0;
 }
 
@@ -61,7 +75,7 @@
     border: #3fa0d4 1px solid;
     max-width: 80%;
     margin: 0 auto;
-    height: 540px;
+    height: 520px;
 }
 
 .cajita-reservarServicio{
@@ -107,284 +121,4 @@
 #precio{
     font-weight: bold;
     font-size: 12pt;
-}
-
-/********************/
-@media only screen and (min-width:600px){
-    .col-s-1{width: 8.33%;}
-        .col-s-2{width: 16.66%;}
-        .col-s-3{width: 25%;}
-        .col-s-4{width: 33.33%;}
-        .col-s-5{width: 41.66%}
-        .col-s-6{width: 50%;}
-        .col-s-7{width: 58.33%;}
-        .col-s-8{width: 66.66%;}
-        .col-s-9{width: 75%;}
-        .col-s-10{width: 83.33%;}
-        .col-s-11{width: 91.66%;}
-        .col-s-12{width: 100%;}
-
-    /*SERVICIOS 600*/
-
-
-    .caja-zapatilla-1{
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .caja-zapatilla-l{
-        display: inline-block;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-    }
-
-    #imagen-zapatilla{
-        display: flex;
-        justify-content: center;
-    } 
-
-    .cajita-tituloLavado{
-        margin-bottom: -25px;
-    }
-
-    .cajita-tituloLavado h2{
-        padding: 18px 0;
-        border-radius: 1.5em;
-        max-width: 60%;
-        font-size: 0.8em;
-    }
-    .cajita-precio h2{
-        font-size: 1.2em;
-        margin-top: 40px;
-    }
-
-    .cajita-descripcion p{
-        font-size: 10pt;
-    }
-
-    .cajita-lista-descripcion ul{
-        margin: 20px 10% 100px 10%;
-        font-size: 10pt;
-    }
-
-    .cajitainfo-lavado{
-        height: 350px;
-    }
-
-    .cajita-reservarServicio{
-        margin-top: -28px;
-    }
-
-    /*SERVICIOS ADICIONALES*/
-
-    .cajita-lista-adicional{
-        max-width: 90%;
-        padding: 5px 20px ;
-        height: 180px;
-        width: 400px;
-    }
-
-    .cajita-reservarServicio h2{
-        font-size: 1em;
-    }
-
-    #precio{
-        font-weight: bold;
-        font-size: 9pt;
-    }
-
-    #text-lista{
-        font-size: 11px;
-    }
-
-}
-
-/*768*
-/***********************/
-@media only screen and (min-width:768px){
-    .col-m-1{width: 8.33%;}
-    .col-m-2{width: 16.66%;}
-    .col-m-3{width: 25%;}
-    .col-m-4{width: 33.33%;}
-    .col-m-5{width: 41.66%}
-    .col-m-6{width: 50%;}
-    .col-m-7{width: 58.33%;}
-    .col-m-8{width: 66.66%;}
-    .col-m-9{width: 75%;}
-    .col-m-10{width: 83.33%;}
-    .col-m-11{width: 91.66%;}
-    .col-m-12{width: 100%;}
-
-
-        /*SERVICIOS 768*/
-
-    
-    .caja-zapatilla-1{
-        margin-top: 50px;
-    }
-
-    .caja-zapatilla-l{
-        margin-top: 80px;
-    }
-
-    .caja-zapatilla{
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        height:  400px;
-        max-width: 260px;
-    } 
-
-    .cajita-tituloLavado h2{
-        font-size: 1.2em;
-    }
-    .cajita-precio h2{
-        font-size: 1.8em;
-        text-align: center;
-        font-weight: bold;
-        margin-top: 60px;
-    }
-
-    .cajita-descripcion p{
-        font-size: 12pt;
-    }
-
-    .cajita-lista-descripcion ul{
-        font-size: 12pt;
-    }
-
-    .cajitainfo-lavado{
-        height: 400px;
-    }
-
-    /*SERVICIOS ADICIONALES*/
-
-    .cajita-lista-adicional{
-        padding: 0 20px ;
-        height: 200px;
-        width: 580px;
-    }
-
-    .cajita-reservarServicio h2{
-        font-size: 1.2em;
-    }
-
-    #precio{
-        font-size: 12pt;
-    }
-
-    #text-lista{
-        font-size: 16px;
-    }
-
-}
-
-
-@media only screen and (min-width:1200px){
-    .col-l-1{width: 8.33%;}
-    .col-l-2{width: 16.66%;}
-    .col-l-3{width: 25%;}
-    .col-l-4{width: 33.33%;}
-    .col-l-5{width: 41.66%}
-    .col-l-6{width: 50%;}
-    .col-l-7{width: 58.33%;}
-    .col-l-8{width: 66.66%;}
-    .col-l-9{width: 75%;}
-    .col-l-10{width: 83.33%;}
-    .col-l-11{width: 91.66%;}
-    .col-l-12{width: 100%;}
-
-    .row1::after{
-        display: none;
-    }    
-
-    .caja-zapatilla-l{
-        display: none;
-    }
-
-    /*SERVICIOS 1200*/
-
-
-    #imagen-zapatilla{
-        display: flex;
-        justify-content: center;
-    } 
-
-    .caja-zapatilla{
-        height:  400px;
-        max-width: 260px;
-    } 
-
-    .cajita-tituloLavado{
-        position: relative;
-        margin-bottom: -35px;
-    }
-
-    .cajita-tituloLavado h2{
-        padding: 10px 0;
-        border-radius: 1em;
-        font-size: 1.5em;
-    }
-
-    .cajita-precio h2{
-        font-size: 2em;
-    }
-    
-    .cajita-descripcion p{
-        font-size: 15pt;
-    }
-
-    .cajita-lista-descripcion ul{
-        font-size: 15pt;
-    }
-
-    .cajitainfo-lavado{
-        height: 500px;
-    }
-
-    /*SERVICIOS ADICIONALES*/
-
-    .cajita-lista-adicional{
-        padding: 15px 20px ;
-        max-width: 100%;
-        height: 250px;
-        width: 580px;
-    }
-
-    .cajita-adicional{
-        max-width: 85%;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .caja-imagenAdicional{
-        margin: left;
-    }
-
-    #imagen-adicional{
-        margin-left: 40%;
-    }
-    .caja-General{
-        margin-top: 0;
-    }
-    .caja-imagenAdicional{
-        margin-top: 110px;
-    }
-
-    .cajita-lista-adicional table{
-        font-size: 15pt;
-    }
-    
-    #precio{
-        font-size: 15pt;
-    }
-    
-    .caja-adicionales{
-        margin-top: 70px;
-    }
-
 }

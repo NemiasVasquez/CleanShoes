@@ -7,7 +7,7 @@
     <?php include 'Plantillas/Favicon.php'; ?>
     <?php include 'Plantillas/Links.php'; ?>
 
-    <link rel="stylessheet" href="Style/Servicios_Style.css">
+    <link rel="stylesheet" href="Style/Servicios_Style.css">
 
     <title>Servicios / Clean Shoes</title>
 </head>
@@ -19,28 +19,22 @@
         <div class="row caja-General">
             <div class="bloque_Imagenes">
                 <div class="col-3 col-s-6 col-m-6 col-l-3 caja-zapatilla-1">
-                    <div class="caja-zapatilla" id="imagen-zapatilla">
-                        <img src="Imagenes/Servicios/zapatilla.png" alt="">
-                    </div>
+                    <img src="Imagenes/Servicios/zapatilla.png" alt="Zapatilla azul con rojo">
                 </div>
 
                 <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
-                    <div class="caja-zapatilla" id="imagen-zapatilla">
-                        <img src="Imagenes/Servicios/zapatillas2-PhotoRoom.png-PhotoRoom.png" alt="">
-                    </div>
+                    <img src="Imagenes/Servicios/zapatillas2-PhotoRoom.png-PhotoRoom.png" alt="Zapatilla roja">
                 </div>
 
                 <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
-                    <div class="caja-zapatilla" id="imagen-zapatilla ">
-                        <img src="Imagenes/Servicios/zapatillas3-PhotoRoom.png-PhotoRoom.png" alt="">
-                    </div>
+                    <img src="Imagenes/Servicios/zapatillas3-PhotoRoom.png-PhotoRoom.png" alt="Zapatilla azul con rojo y fondo crema">
                 </div>
             </div>
 
-            <div>
+            <div class="bloque_Servicios">
                 <?php foreach($data["Servicio"] as $S) {?>
                     <div class="interior">
-                        <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicios">
+                        <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicio">
                             <div class="cajita-tituloLavado">
                                 <h2><?php echo $S["nombre"]; ?></h2>
                             </div>
@@ -50,9 +44,20 @@
                                     <h2> s/<?php echo $S["precio"]; ?>.00</h2>
                                 </div> 
                                 <div class="cajita-descripcion">
+                                    <p>
+                                        <?php echo $S["tiempo_estimado_entrega"] ?> días hábiles
+                                    </p>
+                                    <br>
+                                    <p> ----------------------------------- </p>
+                                    <br>
+                                    <p>
+                                        <?php echo $S["descripcion_Simple"] ?>
+                                    </p>
+                                    <ul>
                                     <?php foreach ($S["Descripcion"] as $P){  ?>
-                                        <p> <?php echo $P["nombre"] ?></p>
+                                        <li> <?php echo $P["nombre"] ?></li>
                                     <?php } ?>
+                                    </ul>
                                 </div>
                                 
                             </div>
