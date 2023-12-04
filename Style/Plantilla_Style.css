@@ -48,70 +48,77 @@ img{
 	margin:0 auto;
 }
 
-/*** Header ***/
-header{
-    background:#9fcefa;
+/* === HEADER === */
+
+
+header {
+    background: #9fcefa;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
-#bloqueMenu,#cajaReservar{
+#bloqueMenu,
+#cajaReservar {
     margin: 2% 0;
 }
 
-#bloqueImagenLogo img{
-    margin:10px 0 0 25%
+#bloqueImagenLogo img {
+    margin: 10px 0 0 25%;
 }
 
-#menu_h ul{
-    list-style:none;
-	margin:0;
-	padding:0;
+#menu_h ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-#menu_h ul li{
-	display: inline-block;
-	margin:20px 17px;
+#menu_h ul li {
+    display: inline-block;
+    margin: 20px 17px;
     align-items: center;
 }
 
 #menu_h ul {
     width: 100%;
-    display: flex;;
+    display: flex;
     justify-content: center;
 }
 
-#menu_h ul li a{
-	text-decoration:none;
-    color:black;
+#menu_h ul li a {
+    text-decoration: none;
+    color: black;
 }
 
-.activo{
-	border-bottom: 3px solid #6bda40;
+.activo {
+    border-bottom: 3px solid #6bda40;
     font-weight: bold;
 }
 
-#menu_h ul li a:hover{
-	border-bottom: 3px solid #6bda40;
+#menu_h ul li a:hover {
+    border-bottom: 3px solid #6bda40;
 }
 
-#ctaReserva{
-    color:#000000;
-	font-weight:bold;
-	border: 2px solid black;
+#ctaReserva {
+    color: #000000;
+    font-weight: bold;
+    border: 2px solid black;
     border-radius: 0.3em;
-	text-decoration: none;
+    text-decoration: none;
     background-color: #9feb81;
-	padding:15px 10px;
-	text-align:center;
-	display:block;
-	margin:10px 0 0;
-	transition: background 2s;
+    padding: 15px 10px;
+    text-align: center;
+    display: block;
+    margin: 10px 0 0;
+    transition: background 2s;
 }
 
-#ctaReserva:hover{
+#ctaReserva:hover {
     background: #6bda40;
     border: 3px solid #ffffff;
-	color:#ffffff;
+    color: #ffffff;
 }
+
 
 /*** ASIDE ***/
 #grupoEnlacesRedes{
