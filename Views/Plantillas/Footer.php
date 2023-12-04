@@ -14,7 +14,7 @@
             
             <div class="col-6">
                 <ul class="menuFoot">
-                    <li><a href="">Promociones</a></li>
+                    <li><a href="index.php?c=Servicio_Controller&a=Promociones">Promociones</a></li>
                     <li><a href="index.php?c=Cliente_Controller&a=Resultados">Resultados</a></li>
                     <li><a href="">Reservar Servicio</a></li>
                 </ul>

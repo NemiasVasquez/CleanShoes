@@ -104,13 +104,47 @@
 
 /*SERVICIOS ADICIONALES*/
 
+.seccion_adicionales{
+    margin-top: 30px;
+}
+
+.caja-imagenAdicional{
+    display: flex;
+    margin-top: 25px;
+    align-items: center;
+    align-content: center;
+}
+
+.cajita-tituloLavado-2{
+    position: relative;
+    margin-bottom: -25px;
+}
+
+.cajita-tituloLavado-2 h2{
+    padding: 10px 35px;
+    text-transform: capitalize;
+    background-color: #00A1D3;
+    color:aliceblue;
+    border-radius: 1em;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+    font-size: 13pt;
+}
 .cajita-lista-adicional{
     background-color: white;
     border: #3fa0d4 1px solid;
     max-width: 80%;
     margin: 0 auto;
-    height: 350px;
-    width: 350px;
+    height: 200px;
+    width: 90%;
+}
+
+.caja-adicionales{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }
 
 .cajita-lista-adicional table{
@@ -118,7 +152,12 @@
     font-size: 11pt;
 }
 
-#precio{
+.precio{
     font-weight: bold;
-    font-size: 12pt;
+    font-size: 11pt;
+}
+
+main{
+    margin-top: 30px;
+    margin-bottom: 50px;
 }

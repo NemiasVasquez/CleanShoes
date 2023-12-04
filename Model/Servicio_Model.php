@@ -45,8 +45,8 @@ class Servicio_Model{
         }
     }
 
-    public function getServiciosPagina(){
-        $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio WHERE estado = 'Activo'");
+    public function getServiciosPagina($Categoria){
+        $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio WHERE estado = 'Activo' AND categoria = '$Categoria'");
        
         $i=0;
         while($fila = $consulta_Servicio->fetch_assoc()){

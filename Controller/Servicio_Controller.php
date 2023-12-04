@@ -10,9 +10,15 @@ class Servicio_Controller{
 
     public function Servicios(){
         $Servicios = true;
-        $data["Servicio"]=$this->Servicio_Modelo->getServiciosPagina();
-
+        $data["Servicios_Principales"]=$this->Servicio_Modelo->getServiciosPagina("Principal");
+        $data["Servicios_Adicionales"]=$this->Servicio_Modelo->getServiciosPagina("Adicional");
         require_once "Views/Servicios.php";
+    }
+
+    public function Promociones(){
+        $Promociones = true;
+        $data["Promociones"]=$this->Servicio_Modelo->getServiciosPagina("Promocion");
+        require_once "Views/Promociones.php";
     }
 
     public function ListarServicios(){
