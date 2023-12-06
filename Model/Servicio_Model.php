@@ -8,8 +8,8 @@ class Servicio_Model{
         $this->Servicio = [];
     }
 
-    public function setServicio($nombre,$precio,$descripcion,$tiempo_entrega,$estado){
-        $consulta_Registro = $this->dataBase->query("INSERT INTO servicio(nombre,precio,descripcion,tiempo_estimado_entrega,estado) VALUES('$nombre','$precio','$descripcion','$tiempo_entrega','$estado')");
+    public function setServicio($nombre,$precio,$tiempo_entrega,$categoria,$estado){
+        $consulta_Registro = $this->dataBase->query("INSERT INTO servicio(nombre,precio,tiempo_estimado_entrega,categoria,estado) VALUES('$nombre','$precio','$tiempo_entrega','$categoria','$estado')");
         if($consulta_Registro){
             return true;
         }else{
@@ -17,13 +17,55 @@ class Servicio_Model{
         }
     }
 
-    public function getServicios(){
-        $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio ");
+    public function getServicio(){
+        $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio");
+       
         $i=0;
         while($fila = $consulta_Servicio->fetch_assoc()){
+
             $this->Servicio[$i]=$fila;
+            $codigo = $this->Servicio[$i]['id_Servicio'];
+            $consulta_detalle_Descripcion = $this->dataBase->query("SELECT descripcion.nombre FROM detalle_descripcion
+            INNER JOIN descripcion ON detalle_descripcion.id_Descripcion = descripcion.id_Descripcion
+            WHERE  detalle_descripcion.id_Servicio = $codigo ");
+
+            $j=0;
+            while ($fila2 = $consulta_detalle_Descripcion->fetch_assoc()){
+                $this->Servicio[$i]["Descripcion"][$j]=$fila2;
+                $j++;
+            }
+
             $i++;
         }
+
+        if($this->Servicio != NULL){
+            return $this->Servicio;
+        }else{
+            return false;
+        }
+    }
+
+    public function getServiciosPagina($Categoria){
+        $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio WHERE estado = 'Activo' AND categoria = '$Categoria'");
+       
+        $i=0;
+        while($fila = $consulta_Servicio->fetch_assoc()){
+
+            $this->Servicio[$i]=$fila;
+            $codigo = $this->Servicio[$i]['id_Servicio'];
+            $consulta_detalle_Descripcion = $this->dataBase->query("SELECT descripcion.nombre FROM detalle_descripcion
+            INNER JOIN descripcion ON detalle_descripcion.id_Descripcion = descripcion.id_Descripcion
+            WHERE  detalle_descripcion.id_Servicio = $codigo ");
+
+            $j=0;
+            while ($fila2 = $consulta_detalle_Descripcion->fetch_assoc()){
+                $this->Servicio[$i]["Descripcion"][$j]=$fila2;
+                $j++;
+            }
+
+            $i++;
+        }
+
         if($this->Servicio != NULL){
             return $this->Servicio;
         }else{

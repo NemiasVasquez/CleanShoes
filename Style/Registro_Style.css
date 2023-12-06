@@ -1,0 +1,78 @@
+*{
+	box-sizing:border-box;
+}
+.contenedor{
+	margin:0 auto;
+	width:100%;
+}
+
+body{
+    background-color: #96B1BC;
+}
+
+main{
+    margin: 6% 0 0 0;
+}
+
+main div{
+    display: flex;
+    flex-flow: row;
+}
+
+#bloque_img{
+    width: 40%;
+}
+
+#bloque_img img{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#bloque_Formulario{
+    margin: 0 auto;
+}
+
+#form_Registro{
+    width: 100%;
+    align-self: center;
+    align-items: center;
+}
+
+.bloqueForm div label,.bloqueForm div input {
+    width: 100%;
+}
+
+.bloqueForm div{
+    display: flex;
+    flex-flow: column;
+    margin: 10px 40px 0 0;
+    width: 300px;
+    font-size: 13pt;
+}
+
+input {
+    border-radius: 0.5em;
+    padding: 5px;
+    border: 1px solid aliceblue;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input_Completo input[type="text"], .input_Completo input[type="email"]{
+    width: 640px;
+}
+
+input[type="submit"] {
+    margin: 30px 0 0 0;
+    width: 94.5%;
+    background-color: #6BC94D;
+    color: white;
+    padding: 8px 0;
+    border-color: #6BC94D;
+    transition: background-color 0.5s, color 0.5s; /* Agrega transición para el color de fondo y el color del texto */
+}
+
+input[type="submit"]:hover {
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-size: 11pt;
+}

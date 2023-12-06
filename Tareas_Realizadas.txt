@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 !IMPORTANTE¡
 
 Recordar que debemos validar en HTML los imput de texto mediante este código:
@@ -15,3 +16,5 @@ el cuál solo acepta caraceteres de la "a" a la "z" en minúsculas y mayúsculas
 .
 - Jeremy:
 asd
+=======
+>>>>>>> a1b23614c5b16e5b879e369660086a32ecf23b84

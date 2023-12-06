@@ -1,0 +1,171 @@
+main{
+    padding-top: 140px;
+}
+
+#resultadosMenu{
+    background-color: rgb(139, 137, 137);
+    color: white;
+}
+
+#bloqueEtiquetasResultado{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    margin: 3% 0 0 0; 
+    align-items: center;
+}
+
+.etiquetaR{
+    color:#f4eded;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.bloqueEtiquetaR{
+    width: 27%;
+    background-color: #929292;
+    border:1px solid rgb(250, 247, 242);
+    border-radius: 0.3em;
+    padding: 2% 0%;
+    text-align: center;
+}
+
+.bloqueTituloAntes,.bloqueTituloDespues{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background-color: #71cd3e;
+    border-radius: 1em;
+    height: 40px;
+}
+
+.bloqueTituloDespues{
+    margin: -5% 0 0 0;
+}
+
+.bloqueTituloAntes{
+    margin: 0 0 -5% 0;
+}
+
+#bloqueResultados{
+    display: flex;
+    flex-flow: column;
+    margin: 3% 0;
+}
+
+#bloqueResultados div{
+    align-items: center;
+}
+
+.bloqueResultadoLavado{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin: 3% 0;
+}
+
+.cajaImgResultados img{
+    border: #929292 solid 2px;
+}
+
+.simple, .estandar, .premium{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+#btnSimple:checked ~ #bloqueResultados .bloqueResultadoLavado .cajaImgResultados .estandar,
+#btnSimple:checked ~ #bloqueResultados .bloqueResultadoLavado .cajaImgResultados .premium {
+  display: none;
+  
+}
+
+#btnEstandar:checked ~ #bloqueResultados .bloqueResultadoLavado .cajaImgResultados .simple,
+#btnEstandar:checked ~ #bloqueResultados .bloqueResultadoLavado .cajaImgResultados .premium {
+  display: none;
+}
+
+#btnPremium:checked ~ #bloqueResultados .bloqueResultadoLavado .cajaImgResultados .simple,
+#btnPremium:checked ~ #bloqueResultados .bloqueResultadoLavado .cajaImgResultados .estandar {
+  display: none;
+}
+
+/***** Color a la etiqueta Mision Vision o Valores ACTIVA ***/
+
+#btnSimple:checked ~ #bloqueEtiquetasResultado #bloqueSimple label,
+#btnSimple:checked ~ #bloqueEtiquetasResultado #bloqueSimple{
+    background-color: #74cc38;
+    color:black;
+}
+
+#btnEstandar:checked ~ #bloqueEtiquetasResultado #bloqueEstandar label,
+#btnEstandar:checked ~ #bloqueEtiquetasResultado #bloqueEstandar{
+    background-color: #74cc38;
+    color:black;
+}
+
+#btnPremium:checked ~ #bloqueEtiquetasResultado #bloquePremium label,
+#btnPremium:checked ~ #bloqueEtiquetasResultado #bloquePremium{
+    background-color: #74cc38;
+    color:black;
+}
+
+@media only screen and (min-width:600px){
+    .col-s-1{width:8.33%;}
+    .col-s-2{width:16.66%;}
+    .col-s-3{width:25%;}
+    .col-s-4{width:33.33%;}
+    .col-s-5{width:41.66%;}
+    .col-s-6{width:50%;}
+    .col-s-7{width:58.33%;}
+    .col-s-8{width:66.66%;}
+    .col-s-9{width:75%;}
+    .col-s-10{width:83.33%;}
+    .col-s-11{width:91.66%;}
+    .col-s-12{width:100%;}
+
+    #bloqueResultados{
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .bloqueTituloAntes,.bloqueTituloDespues{
+        width: 50%;
+    }
+    
+    
+}
+
+    /*Para dispositivos grandes*/
+    @media only screen and (min-width:768px){
+        .col-1{width:8.33%;}
+        .col-2{width:16.66%;}
+        .col-3{width:25%;}
+        .col-4{width:33.33%;}
+        .col-5{width:41.66%;}
+        .col-6{width:50%;}
+        .col-7{width:58.33%;}
+        .col-8{width:66.66%;}
+        .col-9{width:75%;}
+        .col-10{width:83.33%;}
+        .col-11{width:91.66%;}
+        .col-12{width:100%;}
+      
+        .bloqueEtiquetaR{
+            max-width: 200px;
+            max-height: 50px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    
+    }

@@ -1,0 +1,153 @@
+/* MAIN ***/
+#seccion1{
+    padding-top: 150px;
+}
+
+#cajaImg{
+    text-align: center;
+    margin: 0 auto;
+}
+
+#cajaTexto{
+    text-align:justify;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+#cajaTexto h2{
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #062038;
+    font-size: 25px;
+}
+
+.cajaJQ{
+    width: 800px;
+    max-width: 90%;
+    margin: 30px auto;
+}
+
+ul.tabs{
+    width: 100%;
+    background: gray;
+    list-style: none;
+    display: flex;
+}
+
+ul.tabs li{
+    width: 50%;
+    margin-left: -40px;
+}
+
+ul.tabs li a{
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 25px;
+    display: block;
+    padding: 20px 0px;
+}
+
+.activoCaja{
+    background-color: #6bda40;
+    color: #000000;
+}
+
+.tabs-seccion{
+    width: 100%;
+    background:linear-gradient(180deg,#6bda40,#fafafa);
+    margin-top: -20px;
+    height: 200px;
+}
+
+.tabs-seccion article{
+    padding: 50px;
+}
+
+.tabs-seccion article p{
+    text-align: justify;
+}
+
+.txtJQ{
+    margin: -30px -30px 0 100px;
+}
+
+#tab3 .txtJQ{
+    margin: -80px -30px 0  150px;
+}
+
+
+/*Para dispositivos medianos*/
+@media only screen and (min-width:600px){
+    .col-s-1{width:8.33%;}
+    .col-s-2{width:16.66%;}
+    .col-s-3{width:25%;}
+    .col-s-4{width:33.33%;}
+    .col-s-5{width:41.66%;}
+    .col-s-6{width:50%;}
+    .col-s-7{width:58.33%;}
+    .col-s-8{width:66.66%;}
+    .col-s-9{width:75%;}
+    .col-s-10{width:83.33%;}
+    .col-s-11{width:91.66%;}
+    .col-s-12{width:100%;}
+
+    .flotar{
+        float: right;
+        margin-top: -50px;
+    }
+
+    .txtJQ{
+        margin: -20px -30px 0 130px;
+    }
+    
+    #tab3 .txtJQ{
+        margin: -90px 0px 0  230px;
+    }
+
+    article img{
+        width: 30%;
+    }
+    
+}
+
+    /*Para dispositivos grandes*/
+@media only screen and (min-width:768px){
+    .col-1{width:8.33%;}
+    .col-2{width:16.66%;}
+    .col-3{width:25%;}
+    .col-4{width:33.33%;}
+    .col-5{width:41.66%;}
+    .col-6{width:50%;}
+    .col-7{width:58.33%;}
+    .col-8{width:66.66%;}
+    .col-9{width:75%;}
+    .col-10{width:83.33%;}
+    .col-11{width:91.66%;}
+    .col-12{width:100%;}
+  
+    /************/
+    #cajaTexto{
+        text-align:justify;
+        padding-left: 100px;
+    }
+
+    .flotar{
+        float: left;
+        margin-top: -50px;
+    }
+    
+    .txtJQ{
+        margin: -10px -30px 0 80px;
+        font-size: 13pt;
+    }
+    
+    #tab3 .txtJQ{
+        margin: -90px 0px 0  230px;
+    }
+
+    article img{
+        width: 20%;
+    }
+
+}
