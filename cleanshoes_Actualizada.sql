@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2023 a las 04:51:50
+-- Tiempo de generación: 06-12-2023 a las 14:35:31
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -144,8 +144,6 @@ CREATE TABLE `detalle_servicio` (
 CREATE TABLE `direccion_envio` (
   `id_Direccion_Envio` int(11) NOT NULL,
   `id_Cliente` int(11) NOT NULL,
-  `departamente` varchar(50) NOT NULL,
-  `provincia` varchar(50) NOT NULL,
   `distrito` varchar(50) NOT NULL,
   `direccion` varchar(100) NOT NULL,
   `referencia` varchar(100) DEFAULT NULL,
@@ -183,8 +181,7 @@ CREATE TABLE `persona` (
   `apellidos` varchar(50) NOT NULL,
   `dni` varchar(12) NOT NULL,
   `correo` varchar(50) NOT NULL,
-  `celular` varchar(15) NOT NULL,
-  `fecha_nac` date NOT NULL
+  `celular` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -245,7 +242,6 @@ CREATE TABLE `trabajador` (
 
 CREATE TABLE `usuario` (
   `id_Usuario` int(11) NOT NULL,
-  `usuario` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `rol` varchar(50) DEFAULT NULL,
   `estado` varchar(20) NOT NULL,

@@ -8,6 +8,10 @@ class Cliente_Model{
         $this->Cliente=[];
     }
 
+    public function getDataBase(){
+        return $this->dataBase;
+    }
+
     public function getClientes(){
         $consulta_Clientes = $this->dataBase->query("SELECT persona.nombres,persona.apellidos,persona.dni,usuario.usuario,usuario.rol,usuario.estado,cliente.id_cliente FROM cliente
         INNER JOIN persona ON persona.id_persona = cliente.id_persona
@@ -52,7 +56,7 @@ class Cliente_Model{
         }
     }
 
-    public function setCliente($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña, $rol){
+    public function setCliente($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña){
 
         $Registro_Persona = $this->dataBase->query("INSERT INTO persona(nombres,apellidos,dni,correo,celular,fecha_nac) VALUES ('$nombre','$apellidos','$dni','$correo','$celular','$fechaNac')");
         
