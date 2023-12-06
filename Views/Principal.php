@@ -36,7 +36,7 @@
                         <h2>Especialistas en lavado de todo <br> tipo de zapatillas</h2>
                     </div>
                     <div id="btnReservarInicio" class="col-">
-                        <a href="ReservarServicio.html">Reservar Servicio</a>
+                        <a href="index.php?c=Servicio_Controller&a=Servicios">Reservar Servicio</a>
                     </div>
                 </div>
             </div>

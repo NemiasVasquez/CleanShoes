@@ -8,9 +8,9 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    <link rel="stylesheet" href="Style/Login_Style.css">
+    <link rel="stylesheet" href="Style/Registro_Style.css">
 
-    <script type="text/javascript" src="JavaScript/Login_Ajax.js"></script>
+    <script type="text/javascript" src="JavaScript/Registro_Ajax.js"></script>
 
     <title>Registro - Clean Shoes</title>
 

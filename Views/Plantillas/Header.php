@@ -21,7 +21,16 @@
                 <img src="Imagenes/Header/Carrito.png" alt="Ícono de un carrito de compras">
             </div>
            <div>
-                <img src="Imagenes/Header/Usuario.png" alt="Ícono de un usuario">
+
+             <!-- IMPORTANTEEEEE 
+             Se tiene que validar con PHP cuando ya
+              existe un usuario para que cambie el enlace :D -->
+                
+             <a href="index.php?c=Cliente_Controller&a=LoginViews">
+                    <img src="Imagenes/Header/Usuario.png" alt="Ícono de un usuario">
+                    <p> <?php if(isset($_SESSION["nombre"])){ echo $_SESSION["nombre"];}else{ echo "Iniciar Sesion";} ?> </p>
+                    
+                </a>
            </div>
             
         </div> 

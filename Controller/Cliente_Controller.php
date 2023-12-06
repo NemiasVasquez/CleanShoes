@@ -23,8 +23,12 @@ class Cliente_Controller{
         require_once "Views/Resultados.php";
     }
 
-    public function login(){
+    public function RegistrarNuevo(){
         require_once "Views/Registro.php";
+    }
+
+    public function LoginViews(){
+        require_once "Views/Login.php";
     }
 
     public function ListarClientes(){
