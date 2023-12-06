@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'Plantillas/Favicon.php'; ?>
 
     <title>Login - CleanShoes</title>
 </head>
 <body>
     <main>
         <div>
-            <img src="" alt="Imagen de Clean Shoes">
+            <img src="Imagenes/Login/login.png" alt="Imagen de Clean Shoes">
         </div>
         <div>
             <form id="form_Login" method="post"> 
-                <img src="" alt="Usuarios">
+                <img src="Imagenes/Login/Usuarios.png" alt="Usuarios">
                 <div>
                     <label for="usuario">Usuario:</label>
                     <input type="text" name="usuario" id="usuario">
@@ -29,7 +30,7 @@
             </form>
             <div>
                 <p>¿No tienes una cuenta?</p>
-                <a href="index.php?c=Cliente_Controller&a=RegistrarNuevo">¡Regístarte!</a>
+                <a href="index.php?c=Cliente_Controller&a=RegistrarNuevo">¡Regístate!</a>
             </div>
         </div>
     </main>
