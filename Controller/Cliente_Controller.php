@@ -42,10 +42,9 @@ class Cliente_Controller{
         $dni = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["dni"]);
         $correo = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["correo"]);
         $celular = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["celular"]);
-        $usuario  = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["usuario"]);
         $contraseña = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["contraseña"]);
 
-        $consulta_Registro = $this->Cliente_Modelo->setCliente($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña);
+        $consulta_Registro = $this->Cliente_Modelo->setCliente($nombre,$apellidos,$dni,$correo,$celular,$contraseña);
         
         if($consulta_Registro == true){
             $respuesta = ["mensaje"=>"Registro completado."];

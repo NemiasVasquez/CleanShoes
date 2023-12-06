@@ -56,25 +56,25 @@ class Cliente_Model{
         }
     }
 
-    public function setCliente($nombre,$apellidos,$dni,$correo,$celular,$fechaNac,$usuario,$contraseña){
+    public function setCliente($nombre,$apellidos,$dni,$correo,$celular,$contraseña){
 
-        $Registro_Persona = $this->dataBase->query("INSERT INTO persona(nombres,apellidos,dni,correo,celular,fecha_nac) VALUES ('$nombre','$apellidos','$dni','$correo','$celular','$fechaNac')");
+        $Registro_Persona = $this->dataBase->query("INSERT INTO persona(nombres,apellidos,dni,correo,celular) VALUES ('$nombre','$apellidos','$dni','$correo','$celular')");
         
         $Consulta_id_Persona = $this->dataBase->query("SELECT id_Persona FROM persona WHERE dni = '$dni'");
         while ($fila_persona = $Consulta_id_Persona->fetch_assoc()){
             $codigo_Persona = $fila_persona['id_Persona'];    
         }
 
-        $Registro_Usuario = $this->dataBase->query("INSERT INTO usuario(usuario,password,rol,estado) VALUES ('$usuario','$contraseña','$rol','Activo')");
+        $Registro_Usuario = $this->dataBase->query("INSERT INTO usuario(usuario,password,rol,estado) VALUES ('$correo','$contraseña','Cliente','Activo')");
         
-        $Consulta_id_Usuario = $this->dataBase->query("SELECT id_Usuario FROM usuario AS U WHERE (U.usuario = '$usuario' AND U.password='$contraseña'");
+        $Consulta_id_Usuario = $this->dataBase->query("SELECT id_Usuario FROM usuario AS U WHERE (U.usuario = '$correo' AND U.password='$contraseña')");
         while ($fila_Usuario = $Consulta_id_Usuario->fetch_assoc()){
             $codigo_Usuario = $fila_Usuario['id_Usuario'];    
         }
 
         $Registro_Cliente = $this->dataBase->query("INSERT INTO cliente(id_Persona,id_Usuario) VALUES ('$codigo_Persona','$codigo_Usuario')");
         
-        if($this->ValidarRegistro($Registro_Cliente,$Registro_Persona,$Registro_Usuario)){
+        if($this->ValidarRegistro($Registro_Cliente,$Registro_Persona,$Registro_Usuario)==true){
             return true;
         }else{
             return false;

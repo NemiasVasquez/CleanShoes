@@ -24,6 +24,8 @@ $(document).ready(function () {
             alert("Debe ingresar un distrito.");
         } else if ($('#contraseña').val() == "") {
             alert("Debe ingresar una contraseña.");
+        } else if ($('#contraseña').val().length < 8) {
+            alert("La contraseña debe tener al menos 8 caracteres.");
         } else if ($('#contraseña2').val() == "") {
             alert("Debe ingresar confirmar su contraseña.");
         } else if ($('#contraseña').val() != $('#contraseña2').val()) {
