@@ -1,0 +1,43 @@
+*{
+	box-sizing:border-box;
+}
+.contenedor{
+	margin:0 auto;
+	width:100%;
+}
+
+body{
+    background-color: #96B1BC;
+}
+
+main{
+    padding-top: 10px;
+    display: flex;
+    flex-flow: row;
+    padding-top: 15px;
+}
+
+#bloque_ImgCleanShoes{
+    width: 50%;
+    text-align: center;
+}
+
+#bloque_ImgCleanShoes img{
+    width: 70%;
+}
+
+#bloque_ImgUsuarios img{
+    width: 250px;
+}
+
+#bloque_Login{
+    width: 50%;
+    align-items: center;
+    align-content: center;
+}
+
+#form_Login div{
+    display:  flex;
+    flex-flow: column;
+}
+

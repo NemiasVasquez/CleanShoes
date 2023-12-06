@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'Plantillas/Favicon.php'; ?>
 
+    <link rel="stylesheet" href="Style/Login_Style.css">
+
     <title>Login - CleanShoes</title>
 </head>
 <body>
     <main>
-        <div>
-            <img src="Imagenes/Login/login.png" alt="Imagen de Clean Shoes">
+        <div id="bloque_ImgCleanShoes">
+            <div>
+                <img src="Imagenes/Login/login.png" alt="Imagen de Clean Shoes">
+            </div> 
         </div>
-        <div>
-            <form id="form_Login" method="post"> 
+        <div id="bloque_Login">
+            <div id="bloque_ImgUsuarios">
                 <img src="Imagenes/Login/Usuarios.png" alt="Usuarios">
+            </div>
+            <form id="form_Login" method="post"> 
                 <div>
                     <label for="usuario">Usuario:</label>
                     <input type="text" name="usuario" id="usuario">
