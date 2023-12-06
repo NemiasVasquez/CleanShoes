@@ -17,7 +17,7 @@
             </nav>
         </div>
         <div id="cajaReservar" class="col-2">
-            <a href="" id = "ctaReserva">Reservar Servicio</a>
+            <a href="index.php?c=Cliente_Controller&a=login" id = "ctaReserva">Reservar Servicio</a>
         </div> 
     </div>
 </div>

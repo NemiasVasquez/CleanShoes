@@ -23,6 +23,10 @@ class Cliente_Controller{
         require_once "Views/Resultados.php";
     }
 
+    public function login(){
+        require_once "Views/Registro.php";
+    }
+
     public function ListarClientes(){
         $data["Cliente"]=$this->Cliente_Modelo->getClientes();
         if($data["Cliente"]==false){
