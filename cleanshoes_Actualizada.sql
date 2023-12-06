@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2023 a las 14:35:31
+-- Tiempo de generación: 06-12-2023 a las 16:59:42
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -48,6 +48,14 @@ CREATE TABLE `cliente` (
   `id_Usuario` int(11) NOT NULL,
   `fecha_creacion` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id_Cliente`, `id_Persona`, `id_Usuario`, `fecha_creacion`) VALUES
+(1, 4, 4, '2023-12-06 09:10:40'),
+(2, 5, 5, '2023-12-06 09:13:13');
 
 -- --------------------------------------------------------
 
@@ -184,6 +192,14 @@ CREATE TABLE `persona` (
   `celular` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`id_Persona`, `nombres`, `apellidos`, `dni`, `correo`, `celular`) VALUES
+(4, 'Nemias David', 'Vasquez', '73116807', 'nemiasvasquezs@hotmail.com', '955651442'),
+(5, 'Dayra', 'Suarez', '12345678', 'dayra@hotmail.com', '999555111');
+
 -- --------------------------------------------------------
 
 --
@@ -242,11 +258,20 @@ CREATE TABLE `trabajador` (
 
 CREATE TABLE `usuario` (
   `id_Usuario` int(11) NOT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
   `password` varchar(20) NOT NULL,
   `rol` varchar(50) DEFAULT NULL,
   `estado` varchar(20) NOT NULL,
   `fecha_creacion` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_Usuario`, `usuario`, `password`, `rol`, `estado`, `fecha_creacion`) VALUES
+(4, 'nemiasvasquezs@hotmail.com', '1234', 'Cliente', 'Activo', '2023-12-06 09:10:40'),
+(5, 'dayra@hotmail.com', '54321', 'Cliente', 'Activo', '2023-12-06 09:13:13');
 
 --
 -- Índices para tablas volcadas
@@ -343,7 +368,7 @@ ALTER TABLE `boleta`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_Cliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `descripcion`
@@ -379,7 +404,7 @@ ALTER TABLE `orden`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id_Persona` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
@@ -397,7 +422,7 @@ ALTER TABLE `trabajador`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
