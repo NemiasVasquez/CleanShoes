@@ -99,24 +99,16 @@ header {
     border-bottom: 3px solid #6bda40;
 }
 
-#ctaReserva {
-    color: #000000;
-    font-weight: bold;
-    border: 2px solid black;
-    border-radius: 0.3em;
-    text-decoration: none;
-    background-color: #9feb81;
-    padding: 15px 10px;
-    text-align: center;
-    display: block;
-    margin: 10px 0 0;
-    transition: background 2s;
+#cajaUsuario{
+    display: flex;
+    flex-flow: row;
+    padding-top: 40px;
 }
 
-#ctaReserva:hover {
-    background: #6bda40;
-    border: 3px solid #ffffff;
-    color: #ffffff;
+#cajaUsuario img{
+    width: 40px;
+    height: 40px;
+    margin: 0 0 0 30px;
 }
 
 

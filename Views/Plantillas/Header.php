@@ -16,8 +16,14 @@
                 </ul>
             </nav>
         </div>
-        <div id="cajaReservar" class="col-2">
-            <a href="index.php?c=Cliente_Controller&a=login" id = "ctaReserva">Reservar Servicio</a>
+        <div id="cajaUsuario" class="col-2">
+            <div>
+                <img src="Imagenes/Header/Carrito.png" alt="Ícono de un carrito de compras">
+            </div>
+           <div>
+                <img src="Imagenes/Header/Usuario.png" alt="Ícono de un usuario">
+           </div>
+            
         </div> 
     </div>
 </div>
