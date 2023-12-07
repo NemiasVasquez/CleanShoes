@@ -23,17 +23,32 @@ main{
 }
 
 #bloque_ImgCleanShoes img{
-    width: 70%;
+    width: 330px;
+}
+
+#bloque_ImgUsuarios div{
+    align-items: center;
+    align-content: center;
 }
 
 #bloque_ImgUsuarios img{
-    width: 250px;
+    width: 150px;
 }
 
 #bloque_Login{
     width: 50%;
-    align-items: center;
-    align-content: center;
+    text-align: center;
+   
+}
+
+#bloqueGeneral_Form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#form_Login{
+    width: 250px;
 }
 
 #form_Login div{
@@ -41,3 +56,36 @@ main{
     flex-flow: column;
 }
 
+.bloqueForm{
+    text-align: left;
+    
+}
+
+input {
+    border-radius: 0.5em;
+    padding: 5px;
+    border: 1px solid aliceblue;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 2px 2px 5px rgba(0, 0, 0, 0.1);
+    margin:8px 0 10px 0;
+}
+
+.input_Completo input[type="text"], .input_Completo input[type="email"]{
+    width: 640px;
+}
+
+
+input[type="submit"] {
+    margin: 10px 0 0 0;
+    width: 94.5%;
+    background-color: #6BC94D;
+    color: white;
+    padding: 8px 0;
+    border-color: #6BC94D;
+    transition: background-color 0.5s, color 0.5s; /* Agrega transición para el color de fondo y el color del texto */
+}
+
+input[type="submit"]:hover {
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-size: 11pt;
+}
