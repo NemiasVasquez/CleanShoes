@@ -30,6 +30,22 @@ class Cliente_Model{
         }
     }
 
+    public function ValidarUsuario($usuario,$contraseña){
+        $consulta = $this->dataBase->query("SELECT * FROM usuario WHERE (usuario = '$usuario' AND password = '$contraseña')");
+        if($fila = $consulta->fetch_assoc()){
+            $codigo_Usu = $fila["id_Usuario"];
+            $consulta2 = $this->dataBase->query("SELECT *, persona.nombres, persona. apellidos FROM cliente 
+                                                INNER JOIN persona ON persona.id_Persona = cliente.id_Persona
+                                                WHERE id_Usuario = '$codigo_Usu'");
+            if($fila2 = $consulta2->fetch_assoc()){
+                $datosUsuario[]=$fila2;
+            }
+            return $datosUsuario;
+        }else{
+            return "NO";
+        }
+    }
+
     /* Falta validar para que retorne TRUE en caso sea todo correcto o FALSE en caso algo haya fallado -> Evitar Anidaciones */
     public function ValidarRegistro($registro1,$registro2,$registro3){
         if($registro1==NULL){

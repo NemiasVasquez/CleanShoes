@@ -26,11 +26,12 @@
              Se tiene que validar con PHP cuando ya
               existe un usuario para que cambie el enlace :D -->
                 
-             <a href="index.php?c=Cliente_Controller&a=LoginViews">
+             <a href=<?php if(isset($_SESSION["id_Cliente"])){echo "";}else{echo "index.php?c=Cliente_Controller&a=LoginViews";} ?> >
                     <img src="Imagenes/Header/Usuario.png" alt="Ícono de un usuario">
-                    <p> <?php if(isset($_SESSION["nombre"])){ echo $_SESSION["nombre"];}else{ echo "Iniciar Sesion";} ?> </p>
+                    <p> <?php if(isset($_SESSION["id_Cliente"])){ echo $_SESSION["nombres"]." ".$_SESSION["apellidos"];}else{ echo "Iniciar Sesion";} ?> </p>
                     
                 </a>
+                <a href="index.php?c=Cliente_Controller&a=cerrarSesion">Cerrar Sesion</a>
            </div>
             
         </div> 

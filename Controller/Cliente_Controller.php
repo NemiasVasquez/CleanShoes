@@ -31,6 +31,26 @@ class Cliente_Controller{
         require_once "Views/Login.php";
     }
 
+    public function Login(){
+        $usuario = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["usuario"]);
+        $contraseña = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["contraseña"]);
+        $validacion = $this->Cliente_Modelo->ValidarUsuario($usuario,$contraseña);
+        
+        if($validacion == "NO"){
+            $datos = ["mensaje"=>"Credenciales erróneas."];
+        }else{
+            $datos = ["mensaje"=>"Inicio de sesion exitoso."];
+            $_SESSION["id_Cliente"]= $validacion[0]["id_Cliente"];
+            $_SESSION["nombres"] = $validacion[0]["nombres"];
+            $_SESSION["apellidos"]=$validacion[0]["apellidos"];
+        }
+  
+        header('Content-Type: application/json');
+        echo json_encode($datos);
+        exit;
+
+    }
+
     public function ListarClientes(){
         $data["Cliente"]=$this->Cliente_Modelo->getClientes();
         if($data["Cliente"]==false){
@@ -82,6 +102,13 @@ class Cliente_Controller{
         }else{
             return $mensaje = "Debe ingresar un código de cliente para buscar.";
         }
+    }
+
+    public function cerrarSesion() {
+        // Destruye la sesión y redirige al usuario a la página de inicio de sesión.
+        session_destroy();
+        header("Location: index.php?");
+        exit();
     }
 
 }
