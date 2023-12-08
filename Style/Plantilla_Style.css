@@ -68,6 +68,7 @@ header {
 }
 
 #bloqueImagenLogo  {
+    margin-top: 15px;
     text-align: center;
     align-items: center;
     align-content: center;
@@ -82,7 +83,7 @@ header {
 
 #menu_h ul li {
     display: inline-block;
-    margin: 20px 10px;
+    margin: 30px 10px;
     align-items: center;
 }
 
