@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <?php include 'Plantillas/Favicon.php'; ?>
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
     <link rel="stylesheet" href="Style/Login_Style.css">
 
     <script src="JavaScript/Login_Ajax.js"></script>

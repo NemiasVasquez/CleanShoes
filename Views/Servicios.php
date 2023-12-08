@@ -17,20 +17,6 @@
     </header>
     <main>
         <div class="row caja-General">
-            <div class="bloque_Imagenes">
-                <div class="col-3 col-s-6 col-m-6 col-l-3 caja-zapatilla-1">
-                    <img src="Imagenes/Servicios/zapatilla.png" alt="Zapatilla azul con rojo">
-                </div>
-
-                <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
-                    <img src="Imagenes/Servicios/zapatillas2-PhotoRoom.png-PhotoRoom.png" alt="Zapatilla roja">
-                </div>
-
-                <div class="col-3 col-s-6 col-m-6 caja-zapatilla-l">
-                    <img src="Imagenes/Servicios/zapatillas3-PhotoRoom.png-PhotoRoom.png" alt="Zapatilla azul con rojo y fondo crema">
-                </div>
-            </div>
-
             <div class="bloque_Servicios">
                 <?php foreach($data["Servicios_Principales"] as $SP) {?>
                     <div class="interior">

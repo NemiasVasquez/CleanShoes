@@ -34,9 +34,10 @@ class Cliente_Model{
         $consulta = $this->dataBase->query("SELECT * FROM usuario WHERE (usuario = '$usuario' AND password = '$contraseña')");
         if($fila = $consulta->fetch_assoc()){
             $codigo_Usu = $fila["id_Usuario"];
-            $consulta2 = $this->dataBase->query("SELECT *, persona.nombres, persona. apellidos FROM cliente 
+            $consulta2 = $this->dataBase->query("SELECT *, persona.nombres, persona. apellidos, usuario.rol,usuario.estado FROM cliente 
                                                 INNER JOIN persona ON persona.id_Persona = cliente.id_Persona
-                                                WHERE id_Usuario = '$codigo_Usu'");
+                                                INNER JOIN usuario ON usuario.id_Usuario = cliente.id_Usuario
+                                                WHERE cliente.id_Usuario = '$codigo_Usu'");
             if($fila2 = $consulta2->fetch_assoc()){
                 $datosUsuario[]=$fila2;
             }
@@ -126,6 +127,18 @@ class Cliente_Model{
         }else{
             return false;
         }
+    }
+
+    public function ActualizarCliente($codigo,$nombre,$apellidos,$correo,$usuario,$celular,$contraseña){
+        $consulta1 = $this->dataBase->query("SELECT id_Usuario, id_Persona FROM cliente WHERE id_cliente = '$codigo'");
+        if($fila1 = $consulta1->fetch_assoc()){
+            $id_usu = $fila1["id_Usuario"];
+            $id_per = $fila1["id_Persona"];
+        }
+        $this->dataBase->query("UPDATE persona SET nombres = '$nombre', apellidos ='$apellidos', correo ='$correo',celular='$celular' WHERE id_Persona = '$id_per'");
+        $this->dataBase->query("UPDATE usuario SET usuario = '$usuario', password = '$contraseña' WHERE id_Usuario = '$id_usu'");
+        
+        return true;
     }
 }
 ?>
