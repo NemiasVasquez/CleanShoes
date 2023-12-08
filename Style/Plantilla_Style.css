@@ -50,7 +50,6 @@ img{
 
 /* === HEADER === */
 
-
 header {
     background: #9fcefa;
     position: fixed;
@@ -58,36 +57,39 @@ header {
     z-index: 1000;
 }
 
-#bloqueMenu,
-#cajaReservar {
-    margin: 2% 0;
+#bloqueMenu{
+    width: 650px;
+    text-align: center;
 }
 
-#bloqueImagenLogo img {
-    margin: 10px 0 0 25%;
+#bloqueMenu,
+#cajaReservar {
+    margin: 15px 0;
+}
+
+#bloqueImagenLogo  {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    height: 108px;
 }
 
 #menu_h ul {
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
 }
 
 #menu_h ul li {
     display: inline-block;
-    margin: 20px 17px;
+    margin: 20px 10px;
     align-items: center;
 }
 
-#menu_h ul {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-#menu_h ul li a {
+#menu_h ul li a,#cajaUsuario a {
     text-decoration: none;
     color: black;
+    cursor:pointer;
 }
 
 .activo {
@@ -101,14 +103,21 @@ header {
 
 #cajaUsuario{
     display: flex;
-    flex-flow: row;
-    padding-top: 40px;
+    flex-flow: row nowrap;
+    padding:10px 0;
+    width: 330px;
+    text-align: center;
+    justify-content: center;
+}
+
+#cajaUsuario div{
+    margin: 0 10px;
 }
 
 #cajaUsuario img{
     width: 40px;
     height: 40px;
-    margin: 0 0 0 25px;
+    margin-top: 15px;
     cursor:pointer;
     text-align: center;
 }
@@ -117,6 +126,7 @@ header {
     text-align: center;
     margin-top: 5px;
 }
+
 /*** ASIDE ***/
 #grupoEnlacesRedes{
     display: flex;
@@ -161,7 +171,6 @@ footer{
     text-decoration: none;
     color: #000000;
 }
-
 
 #copyright{
     text-align: center;

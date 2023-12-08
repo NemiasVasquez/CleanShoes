@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'Plantillas/Favicon.php'; ?>
     <?php include 'Plantillas/Links.php'; ?>
-    <title><?php echo $_SESSION["nombres"].$_SESSION["apellidos"]; ?> - Clean Shoes</title>
+    <title><?php echo $_SESSION["nombres"]." ".$_SESSION["apellidos"]; ?> - Clean Shoes</title>
 
+    <link rel="stylesheet" href="Style/Perfil_Usuario_Style.css">
     <script type="text/javascript" src="JavaScript/Actualizacion_Ajax.js"></script>
     
 </head>
@@ -16,7 +17,7 @@
     </header>
 
     <main>
-        <h1>Usuario: <?php echo $_SESSION["nombres"].$_SESSION["apellidos"]; ?></h1>
+        <h1>Usuario: <?php echo $_SESSION["nombres"]." ".$_SESSION["apellidos"]; ?></h1>
         <?php var_dump($data["Cliente"]); ?>
     </main>
     
