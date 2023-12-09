@@ -49,8 +49,11 @@ class Servicio_Controller{
         $indicador_Minimo = $_POST["indicador_Minimo"];
         $indicador_Maximo = $_POST["indicador_Maximo"];
 
-        $consulta = $this->Servicio_Modelo->FiltarServicio($check_Principal,$check_Secundario,$select_Orden,$indicador_Minimo,$indicador_Maximo);
+        $datos = $this->Servicio_Modelo->FiltarServicio($check_Principal,$check_Secundario,$select_Orden,$indicador_Minimo,$indicador_Maximo);
         
+        header('Content-Type: application/json');
+        echo json_encode($datos);
+        exit;
 
     }
 

@@ -21,19 +21,7 @@ class Servicio_Model{
         }
     }
 
-    public function OrdenarServiciosPrecio($Servicios,$Orden){
-        $datos = $Servicios;
-
-        $menor = $Servicios["Principal"][0][0];
-        $a=0;
-        foreach($Servicios["Principal"] as $SP){
-            
-
-
-        }
-        
-       
-    }
+ 
 
     public function FiltrarServicios($check_Principal,$check_Secundario,$select_Orden,$indicador_Minimo,$indicador_Maximo){
         $consilta = array();
@@ -45,13 +33,10 @@ class Servicio_Model{
             $consulta=$this->getServicio();
         }
 
-
-
+        echo $consulta;
         
+        return $consulta;
 
-       
-
-        $consulta = $this->dataBase->query();
     }
 
     public function getServicio(){

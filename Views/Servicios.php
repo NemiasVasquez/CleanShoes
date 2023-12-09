@@ -29,16 +29,16 @@
                             <h2>Categorias:</h2>
                             <div >
                                 <label for="check_Principal">Principales</label>
-                                <input type="checkbox" id="check_Principal">
+                                <input type="checkbox" name="check_Principal" id="check_Principal">
                             </div>
                             <div>
                                 <label for="check_Secundario">Secundarios</label>
-                                <input type="checkbox" id="check_Secundario">
+                                <input type="checkbox" name="check_Secundario" id="check_Secundario">
                             </div>
                         </div>
                         <div class="bloque_Filtro">
                             <h2>Ordenar Servicios</h2>
-                            <select id="select_Orden">
+                            <select name="select_Orden" id="select_Orden">
                                 <option value="NA">Elija un orden.</option>
                                 <option value="Menor">Menor a mayor precio.</option>
                                 <option value="Mayor">Mayor a menor precio.</option>

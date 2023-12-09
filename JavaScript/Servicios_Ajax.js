@@ -22,20 +22,14 @@ $(document).ready(function () {
             alert("El precio mínimo no puede ser mayor o igual al precio máximo ");
         }else{
             $.ajax({        
-                url: "",          
+                url: "index.php?c=Servicio_Controller&a=FiltarServicio",          
                 method: "POST",
-                data: $('#form_Login').serialize(),
+                data: $('#form_Filtro').serialize(),
                 success: function (data) {
-                    $('#form_Login')[0].reset();
                     console.log("Terminando Registro");
                     console.log("Respuesta del servidor:", data);
                     // Si el inicio de sesión es exitoso, redirige a index.php
-                    if (data.mensaje == "Inicio de sesion exitoso.") {
-                        console.log("Redirigiendo");
-                        window.location.href = "index.php?";
-                    }else{
-                        
-                    }
+                   
                 },
                 error: function (xhr, status, error) {
                     console.error("Error en la solicitud Ajax:", status, error);
