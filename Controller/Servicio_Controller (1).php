@@ -42,18 +42,6 @@ class Servicio_Controller{
         require_once ""; /* Vista donde es llamado. */  
     }
 
-    public function FiltarServicio(){
-        $check_Principal = $_POST["check_Principal"];
-        $check_Secundario = $_POST["check_Secundario"];
-        $select_Orden = $_POST["select_Orden"];
-        $indicador_Minimo = $_POST["indicador_Minimo"];
-        $indicador_Maximo = $_POST["indicador_Maximo"];
-
-        $consulta = $this->Servicio_Modelo->FiltarServicio($check_Principal,$check_Secundario,$select_Orden,$indicador_Minimo,$indicador_Maximo);
-        
-
-    }
-
     public function BuscarServicio(){
         if($_POST[""]){
             $id_Buscador = $_POST[""]; /* Como se defina la variable en la vista */

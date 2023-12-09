@@ -14,12 +14,12 @@ $(document).ready(function () {
                     $('#form_Login')[0].reset();
                     console.log("Terminando Registro");
                     console.log("Respuesta del servidor:", data);
+                    alert(data.mensaje);
+
                     // Si el inicio de sesión es exitoso, redirige a index.php
                     if (data.mensaje == "Inicio de sesion exitoso.") {
                         console.log("Redirigiendo");
                         window.location.href = "index.php?";
-                    }else{
-                        
                     }
                 },
                 error: function (xhr, status, error) {

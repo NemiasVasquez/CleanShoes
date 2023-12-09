@@ -1,13 +1,28 @@
 $(document).ready(function () {
-    $('#form_Login').on("submit", function (event) {
+
+    const priceMin = document.querySelector("#rango_Minimo");
+    const priceMax = document.querySelector("#rango_Maximo");
+    const outputMin = document.querySelector("#indicador_Minimo");
+    const outputMax = document.querySelector("#indicador_Maximo");
+
+    outputMin.textContent = priceMin.value;
+    outputMax.textContent = priceMax.value;
+
+    priceMin.addEventListener("input", function () {
+    outputMin.textContent = priceMin.value;
+    });
+
+    priceMax.addEventListener("input", function () {
+        outputMax.textContent = priceMax.value;
+    });
+
+    $('#form_Filtro').on("submit", function (event) {
         event.preventDefault();
-        if ($('#usuario').val() == "") {
-            alert("Debe ingresar su usuario.");
-        } else if ($('#contraseña').val() == "") {
-            alert("Debe ingresar su contraseña.");
-        } else {
+        if ($('#rango_Minimo').val()>= $('#rango_Maximo').val()) {
+            alert("El precio mínimo no puede ser mayor o igual al precio máximo ");
+        }else{
             $.ajax({        
-                url: "index.php?c=Cliente_Controller&a=Login",          
+                url: "",          
                 method: "POST",
                 data: $('#form_Login').serialize(),
                 success: function (data) {

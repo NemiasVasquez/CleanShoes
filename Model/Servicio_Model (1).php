@@ -8,10 +8,6 @@ class Servicio_Model{
         $this->Servicio = [];
     }
 
-    public function getDataBase(){
-        return $this->dataBase;
-    }
-
     public function setServicio($nombre,$precio,$tiempo_entrega,$categoria,$estado){
         $consulta_Registro = $this->dataBase->query("INSERT INTO servicio(nombre,precio,tiempo_estimado_entrega,categoria,estado) VALUES('$nombre','$precio','$tiempo_entrega','$categoria','$estado')");
         if($consulta_Registro){
@@ -19,39 +15,6 @@ class Servicio_Model{
         }else{
             return false;
         }
-    }
-
-    public function OrdenarServiciosPrecio($Servicios,$Orden){
-        $datos = $Servicios;
-
-        $menor = $Servicios["Principal"][0][0];
-        $a=0;
-        foreach($Servicios["Principal"] as $SP){
-            
-
-
-        }
-        
-       
-    }
-
-    public function FiltrarServicios($check_Principal,$check_Secundario,$select_Orden,$indicador_Minimo,$indicador_Maximo){
-        $consilta = array();
-        if($check_Principal == true){
-            $consulta["Principal"] = $this->getServiciosPagina("Principal");
-        }else if($check_Secundario == true){
-            $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
-        }else{
-            $consulta=$this->getServicio();
-        }
-
-
-
-        
-
-       
-
-        $consulta = $this->dataBase->query();
     }
 
     public function getServicio(){
