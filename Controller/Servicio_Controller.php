@@ -43,20 +43,19 @@ class Servicio_Controller{
     }
 
     public function FiltrarServicios(){
-        $Principal = $_POST["check_Principal"];
-        $Secundario = $_POST["check_Secundario"];
-        $Orden = $_POST["select_Orden"];
-        $Minimo = $_POST["indicador_Minimo"];
-        $Maximo = $_POST["indicador_Maximo"];
-
-        $datos = $this->Servicio_Modelo->FiltrarServicios($Principal,$Secundario,$Orden,$Minimo,$Maximo);
-        
+        $Principal = isset($_POST["check_Principal"]) ? $_POST["check_Principal"] : null;
+        $Secundario = isset($_POST["check_Secundario"]) ? $_POST["check_Secundario"] : null;
+        $Orden = isset($_POST["select_Orden"]) ? $_POST["select_Orden"] : null;
+        $Minimo = isset($_POST["indicador_Minimo"]) ? $_POST["indicador_Minimo"] : null;
+        $Maximo = isset($_POST["indicador_Maximo"]) ? $_POST["indicador_Maximo"] : null;
+    
+        $datos = $this->Servicio_Modelo->FiltrarServicios($Principal, $Secundario, $Orden, $Minimo, $Maximo);
+    
         header('Content-Type: application/json');
         echo json_encode($datos);
         exit;
-
     }
-
+    
     public function BuscarServicio(){
         if($_POST[""]){
             $id_Buscador = $_POST[""]; /* Como se defina la variable en la vista */

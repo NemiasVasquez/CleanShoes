@@ -21,17 +21,16 @@ class Servicio_Model{
         }
     }
 
- 
-
     public function FiltrarServicios($Principal, $Secundario, $Orden, $Minimo, $Maximo){
         $consulta = array();
         
-        if($Principal == true){
+        if(($Principal == true && $Secundario == true)|| ($Principal == false && $Secundario == false)){
             $consulta["Principal"] = $this->getServiciosPagina("Principal");
+            $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
         } else if($Secundario == true){
             $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
-        } else {
-            $consulta = $this->getServicio();
+        } else if($Principal == true  ){
+            $consulta["Principal"] = $this->getServiciosPagina("Principal");   
         }
     
         if ($Minimo !== null && $Maximo !== null && is_numeric($Minimo) && is_numeric($Maximo)) {
@@ -57,7 +56,6 @@ class Servicio_Model{
                 return $precio >= $minimo && $precio <= $maximo;
             });
         }
-    
         return $consulta;
     }
 

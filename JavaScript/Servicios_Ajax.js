@@ -29,50 +29,48 @@ $(document).ready(function () {
                     console.log("Terminando Registro");
                     console.log("Respuesta del servidor:", data);
 
-                    // Verificar si la respuesta tiene la propiedad "status" y su valor es "success"
-                    if (data.status === "success") {
+                    // Verificar si la respuesta es un objeto válido con la propiedad 'status'
+                    if (data && data.status === 'success' && data.data) {
                         // Limpiar el contenido actual de los servicios
                         $("#contenido_Servicios").empty();
 
                         // Iterar sobre las categorías y servicios para construir el HTML
-                        $.each(data.data, function (categoria, servicios) {
-                            // Agregar el título de la categoría
-                            $("#contenido_Servicios").append('<div class="bloque_Titulo_Seccion"><h2>' + categoria + ':</h2></div>');
-
-                            // Agregar los servicios de la categoría
-                            $.each(servicios, function (index, servicio) {
-                                // Construir la caja del servicio con la información del servicio
-                                var servicioHTML = '<div class="caja-servicio">' +
-                                    '<div class="cajita-tituloLavado"><h2>' + servicio.nombre + '</h2></div>' +
-                                    '<div class="cajitainfo-lavado">' +
-                                    '<div class="cajita-precio"><h2>s/' + servicio.precio + '.00</h2></div>' +
-                                    '<div class="cajita-descripcion">' +
-                                    '<p>' + servicio.tiempo_estimado_entrega + ' días hábiles</p>' +
-                                    '<br>' +
-                                    '<p> ----------------------------- </p>' +
-                                    '<br>' +
-                                    '<p>' + servicio.descripcion_Simple + '</p>' +
-                                    '<ul>';
-
-                                // Agregar la lista de descripciones
-                                $.each(servicio.Descripcion, function (i, descripcion) {
-                                    servicioHTML += '<li>' + descripcion.nombre + '</li>';
+                        $.each(data.data, function(categoria, servicios) {
+                            // Verificar si servicios es un array
+                            if (Array.isArray(servicios)) {
+                                // Filtrar servicios por categoría
+                                var serviciosFiltrados = servicios.filter(function(servicio) {
+                                    return servicio.categoria === categoria;
                                 });
+                                var datosFiltrados = serviciosFiltrados;
+                                console.log("filtrados por : ",categoria,"Servicios filtrados ",JSON.stringify(datosFiltrados,null,2));
+                                // Verificar si hay servicios para la categoría actual
+                                if (datosFiltrados.length > 0) {
 
-                                // Continuar con la construcción del servicioHTML
-                                servicioHTML += '</ul>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '<div class="cajita-reservarServicio"><a href=""><h2>Reservar <br> Servicio</h2></a></div>' +
-                                    '</div>';
-
-                                // Agregar el servicio al contenido
-                                $("#contenido_Servicios").append(servicioHTML);
-                            });
+                                    // Agregar el título de la categoría
+                                    var titulo = categoria === 'Principal' ? 'Servicios Principales' : 'Servicios Adicionales';
+                                    $("#contenido_Servicios").append('<div class="bloque_Titulo_Seccion"><h2>' +  titulo + ':</h2></div>');
+    
+                                    // Agregar el bloque_Servicios para la categoría
+                                    var categoriaClass = categoria === 'Principal' ? 'cajitainfo-lavado' : 'cajitainfo-Servicio_Adicional';
+                                    $("#contenido_Servicios").append('<div class="bloque_Servicios">');
+    
+                                  
+                                    // Iterar sobre los servicios de la categoría
+                                    $.each(datosFiltrados, function(index, servicio) {
+                                        
+                                        agregarServicioAlHTML(servicio, categoria, categoriaClass);
+                                    });
+    
+                                    // Cerrar el bloque_Servicios
+                                    $("#contenido_Servicios").append('</div>');
+                                }    
+                            } else {
+                                console.error("La propiedad 'data." + categoria + "' no es un array.");
+                            }
                         });
                     } else {
-                        // Mostrar algún mensaje de error si la respuesta no es exitosa
-                        console.error("Error en la respuesta del servidor:", data);
+                        console.error("La respuesta del servidor no es válida:", data);
                     }
                 },
                 error: function (xhr, status, error) {
@@ -82,4 +80,63 @@ $(document).ready(function () {
             });
         }
     });
+
+    function agregarServicioAlHTML(servicio, categoria, categoriaClass) {
+
+        console.log("Servicio que será añadido" + JSON.stringify(servicio,null,2));
+        // Construir la caja del servicio con la información del servicio
+        var servicioHTML = '<div class="caja-servicio">';
+        servicioHTML += '<div class="cajita-tituloLavado"><h2>' + (categoria === 'Principal' ? servicio.nombre : 'Servicio Adicional') + '</h2></div>';
+
+        if (categoriaClass) {
+            servicioHTML += '<div class="' + categoriaClass + '">';
+
+            // Agregar el nombre para servicios adicionales
+            if (categoria === 'Adicional') {
+                servicioHTML += '<div class="cajita-nombre"><h2>' + servicio.nombre + '</h2></div>';
+            }
+            if(categoria=="Principal"){
+                servicioHTML += '<div class="cajita-precio"><h2>s/' + servicio.precio + '.00</h2></div>' +
+                '<div class="cajita-descripcion">';
+            }
+       
+            // Verificar y agregar tiempo_estimado_entrega si no es null
+            if (servicio.tiempo_estimado_entrega !== null) {
+                servicioHTML += '<p>' + servicio.tiempo_estimado_entrega + ' días hábiles</p>' +
+                    
+                    '<p> ----------------------------- </p>';
+            }
+
+            // Verificar si hay descripciones disponibles
+            if (servicio.Descripcion && servicio.Descripcion.length > 0) {
+
+                servicioHTML += '<p>' + (servicio.descripcion_Simple !== null ? servicio.descripcion_Simple : '') + '</p>' +
+                    '<ul>';
+
+                // Agregar la lista de descripciones
+                $.each(servicio.Descripcion, function(i, descripcion) {
+                    servicioHTML += '<li>' + descripcion.nombre + '</li>';
+                });
+
+                servicioHTML += '</ul>';
+            } else {
+
+                servicioHTML += '<div class="cajita-descripcion"><p>' + (servicio.descripcion_Simple !== null ? servicio.descripcion_Simple : '') + '</p></div>';
+            }
+
+            if(categoria=="Adicional"){
+                servicioHTML += '<div class="cajita-precio_Servicio_Adicional"><h2>s/' + servicio.precio + '.00</h2></div>' +
+                '<div class="cajita-descripcion">';
+            }
+            // Continuar con la construcción del servicioHTML
+            servicioHTML += '</div>';
+            servicioHTML += '</div>';
+        }
+
+        servicioHTML += '<div class="cajita-reservarServicio"><a href=""><h2>Reservar <br> Servicio</h2></a></div>';
+        servicioHTML += '</div>';
+        console.log("Fin de añadir");
+        // Agregar el servicio al contenido
+        $("#contenido_Servicios .bloque_Servicios").append(servicioHTML);
+    }
 });
