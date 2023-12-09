@@ -23,18 +23,18 @@ class Servicio_Model{
 
  
 
-    public function FiltrarServicios($check_Principal,$check_Secundario,$select_Orden,$indicador_Minimo,$indicador_Maximo){
+    public function FiltrarServicios($Principal,$Secundario,$Orden,$Minimo,$Maximo){
         $consilta = array();
-        if($check_Principal == true){
+        if($Principal == true){
             $consulta["Principal"] = $this->getServiciosPagina("Principal");
-        }else if($check_Secundario == true){
+        }else if($Secundario == true){
             $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
         }else{
             $consulta=$this->getServicio();
         }
 
         echo $consulta;
-        
+
         return $consulta;
 
     }

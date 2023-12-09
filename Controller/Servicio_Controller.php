@@ -42,14 +42,14 @@ class Servicio_Controller{
         require_once ""; /* Vista donde es llamado. */  
     }
 
-    public function FiltarServicio(){
-        $check_Principal = $_POST["check_Principal"];
-        $check_Secundario = $_POST["check_Secundario"];
-        $select_Orden = $_POST["select_Orden"];
-        $indicador_Minimo = $_POST["indicador_Minimo"];
-        $indicador_Maximo = $_POST["indicador_Maximo"];
+    public function FiltrarServicios(){
+        $Principal = $_POST["check_Principal"];
+        $Secundario = $_POST["check_Secundario"];
+        $Orden = $_POST["select_Orden"];
+        $Minimo = $_POST["indicador_Minimo"];
+        $Maximo = $_POST["indicador_Maximo"];
 
-        $datos = $this->Servicio_Modelo->FiltarServicio($check_Principal,$check_Secundario,$select_Orden,$indicador_Minimo,$indicador_Maximo);
+        $datos = $this->Servicio_Modelo->FiltrarServicios($Principal,$Secundario,$Orden,$Minimo,$Maximo);
         
         header('Content-Type: application/json');
         echo json_encode($datos);

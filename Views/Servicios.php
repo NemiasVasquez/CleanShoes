@@ -24,7 +24,7 @@
                     <div>
                         <h1>Filtros</h1>
                     </div>
-                    <form id="form_Filtro">
+                    <form id="form_Filtro" method="POST">
                         <div class="bloque_Filtro">
                             <h2>Categorias:</h2>
                             <div >

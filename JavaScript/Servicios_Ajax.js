@@ -22,7 +22,7 @@ $(document).ready(function () {
             alert("El precio mínimo no puede ser mayor o igual al precio máximo ");
         }else{
             $.ajax({        
-                url: "index.php?c=Servicio_Controller&a=FiltarServicio",          
+                url: "index.php?c=Servicio_Controller&a=FiltrarServicios",          
                 method: "POST",
                 data: $('#form_Filtro').serialize(),
                 success: function (data) {
