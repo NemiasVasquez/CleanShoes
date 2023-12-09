@@ -23,20 +23,54 @@ class Servicio_Model{
 
  
 
-    public function FiltrarServicios($Principal,$Secundario,$Orden,$Minimo,$Maximo){
-        $consilta = array();
+    public function FiltrarServicios($Principal, $Secundario, $Orden, $Minimo, $Maximo){
+        $consulta = array();
+        
         if($Principal == true){
             $consulta["Principal"] = $this->getServiciosPagina("Principal");
-        }else if($Secundario == true){
+        } else if($Secundario == true){
             $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
-        }else{
-            $consulta=$this->getServicio();
+        } else {
+            $consulta = $this->getServicio();
+        }
+    
+        if ($Minimo !== null && $Maximo !== null && is_numeric($Minimo) && is_numeric($Maximo)) {
+            $consulta = $this->filtrarPorRango($consulta, $Minimo, $Maximo);
         }
 
-        echo $consulta;
-
+        if ($Orden && ($Orden == 'Menor' || $Orden == 'Mayor')) {
+            $consulta = $this->ordenarServicios($consulta, $Orden);
+        }
+    
+        $response = array(
+            'status' => 'success',
+            'data' => $consulta
+        );
+    
+        return $response;
+    }
+    
+    private function filtrarPorRango($consulta, $minimo, $maximo) {
+        foreach ($consulta as &$categoria) {
+            $categoria = array_filter($categoria, function($servicio) use ($minimo, $maximo) {
+                $precio = (int)$servicio['precio'];
+                return $precio >= $minimo && $precio <= $maximo;
+            });
+        }
+    
         return $consulta;
+    }
 
+    private function ordenarServicios($consulta, $orden) {
+        foreach ($consulta as &$categoria) {
+            usort($categoria, function($a, $b) use ($orden) {
+                $precioA = (int)$a['precio'];
+                $precioB = (int)$b['precio'];
+    
+                return $orden == 'Menor' ? $precioA - $precioB : $precioB - $precioA;
+            });
+        }
+        return $consulta;
     }
 
     public function getServicio(){
