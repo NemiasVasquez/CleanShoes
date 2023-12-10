@@ -39,6 +39,7 @@ class Cliente_Controller{
         require_once ""; /* Vista donde se llama la lista de clientes */
     }
 
+  
 
     public function Registrar(){
         $nombre = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["nombres"]);

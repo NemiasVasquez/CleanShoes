@@ -44,6 +44,12 @@ class Cliente_Model{
         return true;
     } 
 
+    public function ValidarSesion($usuario, $contraseña){
+        $Consulta = $this->dataBase->query("SELECT * FROM cliente 
+                    INNER JOIN usuario  ");
+    }
+
+
     public function ValidarDNI($dni){
         $consulta_lista_DNI = $this->dataBase->query("SELECT dni FROM persona WHERE persona.dni = '$dni'");
         while ($fila = $consulta_lista_DNI->fetch_assoc()) {
