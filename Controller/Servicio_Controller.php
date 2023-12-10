@@ -46,8 +46,8 @@ class Servicio_Controller{
         $Principal = isset($_POST["check_Principal"]) ? $_POST["check_Principal"] : null;
         $Secundario = isset($_POST["check_Secundario"]) ? $_POST["check_Secundario"] : null;
         $Orden = isset($_POST["select_Orden"]) ? $_POST["select_Orden"] : null;
-        $Minimo = isset($_POST["indicador_Minimo"]) ? $_POST["indicador_Minimo"] : null;
-        $Maximo = isset($_POST["indicador_Maximo"]) ? $_POST["indicador_Maximo"] : null;
+        $Minimo = isset($_POST["rango_Minimo"]) ? $_POST["rango_Minimo"] : null;
+        $Maximo = isset($_POST["rango_Maximo"]) ? $_POST["rango_Maximo"] : null;
     
         $datos = $this->Servicio_Modelo->FiltrarServicios($Principal, $Secundario, $Orden, $Minimo, $Maximo);
     

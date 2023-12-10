@@ -48,12 +48,12 @@
                             <h2>Establecer precios</h2>
                             <div>
                                 <label for="rango_Minimo">Valor mínimo:</label>
-                                <input type="range" name="rango_Minimo" id="rango_Minimo" min="15" max="60" step="5" value="15"/>
+                                <input type="range" name="rango_Minimo" id="rango_Minimo" min="10" max="60" step="5" value="10"/>
                                 <output for="rango_Minimo" name="indicador_Minimo" id="indicador_Minimo"></output>
                             </div>
                             <div>
                                 <label for="rango_Maximo">Valor Máximo:</label>
-                                <input type="range" name="rango_Maximo" id="rango_Maximo" min="15" max="60" step="5" value="60"/>
+                                <input type="range" name="rango_Maximo" id="rango_Maximo" min="10" max="60" step="5" value="60"/>
                                 <output for="rango_Maximo" name="indicador_Maximo" id="indicador_Maximo"></output>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                     <?php }?>
                 </div>
                 <div class="bloque_Titulo_Seccion">
-                    <h2>Servicios Secundarios:</h2>
+                    <h2>Servicios Adicionales:</h2>
                 </div>
                 <div class="bloque_Servicios">
                     <?php foreach($data["Servicios_Adicionales"] as $SS) {?>

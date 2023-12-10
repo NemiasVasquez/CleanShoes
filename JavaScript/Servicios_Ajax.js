@@ -30,14 +30,14 @@ $(document).ready(function () {
                 data: $(this).serialize(),
                 success: function (data) {
                     console.log("Terminando Registro");
-                    console.log("Respuesta del servidor:", data);
-
+                    console.log(data);
                     if (data && data.status === "success" && data.data) {
                         const contenidoServicios = $("#contenido_Servicios");
                         contenidoServicios.empty();
 
                         $.each(data.data, function (categoria, servicios) {
-                            console.log("INICIO");
+                            console.log("INICIO " + categoria);
+
                             if (Array.isArray(servicios) && servicios.length > 0) {
                                 const titulo = categoria === "Principal" ? "Servicios Principales" : "Servicios Adicionales";
                                 contenidoServicios.append('<div class="bloque_Titulo_Seccion"><h2>' + titulo + ':</h2></div>');
@@ -46,7 +46,6 @@ $(document).ready(function () {
                                 const bloqueServicios = $('<div class="bloque_Servicios"></div>');
 
                                 $.each(servicios, function (index, servicio) {
-                                    console.log("INSERTADO ", categoria);
                                     agregarServicioAlHTML(bloqueServicios, servicio, categoria, categoriaClass);
                                 });
 
@@ -70,7 +69,9 @@ $(document).ready(function () {
     function agregarServicioAlHTML(contenedor, servicio, categoria, categoriaClass) {
         const servicioHTML = $('<div class="caja-servicio"></div>');
         servicioHTML.append('<div class="cajita-tituloLavado"><h2>' + (categoria === "Principal" ? servicio.nombre : "Servicio Adicional") + '</h2></div>');
-    
+        
+        console.log("Servicio insertado: ",JSON.stringify(servicio,null,2));
+
         if (categoriaClass) {
             const categoriaDiv = $('<div class="' + categoriaClass + '"></div>');
     
@@ -81,7 +82,11 @@ $(document).ready(function () {
             if (categoria === "Principal") {
                 categoriaDiv.append('<div class="cajita-precio"><h2>s/' + servicio.precio + '.00</h2></div><div class="cajita-descripcion"></div>');
             }
-    
+
+            if (categoria === "Adicional") {
+                categoriaDiv.append('<div class="cajita-descripcion"></div>');
+            }
+
             if (servicio.tiempo_estimado_entrega !== null) {
                 categoriaDiv.find(".cajita-descripcion").append('<p>' + servicio.tiempo_estimado_entrega + ' días hábiles</p><br><p> -----------------------------</p><br>');
             }
@@ -99,7 +104,7 @@ $(document).ready(function () {
             }
     
             if (categoria === "Adicional") {
-                categoriaDiv.append('<div class="cajita-precio_Servicio_Adicional"><h2>s/' + servicio.precio + '.00</h2></div><div class="cajita-descripcion"></div>');
+                categoriaDiv.append('<div class="cajita-precio_Servicio_Adicional"><h2>s/' + servicio.precio + '.00</h2></div>');
             }
     
             servicioHTML.append(categoriaDiv);

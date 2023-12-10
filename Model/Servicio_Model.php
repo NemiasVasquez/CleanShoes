@@ -51,10 +51,10 @@ class Servicio_Model{
     
     private function filtrarPorRango($consulta, $minimo, $maximo) {
         foreach ($consulta as &$categoria) {
-            $categoria = array_filter($categoria, function($servicio) use ($minimo, $maximo) {
+            $categoria = array_values(array_filter($categoria, function($servicio) use ($minimo, $maximo) {
                 $precio = (int)$servicio['precio'];
                 return $precio >= $minimo && $precio <= $maximo;
-            });
+            }));
         }
         return $consulta;
     }
