@@ -16,8 +16,8 @@
         <?php include 'Plantillas/Header.php'; ?>
     </header>
     <main>
-        <div class="row caja-General">
-            <div class="bloque_Servicios">
+        <div class="row caja-General_Promociones">
+            <div class="bloque_Servicios_Promociones">
                 <?php foreach($data["Promociones"] as $SP) {?>
                     <div class="interior">
                         <div class="col-3 col-s-6 col-m-6 col-l-3 caja-servicio">

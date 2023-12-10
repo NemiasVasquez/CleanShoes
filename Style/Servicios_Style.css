@@ -184,3 +184,17 @@ select{
     padding: 5px 15px;
     margin-bottom: 15px;
 }
+
+/* PROMOCIONES*/
+
+.caja-General_Promociones{
+    width: 100%;
+}
+
+.bloque_Servicios_Promociones{
+    display: flex;
+    justify-content: center;
+    flex-flow: row;
+    max-width: 1000px;
+    margin: 0 auto;
+}
