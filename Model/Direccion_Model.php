@@ -8,8 +8,8 @@ class Direccion_Model{
         $this->Direccion = [];
     }
 
-    public function setDireccion($id,$departamento,$provincia,$distrito,$direccion,$referencia){
-        $consulta_Registro = $this->dataBase->query("INSERT INTO direccion_envio VALUES ('$id','$departamento','$provincia','$distrito','$direccion','$referencia','Activo')");
+    public function setDireccion($id,$distrito,$direccion,$referencia){
+        $consulta_Registro = $this->dataBase->query("INSERT INTO direccion_envio(id_Cliente,distrito,direccion,referencia,estado) VALUES ('$id','$distrito','$direccion','$referencia','Activo')");
         if($consulta_Registro){
             return true;
         }else{

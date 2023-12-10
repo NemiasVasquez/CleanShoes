@@ -27,34 +27,38 @@ class Direccion_Controller{
         return $mensaje="";
     }
 
-    public function Registrar($id_cliente){
-        $mensaje = $this->ValidarRegistro($_POST["departamento"],$_POST["provincia"], $_POST["distrito"],$_POST["direccion"],$_POST["referencia"]);
-        if($mensaje != ""){
+    public function AñadirDireccion(){
+        $direccion= $_POST["direccion_añadir"];
+        $referencia = $_POST["referencia_añadir"];
+        $distrito = $_POST["distrito_añadir"];
+        $id_Cliente = $_SESSION["id_Cliente"];
 
-            $departamento = $_POST["departamento"];
-            $provincia = $_POST["provincia"];
-            $distrito = $_POST["distrito"];
-            $direccion = $_POST["direccion"];
-            $referencia = $_POST["referencia"];
-
-            $consulta = $this->Direccion_Modelo->setDireccion($id_cliente,$departamento,$provincia,$distrito,$direccion,$referencia); 
-            if($consulta != false){
-                $mensaje ="Registro exitoso.";
-            }else{
-                $mensaje ="Ha ocurrido un error en el registro.";
-            }
+        $consulta = $this->Direccion_Modelo->setDireccion($id_Cliente,$distrito,$direccion,$referencia);
+        if($consulta ){
+            $respuesta = ["mensaje"=>"Registro correcto."];
+        }else{
+            $respuesta = ["mensaje"=>"Registro fallido."];
         }
-        require_once ""; /* Vista donde se registra la Dirección */
+
+        header('Content-Type: application/json');
+        echo json_encode($respuesta);
+        exit;
     }
 
     public function ListarDireccionCliente($id){
         $data["Direccion"] = $this->Direccion_Modelo->getDireccion_Cliente($id);
-        if($data["Direccion"] == false){
-            $mensaje ="No se han encontrado direcciones registradas.";
-        }
-        require_once ""; /* Vista donde se llama a listar direcciones por cliente */
-    }
 
+        if($data["Direccion"] != NULL){
+            $respuesta = ["mensaje"=>"Registro completado."];
+            $respuesta = ["data" => $data["Direccion"]];
+        }else{
+            $respuesta = ["mensaje"=>"Error en el registro."];
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode($respuesta);
+        exit;
+    }
     
 }
 ?>

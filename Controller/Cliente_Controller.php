@@ -74,8 +74,11 @@ class Cliente_Controller{
         $correo = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["correo"]);
         $celular = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["celular"]);
         $contraseña = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["contraseña"]);
+        $direccion = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["direccion"]);
+        $referencia = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["referencia"]);
+        $distrito = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["distrito"]);
 
-        $consulta_Registro = $this->Cliente_Modelo->setCliente($nombre,$apellidos,$dni,$correo,$celular,$contraseña);
+        $consulta_Registro = $this->Cliente_Modelo->setCliente($nombre,$apellidos,$dni,$correo,$celular,$contraseña,$direccion,$referencia,$distrito);
         
         if($consulta_Registro == true){
             $respuesta = ["mensaje"=>"Registro completado."];

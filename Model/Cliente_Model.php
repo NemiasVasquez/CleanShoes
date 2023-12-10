@@ -79,7 +79,7 @@ class Cliente_Model{
         }
     }
 
-    public function setCliente($nombre,$apellidos,$dni,$correo,$celular,$contraseña){
+    public function setCliente($nombre,$apellidos,$dni,$correo,$celular,$contraseña,$direccion,$referencia,$distrito){
 
         $Registro_Persona = $this->dataBase->query("INSERT INTO persona(nombres,apellidos,dni,correo,celular) VALUES ('$nombre','$apellidos','$dni','$correo','$celular')");
         
@@ -96,7 +96,14 @@ class Cliente_Model{
         }
 
         $Registro_Cliente = $this->dataBase->query("INSERT INTO cliente(id_Persona,id_Usuario) VALUES ('$codigo_Persona','$codigo_Usuario')");
-        
+
+        $Consulta_Codigo_Cliente = $this->dataBase->query("SELECT id_Cliente FROM cliente WHERE id_Persona = '$codigo_Persona'");
+        if($fila_Cliente = $Consulta_Codigo_Cliente->fetch_assoc()){
+            $codigo_Cliente = $fila_Cliente['id_Cliente'];
+        }
+
+        $consulta_Direccion = $this->dataBase->query("INSERT INTO direccion_envio(id_Cliente,distrito,direccion,referencia,estado) VALUES('$codigo_Cliente','$distrito','$direccion','$referencia','Activo')");
+
         if($this->ValidarRegistro($Registro_Cliente,$Registro_Persona,$Registro_Usuario)==true){
             return true;
         }else{
