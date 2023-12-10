@@ -20,7 +20,7 @@
     <main>
         <div>
             <div id="bloque_img">
-                <img src="Imagenes/Login/login.png" alt="Imagen de la empresa CleanShoes">
+                <a href="index.php?"><img src="Imagenes/Login/login.png" alt="Imagen de la empresa CleanShoes"></a>
             </div>
             <div id="bloque_Formulario">
                 <form id="form_Registro" method="post" >

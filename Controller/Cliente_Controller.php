@@ -31,6 +31,32 @@ class Cliente_Controller{
         require_once "Views/Login.php";
     }
 
+    public function Login(){
+        $usuario = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["usuario"]);
+        $contraseña = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["contraseña"]);
+        $validacion = $this->Cliente_Modelo->ValidarUsuario($usuario,$contraseña);
+        
+        if($validacion == "NO"){
+            $datos = ["mensaje"=>"Credenciales erróneas."];
+        }else{
+            $datos = ["mensaje"=>"Inicio de sesion exitoso."];
+            $_SESSION["id_Cliente"]= $validacion[0]["id_Cliente"];
+            $_SESSION["nombres"] = $validacion[0]["nombres"];
+            $_SESSION["apellidos"]=$validacion[0]["apellidos"];
+            $_SESSION["estado"] = $validacion[0]["estado"];
+            $_SESSION["roles"] = $validacion[0]["rol"];
+        }
+  
+        header('Content-Type: application/json');
+        echo json_encode($datos);
+        exit;
+    }
+
+    public function PerfilCliente(){
+        $data["Cliente"]=$this->Cliente_Modelo->BuscarCliente($_SESSION["id_Cliente"]);
+        require_once "Views/Perfil_Usuario_Views.php";
+    }
+
     public function ListarClientes(){
         $data["Cliente"]=$this->Cliente_Modelo->getClientes();
         if($data["Cliente"]==false){
@@ -62,7 +88,6 @@ class Cliente_Controller{
         exit;
     }
 
-
     public function DesactivarActivarCliente($id){
         $consulta = $this->Cliente_Modelo->DesactivarActivarCliente($id);
         if($consulta){
@@ -83,6 +108,34 @@ class Cliente_Controller{
         }else{
             return $mensaje = "Debe ingresar un código de cliente para buscar.";
         }
+    }
+
+    public function cerrarSesion() {
+        // Destruye la sesión y redirige al usuario a la página de inicio de sesión.
+        session_destroy();
+        header("Location: index.php?");
+        exit();
+    }
+
+    public function ActualizarCliente(){
+        $nombre = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["nombres"]);
+        $apellidos = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["apellidos"]);
+        $correo = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["correo"]);
+        $usuario = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["usuario"]);
+        $celular = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["celular"]);
+        $contraseña = mysqli_real_escape_string($this->Cliente_Modelo->getDataBase(),$_POST["contraseña"]);
+
+        $consulta = $this->Cliente_Modelo->ActualizarCliente($_SESSION["id_Cliente"],$nombre,$apellidos,$correo,$usuario,$celular,$contraseña);
+        
+        if($consulta ==true){
+            $respuesta = ["mensaje"=>"Actualización completada."];
+        }else{
+            $respuesta = ["mensaje"=>"Error en la actualización."];
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode($respuesta);
+        exit;
     }
 
 }

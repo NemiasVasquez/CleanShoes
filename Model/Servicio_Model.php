@@ -8,6 +8,10 @@ class Servicio_Model{
         $this->Servicio = [];
     }
 
+    public function getDataBase(){
+        return $this->dataBase;
+    }
+
     public function setServicio($nombre,$precio,$tiempo_entrega,$categoria,$estado){
         $consulta_Registro = $this->dataBase->query("INSERT INTO servicio(nombre,precio,tiempo_estimado_entrega,categoria,estado) VALUES('$nombre','$precio','$tiempo_entrega','$categoria','$estado')");
         if($consulta_Registro){
@@ -15,6 +19,56 @@ class Servicio_Model{
         }else{
             return false;
         }
+    }
+
+    public function FiltrarServicios($Principal, $Secundario, $Orden, $Minimo, $Maximo){
+        $consulta = array();
+        
+        if(($Principal == true && $Secundario == true)|| ($Principal == false && $Secundario == false)){
+            $consulta["Principal"] = $this->getServiciosPagina("Principal");
+            $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
+        } else if($Secundario == true){
+            $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
+        } else if($Principal == true  ){
+            $consulta["Principal"] = $this->getServiciosPagina("Principal");   
+        }
+    
+        if ($Minimo !== null && $Maximo !== null && is_numeric($Minimo) && is_numeric($Maximo)) {
+            $consulta = $this->filtrarPorRango($consulta, $Minimo, $Maximo);
+        }
+
+        if ($Orden && ($Orden == 'Menor' || $Orden == 'Mayor')) {
+            $consulta = $this->ordenarServicios($consulta, $Orden);
+        }
+    
+        $response = array(
+            'status' => 'success',
+            'data' => $consulta
+        );
+    
+        return $response;
+    }
+    
+    private function filtrarPorRango($consulta, $minimo, $maximo) {
+        foreach ($consulta as &$categoria) {
+            $categoria = array_values(array_filter($categoria, function($servicio) use ($minimo, $maximo) {
+                $precio = (int)$servicio['precio'];
+                return $precio >= $minimo && $precio <= $maximo;
+            }));
+        }
+        return $consulta;
+    }
+
+    private function ordenarServicios($consulta, $orden) {
+        foreach ($consulta as &$categoria) {
+            usort($categoria, function($a, $b) use ($orden) {
+                $precioA = (int)$a['precio'];
+                $precioB = (int)$b['precio'];
+    
+                return $orden == 'Menor' ? $precioA - $precioB : $precioB - $precioA;
+            });
+        }
+        return $consulta;
     }
 
     public function getServicio(){

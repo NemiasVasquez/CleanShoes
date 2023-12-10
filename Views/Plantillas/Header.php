@@ -20,18 +20,22 @@
             <div>
                 <img src="Imagenes/Header/Carrito.png" alt="Ícono de un carrito de compras">
             </div>
-           <div>
-
-             <!-- IMPORTANTEEEEE 
-             Se tiene que validar con PHP cuando ya
-              existe un usuario para que cambie el enlace :D -->
-                
-             <a href="index.php?c=Cliente_Controller&a=LoginViews">
+            <div id="bloque_Perfil">
+                <a href=<?php if(isset($_SESSION["id_Cliente"])){echo "index.php?c=Cliente_Controller&a=PerfilCliente";}else{echo "index.php?c=Cliente_Controller&a=LoginViews";} ?> >
                     <img src="Imagenes/Header/Usuario.png" alt="Ícono de un usuario">
-                    <p> <?php if(isset($_SESSION["nombre"])){ echo $_SESSION["nombre"];}else{ echo "Iniciar Sesion";} ?> </p>
+                    <p> <?php if(isset($_SESSION["id_Cliente"])){ echo $_SESSION["nombres"]." <br> ".$_SESSION["apellidos"];}else{ echo "Iniciar Sesion";} ?> </p>
                     
                 </a>
-           </div>
+            </div>
+            <?php if(isset($_SESSION["id_Cliente"])){ ?>
+                <div id="bloque_Salir">
+                    <a href="index.php?c=Cliente_Controller&a=cerrarSesion">
+                        <img src="Imagenes/Header/cerrar_sesion.png" alt="">
+                        <p>Cerrar Sesion</p>
+                    </a>
+                </div> 
+            <?php } ?>
+       
             
         </div> 
     </div>

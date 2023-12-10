@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="bloque_Footer">
     <div  id="cajaLogoSubmenu" class="col-s-12 col-4">
         <div id="logoOscuro">
             <a href="index.php?"> <img src="Imagenes/CleanShoes_LogoOscuro.png" alt="Logo oscuro de Clean Shoes"></a>
