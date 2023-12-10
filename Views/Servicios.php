@@ -65,7 +65,7 @@
             </div>
             <div id="contenido_Servicios">
                 <div class="bloque_Titulo_Seccion">
-                    <h2>Servicios principales:</h2>
+                    <h2>Servicios Principales:</h2>
                 </div>
                 <div class="bloque_Servicios">
                     <?php foreach($data["Servicios_Principales"] as $SP) {?>
