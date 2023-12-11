@@ -15,11 +15,11 @@
         <?php include 'Plantillas/Header.php'; ?>
     </header>
     <main>
-        <div id="bloque_TablaVenta">
-        <table class="table  text-center">
-            <?php if(isset($data["ServicioVenta"])){ ?>
-                <thead >
-                    <tr >
+        <?php if(isset($data["ServicioVenta"]) && $data["ServicioVenta"] != false ){ ?>
+            <div id="bloque_TablaVenta">
+            <table class="table  text-center">
+                <thead>
+                    <tr>
                         <th class="text-center" scope="col">#</th>
                         <th class="text-center" scope="col">ID</th>
                         <th class="text-center" scope="col">NOMBRE</th>
@@ -46,21 +46,36 @@
                         </tr>
                         <?php $contador++; ?>
                 <?php endforeach; ?>
-            <?php } else { ?>
-                <div>
-                    <h3>No tiene productos en su carrito</h3>
+            </table>
+            </div>
+            <div id="seccion_detalleVenta">
+                <div id="bloque_Indicaciones">
+                    <label>INDICACIONES ADICIONALES (OPCIONAL)</label>
+                    <textarea name="textarea_Indicaciones" rows="10" cols="50">Déjanos un mensaje</textarea>
                 </div>
-            <?php }?>
-        </table>
-        </div>
-        <div id="seccion_detalleVenta">
-            <div id="bloque_Indicaciones">
-
+                <div id="bloque_DetalleTotal">
+                    <div>
+                        <h2>SUB TOTAL:</h2>
+                        <h2 id="subTotalPago"></h2>
+                    </div>
+                    <div>
+                        <h2>IGV:</h2>
+                        <h2 id="IGV"></h2>
+                    </div>
+                    <div>
+                        <h2>TOTAL A PAGAR:</h2>
+                        <h2 id="totalPago"></h2>
+                    </div>
+                </div>
+                <div>
+                    <button name="btn_Pagar" id="btn_Pagar">Ir a pagar</button>
+                </div>
             </div>
-            <div id="bloque_DetalleTotal">
-
+        <?php } else { ?>
+            <div>
+                <h3>No tiene productos en su carrito</h3>
             </div>
-        </div>
+        <?php }?>
     </main>
     <aside>
         <?php include 'Plantillas/Enlaces.php'; ?>

@@ -110,8 +110,27 @@ $(document).ready(function () {
             servicioHTML.append(categoriaDiv);
         }
     
-        servicioHTML.append('<div class="cajita-reservarServicio"><a href=""><h2>Reservar <br> Servicio</h2></a></div>');
+        servicioHTML.append(`<div class="cajita-reservarServicio"><button class="btn-reservar-servicio"  type="button" value="${servicio.id_Servicio} id="${servicio.id_Servicio}"><h2>Reservar <br> Servicio</h2></button></div>`);
         contenedor.append(servicioHTML);
     }
+
+    $('.btn-reservar-servicio').on('click', function () {
+        var idServicio = $(this).val();
+      
+        $.ajax({
+            url: 'index.php?c=Venta_Controller&a=AgregarServicio',
+            type: 'POST',
+            dataType: 'json',
+            data: { idServicio: idServicio },  // Cambia la clave a idServicio
+            success: function (response) {
+                alert(response.mensaje);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error en la solicitud AJAX:', status, error);
+                console.log('Respuesta del servidor:', xhr.responseText);
+            }
+        });
+    });
+    
     
 });

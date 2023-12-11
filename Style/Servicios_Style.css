@@ -87,26 +87,23 @@ main{
 .cajita-reservarServicio{
     position: relative;
     margin-top: -35px;
+    display: flex;
+    justify-content: center;
 }
 
-.cajita-reservarServicio h2{
+.cajita-reservarServicio button {
     text-align: center;
     background-color: #4BCE57;
     border: 0.5px solid #939dac ;
     border-radius: 1em ;
-    margin: 0 auto;
-    max-width: 35%;
-    padding: 7px 0;
-    font-size: 1em;
+    padding: 0px 5px;
+    font-size: 8pt;
+    width: 100px;
+    cursor:pointer;
 }
 
-.cajita-reservarServicio a{
-    text-decoration: none;
-    color: #000;
-}
-
-.cajita-reservarServicio a:hover {
-    color: #062038;
+.cajita-reservarServicio button:hover {
+    background-color: #97eb9e;
 }
 
 /*** Servicio adicional **/

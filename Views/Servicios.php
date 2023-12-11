@@ -97,7 +97,7 @@
                                 
                             </div>
                             <div class="cajita-reservarServicio" >
-                                <a href=""><h2>Reservar <br> Servicio</h2></a>
+                                <button class="btn-reservar-servicio" type="button" id="<?php echo $SP['id_Servicio'] ?>" value="<?php echo $SP['id_Servicio'] ?>"><h2>Reservar <br> Servicio</h2></button>
                             </div>
                         </div>
                     <?php }?>
@@ -125,7 +125,7 @@
                                 </div> 
                             </div>
                             <div class="cajita-reservarServicio" >
-                                <a href=""><h2>Reservar <br> Servicio</h2></a>
+                                <button class="btn-reservar-servicio" type="button" value="<?php echo $SS['id_Servicio'] ?>" id="<?php echo $SS['id_Servicio'] ?>" ><h2>Reservar <br> Servicio</h2></button>
                             </div>
                         </div>
                     <?php }?>
