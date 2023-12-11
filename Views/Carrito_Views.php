@@ -11,9 +11,11 @@
     <title>Carrito de comnpras - CleanShoes</title>
 </head>
 <body>
+
     <header>
         <?php include 'Plantillas/Header.php'; ?>
     </header>
+
     <main>
         <?php if(isset($data["ServicioVenta"]) && $data["ServicioVenta"] != false ){ ?>
             <div id="bloque_TablaVenta">
@@ -41,7 +43,7 @@
                             <td><?php echo $S["categoria"]; ?></td>
                             <td><?php echo $S["cantidad"]; ?></td>
                             <td><?php echo $S["precio"]; ?></td>
-                            <td><?php echo $S["subTotal"]; ?></td>
+                            <td><?php echo ($S["precio"]*$S["cantidad"]); ?></td>
                             <td>botoncitos rojos</td>
                         </tr>
                         <?php $contador++; ?>
@@ -76,6 +78,7 @@
                 <h3>No tiene productos en su carrito</h3>
             </div>
         <?php }?>
+
     </main>
     <aside>
         <?php include 'Plantillas/Enlaces.php'; ?>

@@ -29,7 +29,7 @@ class Venta_Model{
     }
 
     public function set_Detalle_Servicio($id_Servicio, $id_Orden){
-        $consulta = $this->dataBase->query("INSERT INTO detalle_servicio(id_Servicio,id_Orden) VALUES('$id_Servicio','$id_Orden')");
+        $consulta = $this->dataBase->query("INSERT INTO detalle_servicio(id_Servicio,id_Orden,cantidad) VALUES('$id_Servicio','$id_Orden','1')");
         if($consulta){
             return true;
         }else{
@@ -38,20 +38,16 @@ class Venta_Model{
     }
 
     public function OrdenesCliente($codigo_Cliente){
-        $consulta = $this->dataBase->query("SELECT orden.id_Orden, DS.id_Servicio, servicio.nombre, servicio.precio FROM orden 
+        $consulta = $this->dataBase->query("SELECT orden.id_Orden, DS.id_Servicio,DS.cantidad, servicio.nombre, servicio.precio, servicio.categoria FROM orden 
                                             INNER JOIN detalle_servicio AS DS ON DS.id_Orden = orden.id_Orden
                                             INNER JOIN servicio ON servicio.id_Servicio = DS.id_Servicio
                                             WHERE orden.id_Cliente = '$codigo_Cliente'");
 
         while($fila = $consulta->fetch_assoc()){
-            $this->venta = $fila;
+            $this->Venta[] = $fila;
         }
 
-        if($this->Venta != NULL){
-            return $this->venta;
-        }else{
-            return false;
-        }
+        return $this->Venta;  
     }
 
 
