@@ -12,6 +12,7 @@ class Servicio_Model{
         return $this->dataBase;
     }
 
+
     public function setServicio($nombre,$precio,$tiempo_entrega,$categoria,$estado){
         $consulta_Registro = $this->dataBase->query("INSERT INTO servicio(nombre,precio,tiempo_estimado_entrega,categoria,estado) VALUES('$nombre','$precio','$tiempo_entrega','$categoria','$estado')");
         if($consulta_Registro){

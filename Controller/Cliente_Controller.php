@@ -131,7 +131,10 @@ class Cliente_Controller{
         $consulta = $this->Cliente_Modelo->ActualizarCliente($_SESSION["id_Cliente"],$nombre,$apellidos,$correo,$usuario,$celular,$contraseña);
         
         if($consulta ==true){
+            $_SESSION["nombres"] = $nombre;
+            $_SESSION["apellidos"]=$apellidos;
             $respuesta = ["mensaje"=>"Actualización completada."];
+
         }else{
             $respuesta = ["mensaje"=>"Error en la actualización."];
         }

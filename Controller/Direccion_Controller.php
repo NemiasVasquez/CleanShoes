@@ -69,21 +69,34 @@ class Direccion_Controller{
     }
 
     public function BuscarDireccion() {
-        // Verifica si se recibió el parámetro id_Direccion
         if (isset($_POST['id_Direccion'])) {
             $id_Direccion = $_POST['id_Direccion'];
 
-            // Realiza la lógica para obtener información detallada basada en $id_Direccion
             $informacionDireccion = $this->Direccion_Modelo->buscarDireccion($id_Direccion);
 
-            // Devuelve la información en formato JSON
             header('Content-Type: application/json');
             echo json_encode($informacionDireccion);
         } else {
-            // Maneja el caso en que no se proporcionó el parámetro id_Direccion
             header('HTTP/1.1 400 Bad Request');
             echo json_encode(array('error' => 'Parámetro id_Direccion no proporcionado.'));
         }
+    }
+
+    public function ActualizarDireccion(){
+        $id_Direccion = $_POST["Selector_Direccion"];
+        $direccion = $_POST["direccion_actualizar"];
+        $referencia = $_POST["referencia_actualizar"];
+        $distrito = $_POST["distrito_actualizar"];
+
+        $consulta = $this->Direccion_Modelo->ActualizarDireccion($id_Direccion,$direccion,$distrito,$referencia);
+        if($consulta ){
+            $respuesta = ["mensaje"=>"Actualización correcta."];
+        }else{
+            $respuesta = ["mensaje"=>"Actualización fallida."];
+        }
+        header('Content-Type: application/json');
+        echo json_encode($respuesta);
+        exit;
     }
 }
 

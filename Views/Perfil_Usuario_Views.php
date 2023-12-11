@@ -17,9 +17,7 @@
     </header>
 
     <main>
-        <h1>Usuario: <?php echo $_SESSION["nombres"]." ".$_SESSION["apellidos"]; ?></h1>
-        <?php var_dump($data["Cliente"]); ?>
-
+        <h1 id="nombre_Usuario" >Usuario: <?php echo $_SESSION["nombres"]." ".$_SESSION["apellidos"]; ?></h1>
 
         <div id="bloque_ActualizaDatos"></div>
             <div>
@@ -51,6 +49,13 @@
                         <div class="input_Completo">
                             <label for="correo">Correo:</label>
                             <input type="email" name="correo" id="correo" placeholder="Ingrese su correo">
+                        </div>
+                    </div>
+
+                    <div class="bloqueForm">
+                        <div class="input_Completo">
+                            <label for="usuario">Usuario:</label>
+                            <input type="text" name="usuario" id="usuario" placeholder="Ingrese su usuario">
                         </div>
                     </div>
                    
@@ -102,11 +107,14 @@
                 <div>
                     <h2>Actualiza tu dirección</h2>
                 </div>
-                <label for="Selector_Direccion">Seleccione su dirección:</label>
-                <select name="Selector_Direccion" id="Selector_Direccion">
-                    <option value="NA">Elija una dirección</option>
-                </select>
+                
                 <form id="form_ActualizarDireccion" method="post" >
+                    <div>
+                        <label for="Selector_Direccion">Seleccione su dirección:</label>
+                        <select name="Selector_Direccion" id="Selector_Direccion">
+                            <option value="NA">Elija una dirección</option>
+                        </select>
+                    </div>
                     <div class="bloqueForm">
                         <div class="input_Completo">
                             <label for="direccion_actualizar">Dirección:</label>

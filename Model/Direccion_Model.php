@@ -36,5 +36,13 @@ class Direccion_Model{
         return $this->Direccion;
     }
 
+    public function ActualizarDireccion($id_Direccion,$direccion,$distrito,$referencia){
+        $consulta =  $this->dataBase->query("UPDATE direccion_envio SET direccion = '$direccion', distrito = '$distrito', referencia = '$referencia' WHERE id_Direccion_Envio = '$id_Direccion'");
+        if($consulta){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 ?>

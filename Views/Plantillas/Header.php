@@ -18,7 +18,7 @@
         </div>
         <div id="cajaUsuario" class="col-2">
             <div>
-                <img src="Imagenes/Header/Carrito.png" alt="Ícono de un carrito de compras">
+                <a href="index.php?c=Venta_Controller&a=Carrito_Views"><img src="Imagenes/Header/Carrito.png" alt="Ícono de un carrito de compras"></a>
             </div>
             <div id="bloque_Perfil">
                 <a href=<?php if(isset($_SESSION["id_Cliente"])){echo "index.php?c=Cliente_Controller&a=PerfilCliente";}else{echo "index.php?c=Cliente_Controller&a=LoginViews";} ?> >
