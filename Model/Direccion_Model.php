@@ -18,17 +18,22 @@ class Direccion_Model{
     }
 
     public function getDireccion_Cliente($id){
-        $consulta_Direccion = $this->dataBase->query("SELECT *FROM direccion_envio WHERE id_Cliente = '$id'");
-        $i = 0;
-        while($fila = $consulta_Direccion->fetch_assoc()){
-            $this->Direccion[$i]=$fila;
+        $consulta_Direccion = $this->dataBase->query("SELECT * FROM direccion_envio WHERE id_Cliente = '$id'");
+        $direcciones = array();
+    
+        while ($fila = $consulta_Direccion->fetch_assoc()) {
+            $direcciones[] = $fila;
         }
-
-        if($this->Direccion != NULL){
-            return $this->Direccion;
-        }else{
-            return false;
+    
+        return $direcciones;
+    }
+    
+    public function buscarDireccion($id_Direccion){
+        $consulta = $this->dataBase->query("SELECT * FROM direccion_envio WHERE id_Direccion_Envio = '$id_Direccion'");
+        if($fila = $consulta->fetch_assoc()){
+            $this->Direccion = $fila;
         }
+        return $this->Direccion;
     }
 
 }

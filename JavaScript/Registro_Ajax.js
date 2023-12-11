@@ -40,6 +40,7 @@ $(document).ready(function () {
                     console.log("Terminando Registro");
                     console.log("Respuesta del servidor:", data);
                     alert(data.mensaje);
+                    window.location.href = "index.php?c=Cliente_Controller&a=LoginViews";
                     // Puedes realizar acciones adicionales según sea necesario con la respuesta del servidor (data).
                 },
                 error: function (xhr, status, error) {

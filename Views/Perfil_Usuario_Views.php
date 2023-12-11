@@ -105,9 +105,6 @@
                 <label for="Selector_Direccion">Seleccione su dirección:</label>
                 <select name="Selector_Direccion" id="Selector_Direccion">
                     <option value="NA">Elija una dirección</option>
-                    <?php foreach( $data["Direccion"] as $D ){?>
-                        <option value="<?php $D["id_Direccion"] ?>"></option><?php echo $D["direccion"]." - ". $D["distrito"] ?> </option>
-                    <?php } ?>
                 </select>
                 <form id="form_ActualizarDireccion" method="post" >
                     <div class="bloqueForm">
@@ -127,7 +124,7 @@
                         </div>
                     </div>
                     <div>
-                        <input type="submit" name="btn_actualizarDirecion" id="btn_actualizarDirecion" value="Añadir Nueva dirección">
+                        <input type="submit" name="btn_actualizarDirecion" id="btn_actualizarDirecion" value="Actualizar dirección">
                     </div>
                 </form>
             </div>

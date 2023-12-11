@@ -17,7 +17,7 @@ $(document).ready(function () {
                     // Si el inicio de sesión es exitoso, redirige a index.php
                     if (data.mensaje == "Inicio de sesion exitoso.") {
                         console.log("Redirigiendo");
-                        window.location.href = "index.php?";
+                        window.location.href = "index.php";
                     }else{
                         
                     }

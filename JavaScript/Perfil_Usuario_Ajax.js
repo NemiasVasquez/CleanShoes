@@ -1,9 +1,63 @@
+
 $(document).ready(function () {
+    /* Para el selector de direcciones */
+    $('#Selector_Direccion').on("click", function(){
+        $.ajax({
+            url: 'index.php?c=Direccion_Controller&a=getDirecionesCliente',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                console.log("Terminando Registro");
+                console.log("Respuesta del servidor:", response);
 
+                data = response;
+                $('#Selector_Direccion').empty();
+                $('#Selector_Direccion').append('<option value="NA">Elija una dirección</option>');
 
-
+                $.each(data, function(index, direccion) {
+                    $('#Selector_Direccion').append('<option value="' + direccion.id_Direccion + '">' + direccion.direccion + ' - ' + direccion.distrito + '</option>');
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error("Error en la solicitud Ajax:", status, error);
+                console.log("Respuesta del servidor:", xhr.responseText);
+            }
+        });
+    });
     
-
+    $('#Selector_Direccion').on("change", function(){
+        var selectedDireccion = $(this).val();
+    
+        // Verificar si selectedDireccion no es NA
+        if (selectedDireccion !== "NA") {
+            // Realizar una nueva solicitud AJAX para obtener información detallada
+            $.ajax({
+                url: 'index.php?c=Direccion_Controller&a=buscarDireccion',
+                type: 'POST',  // Cambiado a método POST
+                dataType: 'json',
+                data: { id_Direccion: selectedDireccion },  // Asegúrate de que selectedDireccion tenga un valor definido aquí
+                success: function(response) {
+                    // Imprimir información en la consola para depuración
+                    console.log('Selected Direction:', selectedDireccion);
+                    console.log('Response from AJAX:', response);
+    
+                    // Asignar los valores al formulario con la información obtenida
+                    $('#direccion_actualizar').val(response.direccion);
+                    $('#referencia_actualizar').val(response.referencia);
+                    $('#distrito_actualizar').val(response.distrito);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error en la solicitud AJAX:", status, error);
+                    console.log("Respuesta del servidor:", xhr.responseText);
+                }
+            });
+        } else {
+            console.error("selectedDireccion es NA.");
+            $('#direccion_actualizar, #referencia_actualizar, #distrito_actualizar').val('');
+        }
+    });
+    
+    
     $('#form_ActualizarDatos').on("submit", function (event) {
         event.preventDefault();
         var regexCelular = /^9\d{8}$/; 
@@ -36,7 +90,7 @@ $(document).ready(function () {
                     console.log("Terminando Registro");
                     console.log("Respuesta del servidor:", data);
                     alert(data.mensaje);
-                    // Puedes realizar acciones adicionales según sea necesario con la respuesta del servidor (data).
+                    
                 },
                 error: function (xhr, status, error) {
                     console.error("Error en la solicitud Ajax:", status, error);
@@ -48,12 +102,11 @@ $(document).ready(function () {
 
     $('#form_AñadirDireccion').on("submit", function (event) {
         event.preventDefault();
-        
-        if ($('#direcicon').val() == "") {
+        if ($('#direcicon_añadir').val() == "") {
             alert("Debe ingresar una dirección.");
-        } else if ($('#referencia').val() == "") {
+        } else if ($('#referencia_añadir').val() == "") {
             alert("Debe ingresar una referencia.");
-        } else if ($('#distrito').val() == "") {
+        } else if ($('#distrito_añadir').val() == "") {
             alert("Debe especificar un distrito.");
         } else {
             $.ajax({        
@@ -65,36 +118,6 @@ $(document).ready(function () {
                     console.log("Terminando Registro");
                     console.log("Respuesta del servidor:", data);
                     alert(data.mensaje);
-                    // Puedes realizar acciones adicionales según sea necesario con la respuesta del servidor (data).
-                },
-                error: function (xhr, status, error) {
-                    console.error("Error en la solicitud Ajax:", status, error);
-                    console.log("Respuesta del servidor:", xhr.responseText);
-                }
-            });
-        }
-    });
-
-    $('#form_AñadirDireccion').on("submit", function (event) {
-        event.preventDefault();
-        
-        if ($('#direcicon').val() == "") {
-            alert("Debe ingresar una dirección.");
-        } else if ($('#referencia').val() == "") {
-            alert("Debe ingresar una referencia.");
-        } else if ($('#distrito').val() == "") {
-            alert("Debe especificar un distrito.");
-        } else {
-            $.ajax({        
-                url: "index.php?c=Direccion_Controller&a=AñadirDireccion",          
-                method: "POST",
-                data: $('#form_AñadirDireccion').serialize(),
-                success: function (data) {
-                    $('#form_AñadirDireccion')[0].reset();
-                    console.log("Terminando Registro");
-                    console.log("Respuesta del servidor:", data);
-                    alert(data.mensaje);
-                    // Puedes realizar acciones adicionales según sea necesario con la respuesta del servidor (data).
                 },
                 error: function (xhr, status, error) {
                     console.error("Error en la solicitud Ajax:", status, error);

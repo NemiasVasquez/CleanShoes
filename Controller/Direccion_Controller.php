@@ -27,6 +27,14 @@ class Direccion_Controller{
         return $mensaje="";
     }
 
+    public function getDirecionesCliente(){
+        $id_Cliente = $_SESSION["id_Cliente"];
+        $consulta = $this->Direccion_Modelo->getDireccion_Cliente($id_Cliente);
+
+        header('Content-Type: application/json');
+        echo json_encode($consulta);
+    }
+
     public function AñadirDireccion(){
         $direccion= $_POST["direccion_añadir"];
         $referencia = $_POST["referencia_añadir"];
@@ -59,6 +67,24 @@ class Direccion_Controller{
         echo json_encode($respuesta);
         exit;
     }
-    
+
+    public function BuscarDireccion() {
+        // Verifica si se recibió el parámetro id_Direccion
+        if (isset($_POST['id_Direccion'])) {
+            $id_Direccion = $_POST['id_Direccion'];
+
+            // Realiza la lógica para obtener información detallada basada en $id_Direccion
+            $informacionDireccion = $this->Direccion_Modelo->buscarDireccion($id_Direccion);
+
+            // Devuelve la información en formato JSON
+            header('Content-Type: application/json');
+            echo json_encode($informacionDireccion);
+        } else {
+            // Maneja el caso en que no se proporcionó el parámetro id_Direccion
+            header('HTTP/1.1 400 Bad Request');
+            echo json_encode(array('error' => 'Parámetro id_Direccion no proporcionado.'));
+        }
+    }
 }
+
 ?>
