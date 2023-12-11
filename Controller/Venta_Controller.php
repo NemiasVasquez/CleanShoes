@@ -8,6 +8,9 @@ class Venta_Controller{
     }
 
     public function Carrito_Views(){
+        $codigo_Cliente = $_SESSION["id_Cliente"];
+        $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+
         require_once "Views/Carrito_Views.php";
     }
 }
