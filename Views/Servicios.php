@@ -102,7 +102,9 @@
                                 
                             </div>
                             <div class="cajita-reservarServicio" >
-                                <button class="btn-reservar-servicio" type="button" id="<?php echo $Pro['id_Servicio'] ?>" value="<?php echo $Pro['id_Servicio'] ?>"><h2>Reservar <br> Servicio</h2></button>
+                                
+                                <button class="btn-reservar-servicio" type="button" id="<?php echo $Pro['id_Servicio'] ?>" value="<?php echo $Pro['id_Servicio'] ?>" <?php if(!isset($_SESSION["id_Cliente"])){echo "formaction='index.php?c=Cliente_Controller&a=Login_Views'";} ?> ><h2>Reservar <br> Servicio</h2></button>
+                                
                             </div>
                         </div>
                     <?php }?>
