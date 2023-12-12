@@ -12,6 +12,8 @@ class Servicio_Controller{
         $Servicios = true;
         $data["Servicios_Principales"]=$this->Servicio_Modelo->getServiciosPagina("Principal");
         $data["Servicios_Adicionales"]=$this->Servicio_Modelo->getServiciosPagina("Adicional");
+        $data["Promociones"]=$this->Servicio_Modelo->getServiciosPagina("Promocion");
+        
         require_once "Views/Servicios.php";
     }
 

@@ -18,6 +18,7 @@
         <?php include 'Plantillas/Header.php'; ?>
     </header>
     <main>
+       
         <div class="row caja-General">
             <div id="bloque_Filtros">
                 <div id="contenedor_Filtros">
@@ -68,28 +69,28 @@
                     <h2>Servicios Principales:</h2>
                 </div>
                 <div class="bloque_Servicios">
-                    <?php foreach($data["Servicios_Principales"] as $SP) {?>
+                    <?php foreach($data["Servicios_Principales"] as $Pro) {?>
                         <div class="caja-servicio">
                             <div class="cajita-tituloLavado">
-                                <h2><?php echo $SP["nombre"]; ?></h2>
+                                <h2><?php echo $Pro["nombre"]; ?></h2>
                             </div>
 
                             <div class="cajitainfo-lavado">
                                 <div class="cajita-precio">
-                                    <h2> s/<?php echo $SP["precio"]; ?>.00</h2>
+                                    <h2> s/<?php echo $Pro["precio"]; ?>.00</h2>
                                 </div> 
                                 <div class="cajita-descripcion">
                                     <p>
-                                        <?php echo $SP["tiempo_estimado_entrega"] ?> días hábiles
+                                        <?php echo $Pro["tiempo_estimado_entrega"] ?> días hábiles
                                     </p>
                                         <br>
                                     <p> ----------------------------- </p>
                                         <br>
                                     <p>
-                                        <?php echo $SP["descripcion_Simple"] ?>
+                                        <?php echo $Pro["descripcion_Simple"] ?>
                                     </p>
                                     <ul>
-                                    <?php foreach ($SP["Descripcion"] as $P){  ?>
+                                    <?php foreach ($Pro["Descripcion"] as $P){  ?>
                                         <li> <?php echo $P["nombre"] ?></li>
                                     <?php } ?>
                                     </ul>
@@ -97,7 +98,7 @@
                                 
                             </div>
                             <div class="cajita-reservarServicio" >
-                                <button class="btn-reservar-servicio" type="button" id="<?php echo $SP['id_Servicio'] ?>" value="<?php echo $SP['id_Servicio'] ?>"><h2>Reservar <br> Servicio</h2></button>
+                                <button class="btn-reservar-servicio" type="button" id="<?php echo $Pro['id_Servicio'] ?>" value="<?php echo $Pro['id_Servicio'] ?>"><h2>Reservar <br> Servicio</h2></button>
                             </div>
                         </div>
                     <?php }?>
@@ -130,8 +131,46 @@
                         </div>
                     <?php }?>
                 </div>
+                <div class="bloque_Titulo_Seccion">
+                    <h2>Promociones:</h2>
+                </div>
+                <div class="bloque_Servicios">
+                    <?php foreach($data["Promociones"] as $Pro) {?>
+                        <div class="caja-servicio">
+                            <div class="cajita-tituloLavado">
+                                <h2><?php echo $Pro["nombre"]; ?></h2>
+                            </div>
+
+                            <div class="cajitainfo-lavado">
+                                <div class="cajita-precio">
+                                    <h2> s/<?php echo $Pro["precio"]; ?>.00</h2>
+                                </div> 
+                                <div class="cajita-descripcion">
+                                    <p>
+                                        <?php echo $Pro["tiempo_estimado_entrega"] ?> días hábiles
+                                    </p>
+                                        <br>
+                                    <p> ----------------------------- </p>
+                                        <br>
+                                    <p>
+                                        <?php echo $Pro["descripcion_Simple"] ?>
+                                    </p>
+                                    <ul>
+                                    <?php foreach ($Pro["Descripcion"] as $P){  ?>
+                                        <li> <?php echo $P["nombre"] ?></li>
+                                    <?php } ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="cajita-reservarServicio" >
+                                <button class="btn-reservar-servicio" type="button" id="<?php echo $Pro['id_Servicio'] ?>" value="<?php echo $Pro['id_Servicio'] ?>"><h2>Reservar <br> Servicio</h2></button>
+                            </div>
+                        </div>
+                    <?php }?>
+                </div>
             </div>  
         </div>
+        <?php echo var_dump($data["Promociones"]) ?>
     </main>
     <aside class="row">
         <?php include 'Plantillas/Enlaces.php'; ?>

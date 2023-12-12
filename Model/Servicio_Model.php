@@ -101,33 +101,32 @@ class Servicio_Model{
     }
 
     public function getServiciosPagina($Categoria){
-        $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio WHERE estado = 'Activo' AND categoria = '$Categoria'");
-       
-        $i=0;
+        $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio WHERE (estado = 'Activo' AND categoria = '$Categoria')");
+    
+        $indiceServicio = 0;
         while($fila = $consulta_Servicio->fetch_assoc()){
-
-            $this->Servicio[$i]=$fila;
-            $codigo = $this->Servicio[$i]['id_Servicio'];
+            $this->Servicio[$indiceServicio] = $fila;
+            $codigo = $this->Servicio[$indiceServicio]['id_Servicio'];
             $consulta_detalle_Descripcion = $this->dataBase->query("SELECT descripcion.nombre FROM detalle_descripcion
             INNER JOIN descripcion ON detalle_descripcion.id_Descripcion = descripcion.id_Descripcion
             WHERE  detalle_descripcion.id_Servicio = $codigo ");
-
-            $j=0;
+    
+            $indiceDescripcion = 0;
             while ($fila2 = $consulta_detalle_Descripcion->fetch_assoc()){
-                $this->Servicio[$i]["Descripcion"][$j]=$fila2;
-                $j++;
+                $this->Servicio[$indiceServicio]["Descripcion"][$indiceDescripcion] = $fila2;
+                $indiceDescripcion++;
             }
-
-            $i++;
+    
+            $indiceServicio++;
         }
-
+    
         if($this->Servicio != NULL){
             return $this->Servicio;
-        }else{
+        } else {
             return false;
         }
     }
-
+    
     public function BuscarServicio($id){
         $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio WHERE id_Servicio = '$id'");
         if($fila = $consulta_Servicio->fetch_assoc()){

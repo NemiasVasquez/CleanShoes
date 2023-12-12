@@ -114,14 +114,15 @@ $(document).ready(function () {
         contenedor.append(servicioHTML);
     }
 
-    $('.btn-reservar-servicio').on('click', function () {
+    $(document).on('click', '.btn-reservar-servicio', function () {
+        console.log('Clic en el botón de reservar servicio');
         var idServicio = $(this).val();
-      
+    
         $.ajax({
             url: 'index.php?c=Venta_Controller&a=AgregarServicio',
             type: 'POST',
             dataType: 'json',
-            data: { idServicio: idServicio },  // Cambia la clave a idServicio
+            data: { idServicio: idServicio },
             success: function (response) {
                 alert(response.mensaje);
             },
@@ -131,6 +132,7 @@ $(document).ready(function () {
             }
         });
     });
+
     
     
 });
