@@ -131,7 +131,7 @@ class Cliente_Model{
     }
 
     public function BuscarCliente($id){
-        $consulta_Cliente = $this->dataBase->query("SELECT persona.nombres,persona.apellidos,persona.dni,usuario.usuario,usuario.rol,usuario.estado,cliente.id_cliente FROM cliente
+        $consulta_Cliente = $this->dataBase->query("SELECT persona.*,usuario.usuario,usuario.rol,usuario.estado,cliente.id_cliente FROM cliente
         INNER JOIN persona ON persona.id_persona = cliente.id_persona
         INNER JOIN usuario ON usuario.id_usuario = cliente.id_usuario
         WHERE cliente.id_cliente = '$id'");

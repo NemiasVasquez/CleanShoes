@@ -1,3 +1,27 @@
 main{
+    display: flex;
+    flex-flow: row;
     padding-top: 300px;
+}
+#bloque_Datos{
+    padding: 30px 20px;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    min-width: 300px;
+}
+
+#bloque_Datos img{
+    width: 100px;
+}
+
+#bloque_General_Actualizar{
+    display: flex;
+    flex-flow: column;
+    padding: 30px 20px;
+}
+
+#bloque_Direccion{
+    display: flex;
+    flex-flow: column;
 }
