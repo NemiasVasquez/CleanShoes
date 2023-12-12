@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-12-2023 a las 05:56:28
+-- Tiempo de generación: 12-12-2023 a las 17:53:47
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -54,8 +54,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_Cliente`, `id_Persona`, `id_Usuario`, `fecha_creacion`) VALUES
-(1, 4, 4, '2023-12-06 09:10:40'),
-(2, 5, 5, '2023-12-06 09:13:13');
+(3, 6, 6, '2023-12-10 14:20:01'),
+(4, 7, 7, '2023-12-10 14:58:47'),
+(5, 8, 8, '2023-12-10 15:08:57');
 
 -- --------------------------------------------------------
 
@@ -139,9 +140,30 @@ CREATE TABLE `detalle_servicio` (
   `id_DetalleServicio` int(11) NOT NULL,
   `id_Servicio` int(11) NOT NULL,
   `id_Orden` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
+  `cantidad` int(11) DEFAULT NULL,
   `subTotal` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `detalle_servicio`
+--
+
+INSERT INTO `detalle_servicio` (`id_DetalleServicio`, `id_Servicio`, `id_Orden`, `cantidad`, `subTotal`) VALUES
+(3, 5, 4, 1, NULL),
+(4, 12, 4, 1, NULL),
+(5, 4, 4, 1, NULL),
+(6, 15, 4, 1, NULL),
+(7, 4, 10, 1, NULL),
+(8, 15, 4, 1, NULL),
+(9, 6, 10, 1, NULL),
+(10, 12, 10, 1, NULL),
+(11, 5, 10, 1, NULL),
+(12, 12, 10, 1, NULL),
+(13, 14, 10, 1, NULL),
+(14, 5, 10, 1, NULL),
+(15, 15, 10, 1, NULL),
+(16, 17, 10, 1, NULL),
+(17, 18, 4, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -158,6 +180,17 @@ CREATE TABLE `direccion_envio` (
   `estado` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `direccion_envio`
+--
+
+INSERT INTO `direccion_envio` (`id_Direccion_Envio`, `id_Cliente`, `distrito`, `direccion`, `referencia`, `estado`) VALUES
+(3, 3, 'Chiclayo', 'Avenida chiclayo 1979', 'Frente al parquesito', 'Activo'),
+(4, 4, 'CHICLAYO', 'Avenida Lambayeque 1979', 'Frente a Lima gas', 'Activo'),
+(5, 5, 'JLO', 'Av. Chiclayo 1975', 'A dos cuadras de la despensa', 'Activo'),
+(12, 3, 'Chiclayo', 'Calle Eligas Aguirre 4855', 'Frente al mercado', 'Activo'),
+(13, 3, 'La victoria', 'Lambayeque 445', 'Frente al parde', 'Activo');
+
 -- --------------------------------------------------------
 
 --
@@ -173,9 +206,31 @@ CREATE TABLE `orden` (
   `tiempoTotalEntrega` int(11) DEFAULT NULL,
   `estado_pago` varchar(20) DEFAULT NULL,
   `estado_orden` varchar(20) DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT current_timestamp(),
-  `fecha_actualización` date DEFAULT NULL
+  `fecha_creacion` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `orden`
+--
+
+INSERT INTO `orden` (`id_Orden`, `id_Cliente`, `total`, `tipoDespacho`, `tipoPago`, `tiempoTotalEntrega`, `estado_pago`, `estado_orden`, `fecha_creacion`) VALUES
+(4, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:28:15'),
+(5, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:29:04'),
+(6, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:44:39'),
+(7, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:44:42'),
+(8, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:47:53'),
+(9, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:56:55'),
+(10, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 22:10:06'),
+(11, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 22:54:30'),
+(12, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 22:56:47'),
+(13, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:19:34'),
+(14, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:24:45'),
+(15, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:28:04'),
+(16, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:28:21'),
+(17, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:30:45'),
+(18, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:30:55'),
+(19, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:43:38'),
+(23, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-12 11:53:24');
 
 -- --------------------------------------------------------
 
@@ -197,8 +252,9 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`id_Persona`, `nombres`, `apellidos`, `dni`, `correo`, `celular`) VALUES
-(4, 'Nemias David', 'Vasquez', '73116807', 'nemiasvasquezs@hotmail.com', '955651442'),
-(5, 'Dayra', 'Suarez', '12345678', 'dayra@hotmail.com', '999555111');
+(6, 'Nemias', 'Vasquez', '73116807', 'nemiasvasquezs@hotmail.com', '955651442'),
+(7, 'Dayra Fabiola', 'Vasquez Suarez', '87654321', 'dayra@hotmail.com', '955651442'),
+(8, 'Mildred Yolanda', 'Suarez Alvarado', '12312312', 'mildred@hotmail.com', '966651442');
 
 -- --------------------------------------------------------
 
@@ -270,8 +326,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_Usuario`, `usuario`, `password`, `rol`, `estado`, `fecha_creacion`) VALUES
-(4, 'nemiasvasquezs@hotmail.com', '1234', 'Cliente', 'Activo', '2023-12-06 09:10:40'),
-(5, 'dayra@hotmail.com', '54321', 'Cliente', 'Activo', '2023-12-06 09:13:13');
+(6, 'NEMIAS', 'Nemias1234', 'Cliente', 'Activo', '2023-12-10 14:20:01'),
+(7, 'dayra@hotmail.com', 'Dayra123', 'Cliente', 'Activo', '2023-12-10 14:58:47'),
+(8, 'mildred@hotmail.com', 'Mildre123', 'Cliente', 'Activo', '2023-12-10 15:08:57');
 
 --
 -- Índices para tablas volcadas
@@ -368,7 +425,7 @@ ALTER TABLE `boleta`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `descripcion`
@@ -380,31 +437,31 @@ ALTER TABLE `descripcion`
 -- AUTO_INCREMENT de la tabla `detalle_descripcion`
 --
 ALTER TABLE `detalle_descripcion`
-  MODIFY `id_DetalleDescripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_DetalleDescripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_servicio`
 --
 ALTER TABLE `detalle_servicio`
-  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion_envio`
 --
 ALTER TABLE `direccion_envio`
-  MODIFY `id_Direccion_Envio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Direccion_Envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `orden`
 --
 ALTER TABLE `orden`
-  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id_Persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_Persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
@@ -422,7 +479,7 @@ ALTER TABLE `trabajador`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

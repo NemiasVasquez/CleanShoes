@@ -22,18 +22,29 @@ class Servicio_Model{
         }
     }
 
-    public function FiltrarServicios($Principal, $Secundario, $Orden, $Minimo, $Maximo){
+    public function FiltrarServicios($Principal, $Secundario, $Promocion,$Orden, $Minimo, $Maximo){
         $consulta = array();
         
-        if(($Principal == true && $Secundario == true)|| ($Principal == false && $Secundario == false)){
+        if(($Principal == true && $Secundario == true && $Promocion == true)|| ($Principal == false && $Secundario == false && $Promocion == false)){
             $consulta["Principal"] = $this->getServiciosPagina("Principal");
             $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
-        } else if($Secundario == true){
-            $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
-        } else if($Principal == true  ){
-            $consulta["Principal"] = $this->getServiciosPagina("Principal");   
+            $consulta["Promocion"] = $this->getServiciosPagina("Promocion");
+        } else{
+            if($Principal){
+                $consulta["Principal"] = $this->getServiciosPagina("Principal");
+            }
+
+            if($Secundario ){
+                $consulta["Adicional"] = $this->getServiciosPagina("Adicional");
+            }
+
+            if($Promocion){
+                $consulta["Promocion"] = $this->getServiciosPagina("Promocion");
+            }
         }
-    
+
+        
+
         if ($Minimo !== null && $Maximo !== null && is_numeric($Minimo) && is_numeric($Maximo)) {
             $consulta = $this->filtrarPorRango($consulta, $Minimo, $Maximo);
         }
@@ -100,32 +111,33 @@ class Servicio_Model{
         }
     }
 
-    public function getServiciosPagina($Categoria){
-        $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio WHERE (estado = 'Activo' AND categoria = '$Categoria')");
+    public function getServiciosPagina($Categoria) {
+        $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio WHERE estado = 'Activo' AND categoria = '$Categoria'");
+        
+        $servicios = array();
     
-        $indiceServicio = 0;
-        while($fila = $consulta_Servicio->fetch_assoc()){
-            $this->Servicio[$indiceServicio] = $fila;
-            $codigo = $this->Servicio[$indiceServicio]['id_Servicio'];
+        while ($fila = $consulta_Servicio->fetch_assoc()) {
+            $codigo = $fila['id_Servicio'];
+            $fila["Descripcion"] = array(); // Inicializar la lista de descripciones
+    
             $consulta_detalle_Descripcion = $this->dataBase->query("SELECT descripcion.nombre FROM detalle_descripcion
-            INNER JOIN descripcion ON detalle_descripcion.id_Descripcion = descripcion.id_Descripcion
-            WHERE  detalle_descripcion.id_Servicio = $codigo ");
+                INNER JOIN descripcion ON detalle_descripcion.id_Descripcion = descripcion.id_Descripcion
+                WHERE  detalle_descripcion.id_Servicio = $codigo ");
     
-            $indiceDescripcion = 0;
-            while ($fila2 = $consulta_detalle_Descripcion->fetch_assoc()){
-                $this->Servicio[$indiceServicio]["Descripcion"][$indiceDescripcion] = $fila2;
-                $indiceDescripcion++;
+            while ($fila2 = $consulta_detalle_Descripcion->fetch_assoc()) {
+                $fila["Descripcion"][] = $fila2;
             }
     
-            $indiceServicio++;
+            $servicios[] = $fila;
         }
     
-        if($this->Servicio != NULL){
-            return $this->Servicio;
+        if (!empty($servicios)) {
+            return $servicios;
         } else {
             return false;
         }
     }
+    
     
     public function BuscarServicio($id){
         $consulta_Servicio = $this->dataBase->query("SELECT * FROM servicio WHERE id_Servicio = '$id'");

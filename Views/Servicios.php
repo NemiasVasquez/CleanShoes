@@ -36,6 +36,10 @@
                                 <label for="check_Secundario">Secundarios</label>
                                 <input type="checkbox" name="check_Secundario" id="check_Secundario">
                             </div>
+                            <div>
+                                <label for="check_Secundario">Promociones</label>
+                                <input type="checkbox" name="check_Promocion" id="check_Promocion">
+                            </div>
                         </div>
                         <div class="bloque_Filtro">
                             <h2>Ordenar Servicios</h2>
@@ -54,7 +58,7 @@
                             </div>
                             <div>
                                 <label for="rango_Maximo">Valor Máximo:</label>
-                                <input type="range" name="rango_Maximo" id="rango_Maximo" min="10" max="60" step="5" value="60"/>
+                                <input type="range" name="rango_Maximo" id="rango_Maximo" min="10" max="80" step="5" value="80"/>
                                 <output for="rango_Maximo" name="indicador_Maximo" id="indicador_Maximo"></output>
                             </div>
                         </div>
@@ -170,7 +174,6 @@
                 </div>
             </div>  
         </div>
-        <?php echo var_dump($data["Promociones"]) ?>
     </main>
     <aside class="row">
         <?php include 'Plantillas/Enlaces.php'; ?>

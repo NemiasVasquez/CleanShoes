@@ -39,10 +39,10 @@ $(document).ready(function () {
                             console.log("INICIO " + categoria);
 
                             if (Array.isArray(servicios) && servicios.length > 0) {
-                                const titulo = categoria === "Principal" ? "Servicios Principales" : "Servicios Adicionales";
+                                const titulo = categoria === "Principal" ? "Servicios Principales" : categoria === "Promocion" ? "Promociones" : "Servicios Adicionales";
                                 contenidoServicios.append('<div class="bloque_Titulo_Seccion"><h2>' + titulo + ':</h2></div>');
 
-                                const categoriaClass = categoria === "Principal" ? "cajitainfo-lavado" : "cajitainfo-Servicio_Adicional";
+                                const categoriaClass = categoria === "Principal" ? "cajitainfo-lavado" : categoria === "Promocion" ? "cajitainfo-lavado" : "cajitainfo-Servicio_Adicional";
                                 const bloqueServicios = $('<div class="bloque_Servicios"></div>');
 
                                 $.each(servicios, function (index, servicio) {
@@ -68,18 +68,18 @@ $(document).ready(function () {
 
     function agregarServicioAlHTML(contenedor, servicio, categoria, categoriaClass) {
         const servicioHTML = $('<div class="caja-servicio"></div>');
-        servicioHTML.append('<div class="cajita-tituloLavado"><h2>' + (categoria === "Principal" ? servicio.nombre : "Servicio Adicional") + '</h2></div>');
-        
-        console.log("Servicio insertado: ",JSON.stringify(servicio,null,2));
+        servicioHTML.append('<div class="cajita-tituloLavado"><h2>' + (categoria === "Principal" ? servicio.nombre : categoria === "Promocion" ? servicio.nombre : "Servicio Adicional") + '</h2></div>');
+
+        console.log("Servicio insertado: ", JSON.stringify(servicio, null, 2));
 
         if (categoriaClass) {
             const categoriaDiv = $('<div class="' + categoriaClass + '"></div>');
-    
+
             if (categoria === "Adicional") {
                 categoriaDiv.append('<div class="cajita-nombre"><h2>' + servicio.nombre + '</h2></div>');
             }
-    
-            if (categoria === "Principal") {
+
+            if (categoria === "Principal" || categoria === "Promocion") {
                 categoriaDiv.append('<div class="cajita-precio"><h2>s/' + servicio.precio + '.00</h2></div><div class="cajita-descripcion"></div>');
             }
 
@@ -90,11 +90,11 @@ $(document).ready(function () {
             if (servicio.tiempo_estimado_entrega !== null) {
                 categoriaDiv.find(".cajita-descripcion").append('<p>' + servicio.tiempo_estimado_entrega + ' días hábiles</p><br><p> -----------------------------</p><br>');
             }
-    
+
             if (servicio.descripcion_Simple !== null) {
                 categoriaDiv.find(".cajita-descripcion").append('<p>' + servicio.descripcion_Simple + '</p>');
             }
-    
+
             if (servicio.Descripcion && servicio.Descripcion.length > 0) {
                 const lista = $('<ul></ul>');
                 $.each(servicio.Descripcion, function (i, descripcion) {
@@ -102,14 +102,14 @@ $(document).ready(function () {
                 });
                 categoriaDiv.find(".cajita-descripcion").append(lista);
             }
-    
+
             if (categoria === "Adicional") {
                 categoriaDiv.append('<div class="cajita-precio_Servicio_Adicional"><h2>s/' + servicio.precio + '.00</h2></div>');
             }
-    
+
             servicioHTML.append(categoriaDiv);
         }
-    
+
         servicioHTML.append(`<div class="cajita-reservarServicio"><button class="btn-reservar-servicio"  type="button" value="${servicio.id_Servicio} id="${servicio.id_Servicio}"><h2>Reservar <br> Servicio</h2></button></div>`);
         contenedor.append(servicioHTML);
     }
@@ -117,7 +117,7 @@ $(document).ready(function () {
     $(document).on('click', '.btn-reservar-servicio', function () {
         console.log('Clic en el botón de reservar servicio');
         var idServicio = $(this).val();
-    
+
         $.ajax({
             url: 'index.php?c=Venta_Controller&a=AgregarServicio',
             type: 'POST',
@@ -133,6 +133,4 @@ $(document).ready(function () {
         });
     });
 
-    
-    
 });

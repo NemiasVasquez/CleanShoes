@@ -17,12 +17,6 @@ class Servicio_Controller{
         require_once "Views/Servicios.php";
     }
 
-    public function Promociones(){
-        $Promociones = true;
-        $data["Promociones"]=$this->Servicio_Modelo->getServiciosPagina("Promocion");
-        require_once "Views/Promociones.php";
-    }
-
     public function ListarServicios(){
         $data=$this->Servicio_Modelo->getServicios();
         if($data["Servicio"]==false){
@@ -47,11 +41,13 @@ class Servicio_Controller{
     public function FiltrarServicios(){
         $Principal = isset($_POST["check_Principal"]) ? $_POST["check_Principal"] : null;
         $Secundario = isset($_POST["check_Secundario"]) ? $_POST["check_Secundario"] : null;
+        $Promocion= isset($_POST["check_Promocion"]) ? $_POST["check_Promocion"] : null;
         $Orden = isset($_POST["select_Orden"]) ? $_POST["select_Orden"] : null;
         $Minimo = isset($_POST["rango_Minimo"]) ? $_POST["rango_Minimo"] : null;
         $Maximo = isset($_POST["rango_Maximo"]) ? $_POST["rango_Maximo"] : null;
+
     
-        $datos = $this->Servicio_Modelo->FiltrarServicios($Principal, $Secundario, $Orden, $Minimo, $Maximo);
+        $datos = $this->Servicio_Modelo->FiltrarServicios($Principal, $Secundario,$Promocion ,$Orden, $Minimo, $Maximo);
     
         header('Content-Type: application/json');
         echo json_encode($datos);
