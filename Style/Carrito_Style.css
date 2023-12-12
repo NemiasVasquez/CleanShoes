@@ -1,4 +1,124 @@
 main{
     background-color: #96B1BC;
     padding-top: 150px;
+    display: flex;
+    flex-flow: column;
+    min-height: 600px;
+}
+
+main div{
+    margin: 0 auto;
+}
+
+#seccion_detalleVenta{
+    display: flex;
+    flex-flow: row;
+    margin: 20px 0 ;
+}
+
+#bloque_Indicaciones{
+    width: 50%;
+}
+
+#bloque_Indicaciones div{
+    display: flex;
+    flex-flow: column;
+}
+
+#bloque_Indicaciones div label{
+    margin-bottom: 10px;
+}
+
+/* Diseño de tabla */
+
+thead{
+    background-color:#6CC74D ;
+}
+
+thead tr th{
+    padding: 5px 10px;
+    min-width: 30px;
+}
+
+.tabla_elementos{
+    background-color: white;
+    text-align: center;
+}
+
+.tabla_elementos td{
+    min-width: 130px;
+    height: 30px;
+}
+
+#bloque_DetalleTotal{
+    width: 30%;
+}
+
+#bloque_btn_Reservar{
+    display: flex;
+    justify-content: center;
+}
+
+#btn_Reservar{
+    padding: 8px 15px;
+    border-radius: 1em;
+    background-color: #3ce260;
+    cursor:pointer;
+    transition: 1s;
+}
+
+#btn_Reservar:hover{
+    padding: 8px 15px;
+    border-radius: 1.1em;
+    font-size: 13pt;
+    background-color: #25CF4B;
+}
+
+#bloque_DetalleTotal{
+    width: 30%;
+    margin: 35px 0 0 0 ;
+}
+
+#bloque_Titulo{
+    text-align: center;
+}
+
+.bloque_Precio{
+    display: flex;
+    flex-flow: row;
+}
+
+.bloque_Valor{
+    text-align: center;
+    height: 30px;
+    width: 35%;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.texto_Valor{
+    width: 50%;
+}
+
+#bloque_CarroVacio{
+    text-align: center;
+    color: rgb(207, 99, 99);
+}
+
+#bloque_CarroVacio img{
+    width: 330px;
+}
+
+#celda_Acciones{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
+#celda_Acciones img{ 
+    width: 20px;
+    height: 20px;
+    cursor:pointer;
 }
