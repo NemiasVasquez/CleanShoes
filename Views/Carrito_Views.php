@@ -47,8 +47,8 @@
                                     <td><?php echo $S["nombre"]; ?></td>
                                     <td><?php echo $S["categoria"]; ?></td>
                                     <td><?php echo $S["cantidad"]; ?></td>
-                                    <td><?php echo $S["precio"]; ?></td>
-                                    <td><?php echo ($S["precio"]*$S["cantidad"]); ?></td>
+                                    <td><?php echo "S/".$S["precio"]; ?></td>
+                                    <td><?php echo "S/".$S["subTotal"]; ?></td>
                                     <td id="celda_Acciones">
                                         <button class="btn_RestarUnidadServicio" value="<?php echo $S["id_DetalleServicio"] ?>"><img src="Imagenes/Carrito/restar.png" alt="Imagen para restar servicios"></button>
                                         <p id="contadorServicios"></p>

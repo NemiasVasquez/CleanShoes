@@ -64,6 +64,63 @@ class Venta_Controller
         exit;
     }
 
+    public function SumarDetalleServicio(){
+        $id_DetalleServicio = $_POST["idDetalleServicio"];
+        $consulta = $this->Venta_Modelo->SumarDetalleServicio($id_DetalleServicio);
+        if($consulta){
+            $data=["mensaje"=>"Sumado con exito."];
+            $codigo_Cliente = $_SESSION["id_Cliente"];
+            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+        }else{
+            $data=["mensaje"=>"No se logró Sumar la cantidad del servicio"];
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
+    public function RestarDetalleServicio(){
+        $id_DetalleServicio = $_POST["idDetalleServicio"];
+        $consulta = $this->Venta_Modelo->RestarDetalleServicio($id_DetalleServicio);
+        if($consulta){
+            $data=["mensaje"=>"Restado con exito."];
+            $codigo_Cliente = $_SESSION["id_Cliente"];
+            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+        }else{
+            $data=["mensaje"=>"No se logró Restar la cantidad del servicio"];
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
+    public function CalcularTotales(){
+        $codigo_Cliente = $_SESSION["id_Cliente"];
+        $ServicioVenta = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+        
+        $total = 0;
+    
+        foreach ($ServicioVenta as $S) {
+            $total += $S["precio"] * $S["cantidad"];
+        }
+    
+        $igv = $total * 0.18;
+        $subtotal = $total - $igv;
+    
+        $data = [
+            "subtotal" => $subtotal,
+            "igv" => $igv,
+            "total" => $total
+        ];
+    
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
+  
 }
 
 ?>

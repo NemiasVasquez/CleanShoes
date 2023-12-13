@@ -29,7 +29,11 @@ class Venta_Model{
     }
 
     public function set_Detalle_Servicio($id_Servicio, $id_Orden){
-        $consulta = $this->dataBase->query("INSERT INTO detalle_servicio(id_Servicio,id_Orden,cantidad) VALUES('$id_Servicio','$id_Orden','1')");
+        $consulta_Precio = $this->dataBase->query("SELECT precio FROM servicio WHERE id_Servicio = '$id_Servicio'");
+        if($fila = $consulta_Precio->fetch_assoc()){
+            $total = $fila["precio"];
+        }
+        $consulta = $this->dataBase->query("INSERT INTO detalle_servicio(id_Servicio,id_Orden,cantidad,subTotal) VALUES('$id_Servicio','$id_Orden','1','$total')");
         if($consulta){
             return true;
         }else{
@@ -38,7 +42,7 @@ class Venta_Model{
     }
 
     public function OrdenesCliente($codigo_Cliente){
-        $consulta = $this->dataBase->query("SELECT orden.id_Orden,DS.id_DetalleServicio ,DS.id_Servicio,DS.cantidad, servicio.nombre, servicio.precio, servicio.categoria FROM orden 
+        $consulta = $this->dataBase->query("SELECT orden.id_Orden,DS.id_DetalleServicio ,DS.id_Servicio,DS.cantidad, servicio.nombre, servicio.precio, servicio.categoria, DS.subTotal FROM orden 
                                             INNER JOIN detalle_servicio AS DS ON DS.id_Orden = orden.id_Orden
                                             INNER JOIN servicio ON servicio.id_Servicio = DS.id_Servicio
                                             WHERE orden.id_Cliente = '$codigo_Cliente'");
@@ -59,6 +63,45 @@ class Venta_Model{
         }
     }
 
+    public function SumarDetalleServicio($id_DetalleServicio){
+        $consulta_cantidad = $this->dataBase->query("SELECT cantidad , S.precio FROM detalle_servicio INNER JOIN servicio AS S ON S.id_Servicio = detalle_servicio.id_Servicio WHERE id_DetalleServicio = '$id_DetalleServicio'");
+        if($fila = $consulta_cantidad->fetch_assoc()){
+            $cantidad = $fila["cantidad"];
+            $precio = $fila["precio"];
+        }
+
+        $cantidad++;
+        $total = $cantidad * $precio;
+        $consulta =$this->dataBase->query("UPDATE detalle_servicio SET cantidad ='$cantidad', subTotal = '$total' WHERE id_DetalleServicio = '$id_DetalleServicio'");
+        
+        if($consulta){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function RestarDetalleServicio($id_DetalleServicio){
+        $consulta_cantidad = $this->dataBase->query("SELECT cantidad , S.precio FROM detalle_servicio INNER JOIN servicio AS S ON S.id_Servicio = detalle_servicio.id_Servicio WHERE id_DetalleServicio = '$id_DetalleServicio'");
+        if($fila = $consulta_cantidad->fetch_assoc()){
+            $cantidad = $fila["cantidad"];
+            $precio = $fila["precio"];
+        }
+
+        $cantidad--;
+        $total = $cantidad * $precio;
+        if($cantidad != 0){
+            $consulta =$this->dataBase->query("UPDATE detalle_servicio SET cantidad ='$cantidad', subTotal = '$total' WHERE id_DetalleServicio = '$id_DetalleServicio'");
+        }else{
+            $consulta = $this->dataBase->query("DELETE FROM detalle_servicio WHERE id_DetalleServicio = '$id_DetalleServicio'");
+        }
+        
+        if($consulta){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }
 ?>
