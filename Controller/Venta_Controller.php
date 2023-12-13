@@ -14,9 +14,11 @@ class Venta_Controller
 
     public function Carrito_Views()
     {
-        $codigo_Cliente = $_SESSION["id_Cliente"];
-        $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
-
+        if(isset($_SESSION["id_Cliente"])){
+            $codigo_Cliente = $_SESSION["id_Cliente"];
+            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+        }
+       
         require_once "Views/Carrito_Views.php";
     }
 
@@ -45,6 +47,23 @@ class Venta_Controller
         echo json_encode($datos);
         exit;
     }
+
+    public function EliminarServicioCarrito(){
+        $id_DetalleServicio = $_POST["idDetalleServicio"];
+        $consulta = $this->Venta_Modelo->EliminarServicioCarrito($id_DetalleServicio);
+        if($consulta){
+            $data=["mensaje"=>"Elimardo con exito."];
+            $codigo_Cliente = $_SESSION["id_Cliente"];
+            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+        }else{
+            $data=["mensaje"=>"No se logró eliminar"];
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
 }
 
 ?>

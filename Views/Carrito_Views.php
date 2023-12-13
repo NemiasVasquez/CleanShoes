@@ -19,11 +19,12 @@
 
     <main>
         <div>
-            <?php if(isset($data["ServicioVenta"]) && $data["ServicioVenta"] != false ){ ?>
-                <div id="bloque_TablaVenta">
-                    <div id="bloque_Titulo">
+            <?php if(isset($_SESSION["id_Cliente"]) && isset($data["ServicioVenta"]) && $data["ServicioVenta"] != false ){ ?>
+                <div id="bloque_Titulo">
                         <h2>Carrito de compras</h2>
-                    </div>
+                </div>
+                <div id="bloque_TablaVenta">
+                  
                     <table class="table  text-center">
                         <thead>
                             <tr>
@@ -49,10 +50,10 @@
                                     <td><?php echo $S["precio"]; ?></td>
                                     <td><?php echo ($S["precio"]*$S["cantidad"]); ?></td>
                                     <td id="celda_Acciones">
-                                        <img src="Imagenes/Carrito/restar.png" alt="Imagen para restar servicios">
+                                        <button class="btn_RestarUnidadServicio" value="<?php echo $S["id_DetalleServicio"] ?>"><img src="Imagenes/Carrito/restar.png" alt="Imagen para restar servicios"></button>
                                         <p id="contadorServicios"></p>
-                                        <img src="Imagenes/Carrito/sumar.png" alt="Imagen para sumar servicios">
-                                        <img src="Imagenes/Carrito/eliminar.png" alt="Imagen para eliminar un producto">
+                                        <button class="btn_SumarUnidadServicio" value="<?php echo $S["id_DetalleServicio"] ?>"><img src="Imagenes/Carrito/sumar.png" alt="Imagen para sumar servicios"></button>
+                                        <button class="btn_EliminarServicioCarrito" value="<?php echo $S["id_DetalleServicio"] ?>" ><img src="Imagenes/Carrito/eliminar.png" alt="Imagen para eliminar un producto"></button>
                                     </td>
                                 </tr>
                                 <?php $contador++; ?>

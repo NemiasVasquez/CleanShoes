@@ -38,7 +38,7 @@ class Venta_Model{
     }
 
     public function OrdenesCliente($codigo_Cliente){
-        $consulta = $this->dataBase->query("SELECT orden.id_Orden, DS.id_Servicio,DS.cantidad, servicio.nombre, servicio.precio, servicio.categoria FROM orden 
+        $consulta = $this->dataBase->query("SELECT orden.id_Orden,DS.id_DetalleServicio ,DS.id_Servicio,DS.cantidad, servicio.nombre, servicio.precio, servicio.categoria FROM orden 
                                             INNER JOIN detalle_servicio AS DS ON DS.id_Orden = orden.id_Orden
                                             INNER JOIN servicio ON servicio.id_Servicio = DS.id_Servicio
                                             WHERE orden.id_Cliente = '$codigo_Cliente'");
@@ -50,6 +50,14 @@ class Venta_Model{
         return $this->Venta;  
     }
 
+    public function EliminarServicioCarrito($id_DetalleServicio){
+        $consulta =$this->dataBase->query("DELETE FROM detalle_servicio WHERE id_DetalleServicio = '$id_DetalleServicio'");
+        if($consulta){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     
 }
