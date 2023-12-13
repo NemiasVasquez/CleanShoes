@@ -1,7 +1,14 @@
+#bloque_Main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 main{
     display: flex;
     flex-flow: row;
     padding-top: 150px;
+    max-width: 1300px;
 }
 #bloque_Datos{
     padding: 30px 20px;
@@ -31,6 +38,7 @@ input, select{
     height: 25px;
     width: 250px;
     margin: 5px 0px;
+    border-radius: 0.8em;
 }
 
 label{
@@ -60,7 +68,7 @@ label{
     width: 80%;
 }
 
-#btn_Actualizar{
+.btn{
     width: 150px;
     height: 35px;
     background-color: #67CE38;
@@ -69,11 +77,10 @@ label{
     transition: 1s;
 }
 
-#btn_Actualizar:hover{
+.btn:hover{
     background-color: #a9eb8a;
     font-size: 11pt;
 }
-
 
 #bloque_Actualizadatos{
     align-items: center;

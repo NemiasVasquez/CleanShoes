@@ -19,7 +19,7 @@ $(document).ready(function () {
                         console.log("Redirigiendo");
                         window.location.href = "index.php";
                     }else{
-                        
+                        alert(data.mensaje);
                     }
                 },
                 error: function (xhr, status, error) {
