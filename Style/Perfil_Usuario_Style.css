@@ -1,7 +1,7 @@
 main{
     display: flex;
     flex-flow: row;
-    padding-top: 300px;
+    padding-top: 150px;
 }
 #bloque_Datos{
     padding: 30px 20px;
@@ -19,9 +19,62 @@ main{
     display: flex;
     flex-flow: column;
     padding: 30px 20px;
+    width: 100%;
 }
 
 #bloque_Direccion{
     display: flex;
     flex-flow: column;
+}
+
+input, select{
+    height: 25px;
+    width: 250px;
+    margin: 5px 0px;
+}
+
+label{
+    width: 100px;
+}
+
+#bloque_2Seccion{
+    display: flex;
+    flex-flow: row;
+}
+
+#bloque_actualizaDireccion,#bloque_Formulario_Direcciones{
+    width: 50%;
+}
+
+#bloque_Seccion_form{
+    display: flex;
+    flex-flow: row;
+}
+
+#bloque_Seccion_form div{
+   width: 50%;
+}
+
+#bloque_btn_actualizarDatos{
+    text-align: center;
+    width: 80%;
+}
+
+#btn_Actualizar{
+    width: 150px;
+    height: 35px;
+    background-color: #67CE38;
+    cursor: pointer;
+    border-radius: 1em;
+    transition: 1s;
+}
+
+#btn_Actualizar:hover{
+    background-color: #a9eb8a;
+    font-size: 11pt;
+}
+
+
+#bloque_Actualizadatos{
+    align-items: center;
 }

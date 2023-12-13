@@ -10,6 +10,8 @@ $(document).ready(function () {
         }
     });
 
+    
+
     function cargarDirecciones() {
         $.ajax({
             url: 'index.php?c=Direccion_Controller&a=getDirecionesCliente',
