@@ -33,14 +33,7 @@
                 <P>Usuario:</P>
                 <p><?php echo $data["Cliente"]["usuario"] ?></p>
             </div>
-            <div>
-                <P>DNI:</P>
-                <p><?php echo $data["Cliente"]["dni"] ?></p>
-            </div>     
-            <div>
-                <P>N° Celular:</P>
-                <p><?php echo $data["Cliente"]["celular"] ?></p>
-            </div>      
+   
 
         </div>
         <div id="bloque_General_Actualizar">
@@ -61,10 +54,6 @@
                             </div>
                         </div>
                         <div class="bloqueForm">
-                            <div>
-                                <label for="dni">Dni:</label>
-                                <input type="text" name="dni" id="dni" disabled placeholder="Ingrese su DNI">
-                            </div>
                             <div>
                                 <label for="celular">Celular:</label>
                                 <input type="text" name="celular" id="celular" placeholder="Ingrese su celular">
