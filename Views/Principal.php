@@ -19,7 +19,7 @@
         <?php include 'Plantillas/Header.php'; ?>
     </header>
 
-    <main>
+    <main class="interior">
         <section id="section1" class="row">
             <div id="contenedorSec1">
                 <div id="bloqueSection1" class="slider-container">
@@ -102,7 +102,7 @@
             </div>
         </section>
     </main>
-    <aside>
+    <aside class="interior"></aside>
         <?php include 'Plantillas/Enlaces.php'; ?>
     </aside>
     <footer>

@@ -3,7 +3,7 @@
 class Venta_Controller
 {
     private $Venta_Modelo;
-    private $orden = false;
+
 
     public function __construct()
     {
@@ -27,13 +27,13 @@ class Venta_Controller
         $codigo_Cliente = $_SESSION["id_Cliente"];
         $estado = "Creación";
         $id_Servicio = isset($_POST["idServicio"]) ? $_POST["idServicio"] : null; // Verifica si idServicio está definido
-
-        if ($this->orden == false) {
-            $this->orden = true;
+        
+        /* SE tiene que validar si existen ordenes en Creacion */
+        $id_Orden = $this->Venta_Modelo->get_Id_Orden_Creacion($codigo_Cliente, $estado);
+       
+        if($id_Orden == false){
             $consulta = $this->Venta_Modelo->setOrdenInicial($codigo_Cliente, $estado);
         }
-
-        $id_Orden = $this->Venta_Modelo->get_Id_Orden_Creacion($codigo_Cliente, $estado);
 
         $consulta2 = $this->Venta_Modelo->set_Detalle_Servicio($id_Servicio, $id_Orden);
 

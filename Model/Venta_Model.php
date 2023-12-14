@@ -25,7 +25,13 @@ class Venta_Model{
         if($fila = $consulta->fetch_assoc()){
             $id = $fila["id_Orden"];
         }
-        return $id;
+
+        if($consulta){
+            return $id;
+        }else{
+            return false;
+        }
+        
     }
 
     public function set_Detalle_Servicio($id_Servicio, $id_Orden){
