@@ -1,16 +1,27 @@
 $(document).ready(function () {
 
+    console.log("El script se está ejecutando.");
+    cargarDirecciones();
+    $('#form_ActualizarDireccion .bloqueForm, #bloque_Formulario_Direcciones').hide();
+    $('#form_ActualizarDireccion .bloque_SubmitForm').hide();
+
     $('#Selector_Direccion').on("change", function(){
         var selectedDireccion = $(this).val();
         if (selectedDireccion !== "NA") {
             cargarDireccionSeleccionada(selectedDireccion);
+            // Mostrar elementos dentro del formulario de actualización
+            $('#form_ActualizarDireccion .bloqueForm').show();
+            $('#form_ActualizarDireccion .bloque_SubmitForm').show();
         } else {
-            console.error("selectedDireccion es NA.");
-            $('#direccion_actualizar, #referencia_actualizar, #distrito_actualizar').val('');
+            $('#form_ActualizarDireccion .bloqueForm').hide();
+            $('#form_ActualizarDireccion .bloque_SubmitForm').hide();
         }
     });
 
-    
+    $('#form_AñadirDireccion').hide();
+    $('#btn_AgregarDireccion').on("click", function(){
+        $('#form_AñadirDireccion').show();
+    });
 
     function cargarDirecciones() {
         $.ajax({

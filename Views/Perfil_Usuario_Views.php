@@ -112,6 +112,7 @@
                                 <select name="Selector_Direccion" id="Selector_Direccion">
                                     <option value="NA">Elija una dirección</option>
                                 </select>
+                            
                             </div>
                             <div class="bloqueForm">
                                 <div class="input_Completo">
@@ -129,7 +130,7 @@
                                     <input type="text" name="distrito_actualizar" id="distrito_actualizar" placeholder="Ingrese su distrito">
                                 </div>
                             </div>
-                            <div>
+                            <div class="bloque_SubmitForm">
                                 <input type="submit"  class="btn" name="btn_actualizarDirecion" id="btn_actualizarDirecion" value="Actualizar dirección">
                             </div>
                         </form>
@@ -139,7 +140,7 @@
                         <div>
                             <h2>Añadir nueva Dirección</h2>
                         </div>
-                        <div>
+                        <div id="bloque_btn_AgregarDireccion">
                             <button name="btn_AgregarDireccion" id="btn_AgregarDireccion" >Agregar Dirección</button>
                         </div>
                         <form id="form_AñadirDireccion" method="post" >
@@ -164,7 +165,6 @@
                             </div>
                         </form>
                     </div>
-                
                 </div>
         </div>
         
