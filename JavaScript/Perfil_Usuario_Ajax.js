@@ -116,6 +116,9 @@ $(document).ready(function () {
                     $('#form_ActualizarDatos')[0].reset();
                     console.log("Terminando Registro");
                     console.log("Respuesta del servidor:", data);
+                    $('#nombre_Perfil').text($("#nombres").var());
+                    $('#apellidos_Perfil').text($("#apellidos").var());
+                    $('#usuario_Perfil').text($("#usuario").var());
                     alert(data.mensaje);
 
                     

@@ -22,16 +22,16 @@
                     <img src="Imagenes/Perfil_Usuario/Usuario.png" alt="Imagen del usuario">
                 </div>
                 <div>
-                    <P>Nombres:</P>
-                    <p><?php echo $data["Cliente"]["nombres"] ?></p>
+                    <P >Nombres:</P>
+                    <p id="nombre_Perfil"><?php echo $data["Cliente"]["nombres"] ?></p>
                 </div>
                 <div>
                     <P>Apellidos:</P>
-                    <p><?php echo $data["Cliente"]["apellidos"] ?></p>
+                    <p id="apellidos_Perfil" ><?php echo $data["Cliente"]["apellidos"] ?></p>
                 </div>
                 <div>
                     <P>Usuario:</P>
-                    <p><?php echo $data["Cliente"]["usuario"] ?></p>
+                    <p id="usuario_Perfil"><?php echo $data["Cliente"]["usuario"] ?></p>
                 </div>
     
             </div>
