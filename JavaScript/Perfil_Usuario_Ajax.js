@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     console.log("El script se está ejecutando.");
     cargarDirecciones();
-    $('#form_ActualizarDireccion .bloqueForm, #bloque_Formulario_Direcciones').hide();
+    $('#form_ActualizarDireccion .bloqueForm').hide();
     $('#form_ActualizarDireccion .bloque_SubmitForm').hide();
 
     $('#Selector_Direccion').on("change", function(){
@@ -19,8 +19,18 @@ $(document).ready(function () {
     });
 
     $('#form_AñadirDireccion').hide();
+    $('#btn_OcultarDireccion').hide();
+
     $('#btn_AgregarDireccion').on("click", function(){
         $('#form_AñadirDireccion').show();
+        $('#btn_AgregarDireccion').hide();
+        $('#btn_OcultarDireccion').show();
+    });
+
+    $('#btn_OcultarDireccion').on("click",function(){
+        $('#btn_AgregarDireccion').show();
+        $('#form_AñadirDireccion').hide();
+        $('#btn_OcultarDireccion').hide();
     });
 
     function cargarDirecciones() {

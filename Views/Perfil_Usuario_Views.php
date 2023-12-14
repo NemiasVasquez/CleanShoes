@@ -141,7 +141,8 @@
                             <h2>Añadir nueva Dirección</h2>
                         </div>
                         <div id="bloque_btn_AgregarDireccion">
-                            <button name="btn_AgregarDireccion" id="btn_AgregarDireccion" >Agregar Dirección</button>
+                            <button class="btn_agregarOcultar" name="btn_AgregarDireccion" id="btn_AgregarDireccion" >Agregar</button>
+                            <button class="btn_agregarOcultar" name="btn_OcultarDireccion" id="btn_OcultarDireccion" >Ocultar</button>
                         </div>
                         <form id="form_AñadirDireccion" method="post" >
                             <div class="bloqueForm">

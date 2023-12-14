@@ -85,3 +85,12 @@ label{
 #bloque_Actualizadatos{
     align-items: center;
 }
+
+.btn_agregarOcultar{
+    width: 80px;
+    height: 35px;
+    background-color: rgb(241, 241, 9);
+    cursor: pointer;
+    border-radius: 1em;
+    transition: 1s;
+}
