@@ -42,7 +42,7 @@ input, select{
 }
 
 label{
-    width: 100px;
+    width: 300px;
 }
 
 #bloque_2Seccion{
@@ -65,7 +65,7 @@ label{
 
 #bloque_btn_actualizarDatos{
     text-align: center;
-    width: 80%;
+    margin-left: 50px;
 }
 
 .btn{
@@ -93,4 +93,12 @@ label{
     cursor: pointer;
     border-radius: 1em;
     transition: 1s;
+}
+
+.bloqueForm{
+    width: 200px;
+}
+
+#label_Contraseña2{
+    width: 150px;
 }

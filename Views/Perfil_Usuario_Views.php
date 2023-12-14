@@ -85,17 +85,24 @@
                                             <label for="contraseña">Contraseña:</label>
                                             <input type="password" name="contraseña" id="contraseña" placeholder="Ingrese su contraseña">
                                         </div>
+                                    </div>
+
+                                    <div class="bloqueForm">
                                         <div class="input_Completo">
-                                            <label for="contraseña2">Confirmar contraseña:</label>
+                                            <label id="label_Contraseña2" for="contraseña2">Confirmar contraseña:</label>
                                             <input type="password" name="contraseña2" id="contraseña2" placeholder="Confirme su contraseña">
                                         </div>
                                     </div>
+                                    <div class="bloqueForm">
+                                        <div id="bloque_btn_actualizarDatos" >
+                                            <input type="submit" class="btn" name="btn_Actualizar" id="btn_Actualizar" value="Actualizar Datos">
+                                        </div>
+                                    </div>
+                                       
                                 </div>
+                               
                             </div>
-                        
-                            <div id="bloque_btn_actualizarDatos" >
-                                <input type="submit" class="btn" name="btn_Actualizar" id="btn_Actualizar" value="Actualizar Datos">
-                            </div>
+
                         </form>
                     </div>
                 </div>
