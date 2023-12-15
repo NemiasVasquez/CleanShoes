@@ -13,6 +13,11 @@ class Cliente_Controller{
         require_once "Views/Principal.php";
     }
 
+    public function Pedidos_Views(){
+        $Pedidos = true;
+        require_once "Views/Pedidos_Views.php";
+    }
+
     public function QuienesSomos(){
         $QuienesSomos = true;
         require_once "Views/QuienesSomos.php";

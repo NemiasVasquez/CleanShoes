@@ -12,11 +12,11 @@ class Cliente_Model{
         return $this->dataBase;
     }
 
+   
     public function getClientes(){
         $consulta_Clientes = $this->dataBase->query("SELECT persona.nombres,persona.apellidos,persona.dni,usuario.usuario,usuario.rol,usuario.estado,cliente.id_cliente FROM cliente
         INNER JOIN persona ON persona.id_persona = cliente.id_persona
         INNER JOIN usuario ON usuario.id_usuario = cliente.id_usuario");
-        
         $i =0;
         while($fila = $consulta_Clientes->fetch_assoc()){
             $this->Cliente[$i]=$fila;
