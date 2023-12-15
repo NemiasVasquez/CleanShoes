@@ -17,9 +17,28 @@
         <?php include 'Plantillas/Header.php'; ?>
     </header>
     <main class="interior"></main>
-        <div id="bloque_Pedidos"></div>
-            <div id="bloque_Tabla"></div>
-                <table>
+        <div id="bloque_Pedidos">
+            <?php echo var_dump($data["Pedidos"]); ?>
+            <div id="bloque_Buscar">
+                <form id="form_Buscar" name="form_Buscar">
+                    <div>
+                        <label for="select_TipoPedido">Seleccione el tipo de pedido:</label>
+                    </div>
+                    <div>
+                        <select id="select_TipoPedido" name="select_TipoPedido">
+                            <option value="NA">Elija un tipo de pedido para buscar</option>
+                            <option value="Reserva">Pedidos en reserva.</option>
+                            <option value="Pendiente">Pedidos pendiente de pago.</option>
+                            <option value="Pagado">Pedidos pagados.</option>
+                        </select>
+                    </div>
+                    <div id="bloque_BtnBuscar" name="bloque_BtnBuscar">
+                        <input type="submit" value="Buscar" id="btn_Buscar" name="btn_Buscar">
+                    </div>
+                </form>
+            </div>
+            <div id="bloque_Tabla">
+                <table id="tabla_Pedidos">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -33,7 +52,21 @@
                         </tr>
                     </thead>
 
-
+                    <tr class="tabla_elementos">
+                        <th scope="row"><?php echo $contador ?></th>
+                        <th><?php echo $S["id_Servicio"]; ?></th>
+                        <td><?php echo $S["nombre"]; ?></td>
+                        <td><?php echo $S["categoria"]; ?></td>
+                        <td><?php echo $S["cantidad"]; ?></td>
+                        <td><?php echo "S/".$S["precio"]; ?></td>
+                        <td><?php echo "S/".$S["subTotal"]; ?></td>
+                        <td id="celda_Acciones">
+                            <button class="btn_RestarUnidadServicio" value="<?php echo $S["id_DetalleServicio"] ?>"><img src="Imagenes/Carrito/restar.png" alt="Imagen para restar servicios"></button>
+                            <p id="contadorServicios"></p>
+                            <button class="btn_SumarUnidadServicio" value="<?php echo $S["id_DetalleServicio"] ?>"><img src="Imagenes/Carrito/sumar.png" alt="Imagen para sumar servicios"></button>
+                            <button class="btn_EliminarServicioCarrito" value="<?php echo $S["id_DetalleServicio"] ?>" ><img src="Imagenes/Carrito/eliminar.png" alt="Imagen para eliminar un producto"></button>
+                        </td>
+                    </tr>
 
                 </table>
             </div>

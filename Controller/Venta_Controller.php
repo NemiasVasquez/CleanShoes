@@ -16,6 +16,7 @@ class Venta_Controller
     {
         if(isset($_SESSION["id_Cliente"])){
             $codigo_Cliente = $_SESSION["id_Cliente"];
+            $data["Direccion"]=$this->Venta_Modelo->getDirecciones($codigo_Cliente);
             $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
         }
        

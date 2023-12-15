@@ -108,6 +108,16 @@ class Venta_Model{
             return false;
         }
     }
+
+    public function getDirecciones($id_Cliente){
+        $consulta = $this->dataBase->query("SELECT * FROM direccion_envio WHERE id_Cliente = '$id_Cliente'");
+        $i=0;
+        while($fila = $consulta->fetch_assoc()){
+            $direcciones[$i] = $fila;
+            $i++;
+        }
+        return $direcciones; 
+    }
     
 }
 ?>
