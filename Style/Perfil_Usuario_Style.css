@@ -7,15 +7,26 @@
 main{
     display: flex;
     flex-flow: row;
-    padding-top: 150px;
+    padding-top: 138px;
     max-width: 1300px;
 }
+
+#bloque_ContenedorDatos{
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+  
+}
+
 #bloque_Datos{
     padding: 30px 20px;
     text-align: center;
     align-content: center;
     align-items: center;
     min-width: 300px;
+    border: black 1px solid;
+    border-radius: 2em;
 }
 
 #bloque_Datos img{
@@ -27,6 +38,7 @@ main{
     flex-flow: column;
     padding: 30px 20px;
     width: 100%;
+    margin-left: 60px;
 }
 
 #bloque_Direccion{

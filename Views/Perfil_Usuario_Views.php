@@ -16,25 +16,26 @@
         <?php include 'Plantillas/Header.php'; ?>
     </header>
     <div id="bloque_Main">
-        <main>  
-            <div id="bloque_Datos">
-                <div>
-                    <img src="Imagenes/Perfil_Usuario/Usuario.png" alt="Imagen del usuario">
+        <main>
+            <div id="bloque_ContenedorDatos">
+                <div id="bloque_Datos">
+                    <div>
+                        <img src="Imagenes/Perfil_Usuario/Usuario.png" alt="Imagen del usuario">
+                    </div>
+                    <div>
+                     
+                        <p id="nombre_Perfil">Nombres: <?php echo $data["Cliente"]["nombres"] ?></p>
+                    </div>
+                    <div>
+                        <p id="apellidos_Perfil" >Apellidos: <?php echo $data["Cliente"]["apellidos"] ?></p>
+                    </div>
+                    <div>
+                        <p id="usuario_Perfil">Usuario: <?php echo $data["Cliente"]["usuario"] ?></p>
+                    </div>
+        
                 </div>
-                <div>
-                    <P >Nombres:</P>
-                    <p id="nombre_Perfil"><?php echo $data["Cliente"]["nombres"] ?></p>
-                </div>
-                <div>
-                    <P>Apellidos:</P>
-                    <p id="apellidos_Perfil" ><?php echo $data["Cliente"]["apellidos"] ?></p>
-                </div>
-                <div>
-                    <P>Usuario:</P>
-                    <p id="usuario_Perfil"><?php echo $data["Cliente"]["usuario"] ?></p>
-                </div>
-    
-            </div>
+            </div>  
+           
             <div id="bloque_General_Actualizar">
                 <div id="bloque_ActualizaDatos">
                     <div>
@@ -174,9 +175,8 @@
                         </form>
                     </div>
                 </div>
-        </div>
+            </div>
         
-
         </main>
     </div>
     <aside class="interior"></aside>

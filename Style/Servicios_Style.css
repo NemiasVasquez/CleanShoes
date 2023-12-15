@@ -39,7 +39,6 @@ main{
 .cajita-tituloLavado{
     position: relative;
     margin-bottom: -25px;
-
 }
 
 .cajita-tituloLavado h2{
@@ -132,19 +131,25 @@ main{
 
 /* FILTROS */
 
-#bloque_Filtros{
+#bloque_Filtros {
     background-color: antiquewhite;
     min-width: 300px;
-    height: 615px;
+    height: 570px;
+    position: sticky;
+    top: 132px; /* Fija el bloque en la parte superior de la pantalla */
 }
 
-#bloque_Checkbox{
+#bloque_Filtros h2{
+    margin: 13px 0;
+}
+
+#bloque_Checkbox {
     display: flex;
     flex-flow: column;
     margin: 0 30px;
 }
 
-#contenedor_Filtros{
+#contenedor_Filtros {
     border: #000 1px dotted;
     max-width: 250px;
     padding: 0 10px;
@@ -152,32 +157,32 @@ main{
     margin-top: 35px;
 }
 
-#contenedor_Filtros h1{
-    margin: 10px 0;
+#contenedor_Filtros h1 {
+    margin: 5px 0;
 }
 
-.bloque_Filtro{
+.bloque_Filtro {
     display: flex;
-    flex-flow:column;
+    flex-flow: column;
 }
 
-.bloque_Filtro div{
+.bloque_Filtro div {
     margin-top: 8px;
 }
 
-select{
+select {
     padding: 5px;
 }
 
-#bloque_btn{
+#bloque_btn {
     display: flex;
     justify-content: center;
 }
 
-#btn_Aplicar{
+#btn_Aplicar {
     margin-top: 20px;
     background-color: #a4e7a9;
-    cursor:pointer;
+    cursor: pointer;
     padding: 5px 15px;
     margin-bottom: 15px;
 }
