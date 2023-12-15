@@ -44,7 +44,7 @@ img{
 }
 
 .interior{
-	max-width:1200px;
+	max-width:1310px;
 	margin:0 auto;
 }
 
@@ -129,13 +129,15 @@ header {
 }
 
 /*** ASIDE ***/
-#grupoEnlacesRedes{
+#grupoEnlacesRedes {
     display: flex;
     flex-flow: column;
     position: fixed;
-    right: -3.5%;
+    right: calc((100% - 1280px) / 2); /* Alinea al borde derecho con un máximo de 1300px */
     top: 40%;
-    cursor:pointer;
+    cursor: pointer;
+    max-width: 1300px;
+    transform: translateX(50%); /* Ajusta para garantizar que no se extienda fuera de la pantalla */
 }
 
 /*** FOOTER ***/

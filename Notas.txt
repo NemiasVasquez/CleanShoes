@@ -1,5 +1,5 @@
 
  
- -> Sec1 completar la imagen con oscuro
+-> Sec1 completar la imagen con oscuro
 -> Sec2 En principal agregar una imagen oscura para relleno de elementos
 -> Sec3 completar la imagen

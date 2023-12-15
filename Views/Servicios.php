@@ -17,7 +17,7 @@
     <header>
         <?php include 'Plantillas/Header.php'; ?>
     </header>
-    <main>
+    <main class="interior">
        
         <div class="row caja-General">
             <div id="bloque_Filtros">

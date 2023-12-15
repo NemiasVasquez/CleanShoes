@@ -179,7 +179,9 @@
 
         </main>
     </div>
-  
+    <aside class="interior"></aside>
+        <?php include 'Plantillas/Enlaces.php'; ?>
+    </aside>
     <footer>
         <?php include 'Plantillas/Footer.php'; ?>
     </footer>

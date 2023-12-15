@@ -17,7 +17,7 @@
         <header>
             <?php include 'Plantillas/Header.php'; ?>
         </header>
-        <main id="resultado" class="contenedor">
+        <main id="resultado" class="contenedor interior">
             <input type="radio" name="filtroLavado" id="btnSimple" checked="yes">
             <input type="radio" name="filtroLavado" id="btnEstandar" >
             <input type="radio" name="filtroLavado" id="btnPremium">
