@@ -12,6 +12,14 @@ class Venta_Controller
         $this->Venta_Modelo = new Venta_Model();
     }
 
+    public function Pedidos_Views(){
+        $Pedidos = true;
+        $id_Cliente = $_SESSION["id_Cliente"];
+        $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente($id_Cliente);
+
+        require_once "Views/Pedidos_Views.php";
+    }
+
     public function Carrito_Views()
     {
         if(isset($_SESSION["id_Cliente"])){

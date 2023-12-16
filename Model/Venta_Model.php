@@ -11,6 +11,34 @@ class Venta_Model{
         return $this->dataBase;
     }
 
+    public function getPedidosCliente($id_Cliente){
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden, DE.direccion,DE.distrito FROM orden
+                                                    INNER JOIN direccion_envio AS DE ON DE.id_Direccion_Envio = orden.id_Direccion 
+                                                    WHERE orden.id_Cliente = '$id_Cliente' AND estado_orden !='Creacion'");
+        $i=0;
+        $ordenes=[];
+        while($fila = $consultaPedidos->fetch_assoc()){
+            $codigo_Orden = $fila["id_orden"];
+            $ordenes[$i]=$fila;
+            $consultaServicios=$this->dataBase->query("SELECT detalle_servicio.*, servicio.nombre,servicio.precio,servicio.categoria  FROM detalle_servicio 
+                                                       INNER JOIN servicio ON servicio.id_Servicio = detalle_servicio.id_Servicio
+                                                       WHERE detalle_servicio.id_Orden = '$codigo_Orden'");
+            $j=0;
+            while($fila2 = $consultaServicios->fetch_assoc()){
+                $ordenes[$i]["Servicios"][$j] =$fila2;
+                $j++; 
+            }
+            
+            $i++;
+        }
+
+        if(count($ordenes) > 0){
+            return $ordenes;
+        }else{
+            return false;
+        }
+    }
+
     public function setOrdenInicial($id_Cliente,$estado){
         $consulta = $this->dataBase->query("INSERT INTO orden(id_Cliente,estado_Orden) VALUES ('$id_Cliente','$estado')");
         if($consulta){

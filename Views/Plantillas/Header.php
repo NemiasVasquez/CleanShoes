@@ -13,7 +13,7 @@
                     <li><a href="index.php?c=Servicio_Controller&a=Servicios" <?php if(isset($Servicios)){echo 'class="activo"';} ?>>Servicios</a></li>
                     <li><a href="index.php?c=Cliente_Controller&a=Resultados" <?php if(isset($Resultados)){echo 'class="activo"';} ?>>Resultados</a></li>
                     <?php if(isset($_SESSION["id_Cliente"])) { ?>
-                        <li><a href="index.php?c=Cliente_Controller&a=Pedidos_Views" <?php if(isset($Pedidos)){echo 'class="activo"';} ?>>Mis Pedidos</a></li> 
+                        <li><a href="index.php?c=Venta_Controller&a=Pedidos_Views" <?php if(isset($Pedidos)){echo 'class="activo"';} ?>>Mis Pedidos</a></li> 
                     <?php } ?>
                 </ul>
             </nav>

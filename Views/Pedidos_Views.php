@@ -18,7 +18,9 @@
     </header>
     <main class="interior"></main>
         <div id="bloque_Pedidos">
+
             <?php echo var_dump($data["Pedidos"]); ?>
+
             <div id="bloque_Buscar">
                 <form id="form_Buscar" name="form_Buscar">
                     <div>
@@ -42,31 +44,45 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>ID</th>
-                            <th>NOMBRE</th>
-                            <th>CATEGORÍA</th>
-                            <th>CANTIDAD</th>
-                            <th>PRECIO UNI.</th>
-                            <th>SUBTOTAL</th>
-                            <th>ACCIONES</th>
+                            <th>ID ORDEN</th>
+                            <th>TIPO ENVIO</th>
+                            <th>DIRECCION</th>
+                            <th>TOTAL</th>
+                            <th>FECHA CREACIÓN</th>
+                            <th>ESTADO</th>
                         </tr>
                     </thead>
+                    <?php $contador=1; ?>
+                    <?php foreach($data["Pedidos"] as $P){ ?>
+                        <tr class="tabla_elementos">
+                            <th scope="row"><?php echo $contador ?></th>
+                            <th><?php echo $P["id_Orden"]; ?></th>
+                            <th><?php echo $P["tipoDespacho"]; ?></th>
+                            <th><?php echo $P["direccion"]." - ".$P["distrtito"]; ?></th>
+                            <th><?php echo $P["total"]; ?></th>
+                            <th><?php echo $P["fecha_creacion"]; ?></th>
+                            <th><?php echo $P["estado_orden"]; ?></th>
+                           
+                            <td id="celda_Acciones">
+                                <button class="btn_RestarUnidadServicio" value="<?php ?>"><img src="Imagenes/Carrito/restar.png" alt="Imagen para restar servicios"></button>
+                                <p id="contadorServicios"></p>
+                                <button class="btn_SumarUnidadServicio" value="<?php ?>"><img src="Imagenes/Carrito/sumar.png" alt="Imagen para sumar servicios"></button>
+                                <button class="btn_EliminarServicioCarrito" value="<?php ?>" ><img src="Imagenes/Carrito/eliminar.png" alt="Imagen para eliminar un producto"></button>
+                            </td>
+                        </tr>
+                        <?php $contadorS =1; ?>
+                        <?php foreach($P["Servicios"] as $S ){ ?>
+                            <th scope="row"><?php echo $contadorS ?></th>
+                            <th><?php echo $S["nombre"]; ?></th>
+                            <th><?php echo $S["precio"]; ?></th>
+                            <th><?php echo $S["categoria"]; ?></th>
+                            <th><?php echo $S["cantidad"]; ?></th>
+                            <th><?php echo $S["subTotal"]; ?></th>
+                            <?php $contadorS++; ?>
+                        <?php } ?>
 
-                    <tr class="tabla_elementos">
-                        <th scope="row"><?php echo $contador ?></th>
-                        <th><?php echo $S["id_Servicio"]; ?></th>
-                        <td><?php echo $S["nombre"]; ?></td>
-                        <td><?php echo $S["categoria"]; ?></td>
-                        <td><?php echo $S["cantidad"]; ?></td>
-                        <td><?php echo "S/".$S["precio"]; ?></td>
-                        <td><?php echo "S/".$S["subTotal"]; ?></td>
-                        <td id="celda_Acciones">
-                            <button class="btn_RestarUnidadServicio" value="<?php echo $S["id_DetalleServicio"] ?>"><img src="Imagenes/Carrito/restar.png" alt="Imagen para restar servicios"></button>
-                            <p id="contadorServicios"></p>
-                            <button class="btn_SumarUnidadServicio" value="<?php echo $S["id_DetalleServicio"] ?>"><img src="Imagenes/Carrito/sumar.png" alt="Imagen para sumar servicios"></button>
-                            <button class="btn_EliminarServicioCarrito" value="<?php echo $S["id_DetalleServicio"] ?>" ><img src="Imagenes/Carrito/eliminar.png" alt="Imagen para eliminar un producto"></button>
-                        </td>
-                    </tr>
+                        <?php $contador++; ?>
+                    <?php } ?>
 
                 </table>
             </div>
