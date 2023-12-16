@@ -60,8 +60,8 @@
                         <?php endforeach; ?>
                     </table>
                 </div>
-                <div>
-                    <div>
+                <div id="bloque_DespachoDireccion">
+                    <div class="bloque_Select" id="selectTipoDespacho">
                         <label for="selector_TipoDespacho">Tipo de despacho:</label>
                         <select id="selector_TipoDespacho" name="selector_TipoDespacho">
                             <option value="NA">Seleccione el tipo de despacho.</option>
@@ -69,16 +69,17 @@
                             <option value="Tienda">Retiro en tienda.</option>
                         </select>
                     </div>
-                    <div>
-                        <label for="Selector_Direccion">Seleccione su dirección de envío:</label>
+                    <div class="bloque_Select" id="selectDireccion">
+                        <label for="Selector_Direccion">Seleccione su dirección :</label>
                         <select name="Selector_Direccion" id="Selector_Direccion">
                             <option value="NA">Elija una dirección</option>
+                            <?php $contador=1; ?>
                             <?php foreach($data["Direccion"] as $D){ ?>
-                                <option value="<?php echo $D["id_Direccion_Envio"] ?>"></option>
-
+                                <option value="<?php echo $D["id_Direccion_Envio"] ?>">
+                                    <?php echo $contador. " -> ".$D["direccion"]." - ".$D["distrito"];?>
+                                </option>
+                                <?php $contador++; ?>
                             <?php } ?>
-
-
                         </select>
                     </div>
                 </div>

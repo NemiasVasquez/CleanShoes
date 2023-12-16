@@ -1,5 +1,19 @@
 $(document).ready(function () {
 
+    tipoEnvioDireccion();
+
+    function tipoEnvioDireccion(){
+        if ($("#selector_TipoDespacho").val() =="NA" ||  $("#selector_TipoDespacho").val() =="Tienda"){
+            $("#selectDireccion").hide();
+        }else{
+            $("#selectDireccion").show();
+        };
+    }
+
+    $("#selector_TipoDespacho").on("change",function(e){
+        tipoEnvioDireccion();
+    });
+ 
     function construirTabla(ServicioVenta) {
         $("#bloque_TablaVenta table tbody").empty();
         

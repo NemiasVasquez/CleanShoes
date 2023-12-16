@@ -114,3 +114,13 @@ label{
 #label_Contraseña2{
     width: 150px;
 }
+
+#bloque_btn_AgregarDireccion,#bloque_AñadirNuevaDireccion,#bloque_btn_actualizarDirec{
+    width: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+#btn_añadir{
+    width: 180px;
+}

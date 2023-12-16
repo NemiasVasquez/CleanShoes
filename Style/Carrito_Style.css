@@ -132,3 +132,23 @@ thead tr th{
     cursor:pointer;
     margin-top: 1px;
 }
+
+/* Bloque despacho dirección */
+
+#bloque_DespachoDireccion{
+    display: flex;
+    padding: 20px 0;
+}
+
+.bloque_Select{
+    display: flex;
+    flex-flow: column;
+    margin-left: 90px;
+    width: 300px;
+}
+
+.bloque_Select select{
+    padding: 5px ;
+    border-radius: 1em;
+    margin-top: 5px;
+}

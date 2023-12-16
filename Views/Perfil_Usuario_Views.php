@@ -138,7 +138,7 @@
                                     <input type="text" name="distrito_actualizar" id="distrito_actualizar" placeholder="Ingrese su distrito">
                                 </div>
                             </div>
-                            <div class="bloque_SubmitForm">
+                            <div class="bloque_SubmitForm" id="bloque_btn_actualizarDirec">
                                 <input type="submit"  class="btn" name="btn_actualizarDirecion" id="btn_actualizarDirecion" value="Actualizar dirección">
                             </div>
                         </form>
@@ -169,7 +169,7 @@
                                     <input type="text" name="distrito_añadir" id="distrito_añadir" placeholder="Ingrese su distrito">
                                 </div>
                             </div>
-                            <div>
+                            <div id="bloque_AñadirNuevaDireccion">
                                 <input type="submit"  class="btn" name="btn_añadir" id="btn_añadir" value="Añadir Nueva dirección">
                             </div>
                         </form>
