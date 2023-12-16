@@ -129,7 +129,16 @@ class Venta_Controller
         exit;
     }
 
-  
+    public function Reservar(){
+        $tipoDespacho = $_POST["selector_TipoDespacho"];
+        
+        $codigo_Cliente = $_SESSION["id_Cliente"];
+        $estado = "Creación";
+        $id_Orden = $this->Venta_Modelo->get_Id_Orden_Creacion($codigo_Cliente, $estado);
+        if($id_Orden == false){
+            $consulta = $this->Venta_Modelo->setOrdenInicial($codigo_Cliente, $estado);
+        }
+    }
 }
 
 ?>

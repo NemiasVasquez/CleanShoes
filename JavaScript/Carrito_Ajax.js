@@ -150,4 +150,24 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#form_Pedido").on("submit",function(event){
+        
+        event.preventDefault();
+        if($("#selector_TipoDespacho").val() =='NA'){
+            alert("Debe seleccionar un tipo de despacho.");
+        }else if($("#selector_TipoDespacho").val()=="Domicilio" && $("#Selector_Direccion").val() =="NA"){
+            alert("Debe elegir una dirección de despacho.");
+        }else{
+            $.ajax({
+                url: "index.php?c=Venta_Controller&a=Reservar",
+                method: "POST",
+                data: $('#form_Pedido').serialize(),
+                success: function (data) {
+
+                }
+            });
+        }
+    });
+
 });

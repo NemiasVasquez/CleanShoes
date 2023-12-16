@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2023 a las 21:49:49
+-- Tiempo de generación: 16-12-2023 a las 23:02:37
 -- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -150,7 +150,7 @@ CREATE TABLE `detalle_servicio` (
 
 INSERT INTO `detalle_servicio` (`id_DetalleServicio`, `id_Servicio`, `id_Orden`, `cantidad`, `subTotal`) VALUES
 (59, 4, 77, 1, 15),
-(60, 5, 77, 3, 75);
+(60, 5, 77, 4, 100);
 
 -- --------------------------------------------------------
 
@@ -191,6 +191,7 @@ CREATE TABLE `orden` (
   `total` float DEFAULT NULL,
   `tipoDespacho` varchar(50) DEFAULT NULL,
   `tipoPago` varchar(50) DEFAULT NULL,
+  `descripcion` varchar(100) DEFAULT NULL,
   `tiempoTotalEntrega` int(11) DEFAULT NULL,
   `estado_pago` varchar(20) DEFAULT NULL,
   `estado_orden` varchar(20) DEFAULT NULL,
@@ -201,8 +202,8 @@ CREATE TABLE `orden` (
 -- Volcado de datos para la tabla `orden`
 --
 
-INSERT INTO `orden` (`id_Orden`, `id_Cliente`, `id_Direccion`, `total`, `tipoDespacho`, `tipoPago`, `tiempoTotalEntrega`, `estado_pago`, `estado_orden`, `fecha_creacion`) VALUES
-(77, 3, NULL, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-15 00:48:58');
+INSERT INTO `orden` (`id_Orden`, `id_Cliente`, `id_Direccion`, `total`, `tipoDespacho`, `tipoPago`, `descripcion`, `tiempoTotalEntrega`, `estado_pago`, `estado_orden`, `fecha_creacion`) VALUES
+(77, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-15 00:48:58');
 
 -- --------------------------------------------------------
 
