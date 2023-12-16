@@ -71,7 +71,6 @@
                             </select>
                         </div>
                         
-
                         <div class="bloque_Select" id="selectDireccion">
                             <label for="Selector_Direccion">Seleccione su dirección :</label>
                             <select name="Selector_Direccion" id="Selector_Direccion">
@@ -116,8 +115,6 @@
                     </div>
                 </form>
                   
-
-
             <?php } else { ?>
                 <div id="bloque_CarroVacio">
                     <div>
