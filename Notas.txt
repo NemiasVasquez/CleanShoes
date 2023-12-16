@@ -2,6 +2,3 @@
 
 Impoortante:
 
-En el carrito , al momento de pagar
-agregar selección de tipo de envío de servicio
-si en caso elije despacho en domicilio debe seleccionar una dirección registrada.

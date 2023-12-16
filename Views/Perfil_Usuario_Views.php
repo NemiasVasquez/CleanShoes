@@ -185,5 +185,8 @@
     <footer>
         <?php include 'Plantillas/Footer.php'; ?>
     </footer>
+    <script>
+       
+    </script>
 </body>
 </html>
