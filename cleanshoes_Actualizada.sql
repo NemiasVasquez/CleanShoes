@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2023 a las 17:53:47
+-- Tiempo de generación: 16-12-2023 a las 21:47:47
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -149,21 +149,8 @@ CREATE TABLE `detalle_servicio` (
 --
 
 INSERT INTO `detalle_servicio` (`id_DetalleServicio`, `id_Servicio`, `id_Orden`, `cantidad`, `subTotal`) VALUES
-(3, 5, 4, 1, NULL),
-(4, 12, 4, 1, NULL),
-(5, 4, 4, 1, NULL),
-(6, 15, 4, 1, NULL),
-(7, 4, 10, 1, NULL),
-(8, 15, 4, 1, NULL),
-(9, 6, 10, 1, NULL),
-(10, 12, 10, 1, NULL),
-(11, 5, 10, 1, NULL),
-(12, 12, 10, 1, NULL),
-(13, 14, 10, 1, NULL),
-(14, 5, 10, 1, NULL),
-(15, 15, 10, 1, NULL),
-(16, 17, 10, 1, NULL),
-(17, 18, 4, 1, NULL);
+(59, 4, 77, 1, 15),
+(60, 5, 77, 3, 75);
 
 -- --------------------------------------------------------
 
@@ -200,6 +187,7 @@ INSERT INTO `direccion_envio` (`id_Direccion_Envio`, `id_Cliente`, `distrito`, `
 CREATE TABLE `orden` (
   `id_Orden` int(11) NOT NULL,
   `id_Cliente` int(11) NOT NULL,
+  `id_Direccion` int(11) DEFAULT NULL,
   `total` float DEFAULT NULL,
   `tipoDespacho` varchar(50) DEFAULT NULL,
   `tipoPago` varchar(50) DEFAULT NULL,
@@ -213,24 +201,8 @@ CREATE TABLE `orden` (
 -- Volcado de datos para la tabla `orden`
 --
 
-INSERT INTO `orden` (`id_Orden`, `id_Cliente`, `total`, `tipoDespacho`, `tipoPago`, `tiempoTotalEntrega`, `estado_pago`, `estado_orden`, `fecha_creacion`) VALUES
-(4, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:28:15'),
-(5, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:29:04'),
-(6, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:44:39'),
-(7, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:44:42'),
-(8, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:47:53'),
-(9, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 16:56:55'),
-(10, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 22:10:06'),
-(11, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 22:54:30'),
-(12, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 22:56:47'),
-(13, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:19:34'),
-(14, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:24:45'),
-(15, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:28:04'),
-(16, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:28:21'),
-(17, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:30:45'),
-(18, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:30:55'),
-(19, 4, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-11 23:43:38'),
-(23, 3, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-12 11:53:24');
+INSERT INTO `orden` (`id_Orden`, `id_Cliente`, `id_Direccion`, `total`, `tipoDespacho`, `tipoPago`, `tiempoTotalEntrega`, `estado_pago`, `estado_orden`, `fecha_creacion`) VALUES
+(77, 3, NULL, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-15 00:48:58');
 
 -- --------------------------------------------------------
 
@@ -252,7 +224,7 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`id_Persona`, `nombres`, `apellidos`, `dni`, `correo`, `celular`) VALUES
-(6, 'Nemias', 'Vasquez', '73116807', 'nemiasvasquezs@hotmail.com', '955651442'),
+(6, 'Nemias David', 'Vasquez', '73116807', 'nemiasvasquezs@hotmail.com', '955651442'),
 (7, 'Dayra Fabiola', 'Vasquez Suarez', '87654321', 'dayra@hotmail.com', '955651442'),
 (8, 'Mildred Yolanda', 'Suarez Alvarado', '12312312', 'mildred@hotmail.com', '966651442');
 
@@ -326,7 +298,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_Usuario`, `usuario`, `password`, `rol`, `estado`, `fecha_creacion`) VALUES
-(6, 'NEMIAS', 'Nemias1234', 'Cliente', 'Activo', '2023-12-10 14:20:01'),
+(6, 'NEMIASVS', 'nemias1234', 'Cliente', 'Activo', '2023-12-10 14:20:01'),
 (7, 'dayra@hotmail.com', 'Dayra123', 'Cliente', 'Activo', '2023-12-10 14:58:47'),
 (8, 'mildred@hotmail.com', 'Mildre123', 'Cliente', 'Activo', '2023-12-10 15:08:57');
 
@@ -443,7 +415,7 @@ ALTER TABLE `detalle_descripcion`
 -- AUTO_INCREMENT de la tabla `detalle_servicio`
 --
 ALTER TABLE `detalle_servicio`
-  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion_envio`
@@ -455,7 +427,7 @@ ALTER TABLE `direccion_envio`
 -- AUTO_INCREMENT de la tabla `orden`
 --
 ALTER TABLE `orden`
-  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
