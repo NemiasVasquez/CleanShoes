@@ -12,27 +12,35 @@ class Venta_Model{
     }
 
     public function getPedidosCliente($id_Cliente){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden, DE.direccion,DE.distrito FROM orden
-                                                    INNER JOIN direccion_envio AS DE ON DE.id_Direccion_Envio = orden.id_Direccion 
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.id_Direccion,orden.fecha_creacion FROM orden
                                                     WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden != 'Creación')");
+
         $i=0;
         $ordenes=[];
         while($fila = $consultaPedidos->fetch_assoc()){
             $codigo_Orden = $fila["id_Orden"];
             $ordenes[$i]=$fila;
-            echo $codigo_Orden;
+            
+            if($fila["id_Direccion"]!= NULL){
+                $id_Direccion = $fila["id_Direccion"];
+                $consulta_Direccion= $this->dataBase->query("SELECT direccion, distrito FROM direccion_envio WHERE id_Direccion_Envio = '$id_Direccion'");
+                if($fila_Direc = $consulta_Direccion->fetch_assoc()){
+                    $ordenes[$i]["Direccion"]=$fila_Direc["direccion"];
+                    $ordenes[$i]["Distrito"]=$fila_Direc["distrito"];
+                }
+            }
+
             $consultaServicios=$this->dataBase->query("SELECT detalle_servicio.*, servicio.nombre,servicio.precio,servicio.categoria  FROM detalle_servicio 
                                                        INNER JOIN servicio ON servicio.id_Servicio = detalle_servicio.id_Servicio
                                                        WHERE detalle_servicio.id_Orden = '$codigo_Orden'");
             $j=0;
-            $ordenes[$i]["Servicios"]=array();
             while($fila2 = $consultaServicios->fetch_assoc()){
                 $ordenes[$i]["Servicios"][$j] = $fila2;
                 $j++; 
             }
             $i++;
         }
-        echo $i ."-.". $j;
+        
         if(count($ordenes) > 0){
             return $ordenes;
         }else{

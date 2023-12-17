@@ -132,7 +132,7 @@ class Venta_Controller
     public function Reservar(){
         $tipoDespacho = $_POST["selector_TipoDespacho"];
 
-        $Id_Direccion= isset($_POST["Selector_Direccion"]) ? $_POST["Selector_Direccion"] : null;
+        $Id_Direccion= ($_POST["Selector_Direccion"]=="NULL") ? null:$_POST["Selector_Direccion"];
 
         $indicaciones = isset($_POST["textarea_Indicaciones"]) ? $_POST["textarea_Indicaciones"] : null;
 
