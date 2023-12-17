@@ -164,7 +164,8 @@ $(document).ready(function () {
                 method: "POST",
                 data: $('#form_Pedido').serialize(),
                 success: function (data) {
-
+                    alert(data.mensaje);
+                    window.location.href = "index.php?";/* Debe redirigir a "MIS SERVICIO" */ 
                 }
             });
         }

@@ -137,10 +137,29 @@ class Venta_Controller
         $indicaciones = isset($_POST["textarea_Indicaciones"]) ? $_POST["textarea_Indicaciones"] : null;
 
         $codigo_Cliente = $_SESSION["id_Cliente"];
-        
-        $id_Orden = $this->Venta_Modelo->get_Id_Orden_Creacion($codigo_Cliente, $estado);
 
-        $Reservar = $this->Venta_Modelo->Reservar($id_Orden,$tipoDespacho,$Id_Direccion,$indicaciones);
+        $ServicioVenta = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente,'Creación');
+        
+        $total = 0;
+    
+        foreach ($ServicioVenta as $S) {
+            $total += $S["precio"] * $S["cantidad"];
+        }
+        
+        $id_Orden = $this->Venta_Modelo->get_Id_Orden_Creacion($codigo_Cliente, 'Creación');
+
+        $Reservar = $this->Venta_Modelo->Reservar($id_Orden,$tipoDespacho,$Id_Direccion,$indicaciones,$total);
+        
+        if($Reservar){
+            $respuesta = ["mensaje"=>"Pedido Reservado, espere la confirmación de la empresa."];
+        }else{
+            $respuesta = ["mensaje"=>"Error en la reserva."];
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($respuesta);
+        exit;
+
     }
 }
 

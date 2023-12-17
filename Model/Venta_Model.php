@@ -148,8 +148,12 @@ class Venta_Model{
     }
     
     public function Reservar($id_Orden,$tipoDespacho,$Id_Direccion,$indicaciones,$total){
-        $consulta = $this->dataBase->query("UPDATE orden SET id_Direccion = '$Id_Direccion',total = '$total',tipoDespacho='$tipoDespacho', estado_orden ='Pendiente'");
-        UPDATE detalle_servicio SET cantidad ='$cantidad', subTotal = '$total' WHERE id_DetalleServicio = '$id_DetalleServicio'
+        $consulta = $this->dataBase->query("UPDATE orden SET id_Direccion = '$Id_Direccion',total = '$total',tipoDespacho='$tipoDespacho', estado_orden ='Pendiente', fecha_creacion = NOW() WHERE id_Orden = '$id_Orden'");
+        if($consulta){
+            return true;
+        }else{
+            return false;
+        }
 
     }
 
