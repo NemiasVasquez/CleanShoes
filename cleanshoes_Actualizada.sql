@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2023 a las 23:02:37
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 17-12-2023 a las 18:24:42
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -149,8 +149,12 @@ CREATE TABLE `detalle_servicio` (
 --
 
 INSERT INTO `detalle_servicio` (`id_DetalleServicio`, `id_Servicio`, `id_Orden`, `cantidad`, `subTotal`) VALUES
-(59, 4, 77, 1, 15),
-(60, 5, 77, 4, 100);
+(59, 4, 77, 2, 30),
+(60, 5, 77, 5, 125),
+(65, 4, 78, 3, 45),
+(66, 6, 78, 4, 140),
+(68, 13, 79, 1, 29),
+(69, 12, 79, 2, 38);
 
 -- --------------------------------------------------------
 
@@ -203,7 +207,9 @@ CREATE TABLE `orden` (
 --
 
 INSERT INTO `orden` (`id_Orden`, `id_Cliente`, `id_Direccion`, `total`, `tipoDespacho`, `tipoPago`, `descripcion`, `tiempoTotalEntrega`, `estado_pago`, `estado_orden`, `fecha_creacion`) VALUES
-(77, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Creación', '2023-12-15 00:48:58');
+(77, 3, 3, 155, 'Domicilio', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-17 10:59:53'),
+(78, 3, NULL, 185, 'Tienda', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-17 11:16:37'),
+(79, 3, NULL, 67, 'Tienda', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-17 11:17:39');
 
 -- --------------------------------------------------------
 
@@ -416,7 +422,7 @@ ALTER TABLE `detalle_descripcion`
 -- AUTO_INCREMENT de la tabla `detalle_servicio`
 --
 ALTER TABLE `detalle_servicio`
-  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion_envio`
@@ -428,7 +434,7 @@ ALTER TABLE `direccion_envio`
 -- AUTO_INCREMENT de la tabla `orden`
 --
 ALTER TABLE `orden`
-  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
