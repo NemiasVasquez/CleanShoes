@@ -14,11 +14,11 @@ class Venta_Model{
     public function getPedidosCliente($id_Cliente){
         $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden, DE.direccion,DE.distrito FROM orden
                                                     INNER JOIN direccion_envio AS DE ON DE.id_Direccion_Envio = orden.id_Direccion 
-                                                    WHERE orden.id_Cliente = '$id_Cliente' AND estado_orden !='Creación'");
+                                                    WHERE orden.id_Cliente = '$id_Cliente' AND orden.estado_orden !='Creación'");
         $i=0;
         $ordenes=[];
         while($fila = $consultaPedidos->fetch_assoc()){
-            $codigo_Orden = $fila["id_orden"];
+            $codigo_Orden = $fila["id_Orden"];
             $ordenes[$i]=$fila;
             $consultaServicios=$this->dataBase->query("SELECT detalle_servicio.*, servicio.nombre,servicio.precio,servicio.categoria  FROM detalle_servicio 
                                                        INNER JOIN servicio ON servicio.id_Servicio = detalle_servicio.id_Servicio

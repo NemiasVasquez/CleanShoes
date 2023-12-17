@@ -16,14 +16,16 @@ main{
     text-align: center;
     align-items: center;
     height: 50vw;
+    width:100%;
 }
 
 #bloque_ImgCleanShoes{
     text-align: center;
+
 }
 
 #bloque_ImgCleanShoes img{
-    width: 330px;
+    width: 600px;
 }
 
 #bloque_ImgUsuarios{
@@ -36,17 +38,20 @@ main{
 }
 
 #bloque_Login{
-    width: 300px;
+    width: 500px;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 #bloqueGeneral_Form{
     display: flex;
     justify-content: center;
+    width: 400px;
 }
 
 #form_Login{
-    width: 250px;
+    width: 90%;
 }
 
 #form_Login div{

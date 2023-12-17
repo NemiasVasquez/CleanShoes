@@ -152,11 +152,10 @@ $(document).ready(function () {
     });
 
     $("#form_Pedido").on("submit",function(event){
-        
         event.preventDefault();
         if($("#selector_TipoDespacho").val() =='NA'){
             alert("Debe seleccionar un tipo de despacho.");
-        }else if($("#selector_TipoDespacho").val()=="Domicilio" && $("#Selector_Direccion").val() =="NA"){
+        }else if($("#selector_TipoDespacho").val()=="Domicilio" && $("#Selector_Direccion").val() =="NULL"){
             alert("Debe elegir una dirección de despacho.");
         }else{
             $.ajax({
@@ -166,6 +165,9 @@ $(document).ready(function () {
                 success: function (data) {
                     alert(data.mensaje);
                     window.location.href = "index.php?";/* Debe redirigir a "MIS SERVICIO" */ 
+                },
+                error: function (error) {
+                    console.error("Error en la solicitud AJAX:", error);
                 }
             });
         }

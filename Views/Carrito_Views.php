@@ -74,7 +74,7 @@
                         <div class="bloque_Select" id="selectDireccion">
                             <label for="Selector_Direccion">Seleccione su dirección :</label>
                             <select name="Selector_Direccion" id="Selector_Direccion">
-                                <option value="NA">Elija una dirección</option>
+                                <option value="NULL">Elija una dirección</option>
                                 <?php $contador=1; ?>
                                 <?php foreach($data["Direccion"] as $D){ ?>
                                     <option value="<?php echo $D["id_Direccion_Envio"] ?>">
