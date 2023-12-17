@@ -25,7 +25,7 @@ class Venta_Controller
         if(isset($_SESSION["id_Cliente"])){
             $codigo_Cliente = $_SESSION["id_Cliente"];
             $data["Direccion"]=$this->Venta_Modelo->getDirecciones($codigo_Cliente);
-            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente,'Creación');
         }
        
         require_once "Views/Carrito_Views.php";
@@ -63,7 +63,7 @@ class Venta_Controller
         if($consulta){
             $data=["mensaje"=>"Elimardo con exito."];
             $codigo_Cliente = $_SESSION["id_Cliente"];
-            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente,'Creación');
         }else{
             $data=["mensaje"=>"No se logró eliminar"];
         }
@@ -79,7 +79,7 @@ class Venta_Controller
         if($consulta){
             $data=["mensaje"=>"Sumado con exito."];
             $codigo_Cliente = $_SESSION["id_Cliente"];
-            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente,'Creación');
         }else{
             $data=["mensaje"=>"No se logró Sumar la cantidad del servicio"];
         }
@@ -95,7 +95,7 @@ class Venta_Controller
         if($consulta){
             $data=["mensaje"=>"Restado con exito."];
             $codigo_Cliente = $_SESSION["id_Cliente"];
-            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+            $data["ServicioVenta"] = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente,'Creación');
         }else{
             $data=["mensaje"=>"No se logró Restar la cantidad del servicio"];
         }
@@ -107,7 +107,7 @@ class Venta_Controller
 
     public function CalcularTotales(){
         $codigo_Cliente = $_SESSION["id_Cliente"];
-        $ServicioVenta = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente);
+        $ServicioVenta = $this->Venta_Modelo->OrdenesCliente($codigo_Cliente,'Creación');
         
         $total = 0;
     
@@ -131,13 +131,16 @@ class Venta_Controller
 
     public function Reservar(){
         $tipoDespacho = $_POST["selector_TipoDespacho"];
-        
+
+        $Id_Direccion= isset($_POST["Selector_Direccion"]) ? $_POST["Selector_Direccion"] : null;
+
+        $indicaciones = isset($_POST["textarea_Indicaciones"]) ? $_POST["textarea_Indicaciones"] : null;
+
         $codigo_Cliente = $_SESSION["id_Cliente"];
-        $estado = "Creación";
+        
         $id_Orden = $this->Venta_Modelo->get_Id_Orden_Creacion($codigo_Cliente, $estado);
-        if($id_Orden == false){
-            $consulta = $this->Venta_Modelo->setOrdenInicial($codigo_Cliente, $estado);
-        }
+
+        $Reservar = $this->Venta_Modelo->Reservar($id_Orden,$tipoDespacho,$Id_Direccion,$indicaciones);
     }
 }
 

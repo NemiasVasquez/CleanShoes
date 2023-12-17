@@ -89,7 +89,7 @@
                         <div id="bloque_Indicaciones">
                             <div>
                                 <label>INDICACIONES ADICIONALES (opcional)</label>
-                                <textarea name="textarea_Indicaciones" rows="10" cols="50">Déjanos un mensaje</textarea>
+                                <textarea name="textarea_Indicaciones" id="textarea_Indicaciones" rows="10" cols="50">Déjanos un mensaje</textarea>
                             </div>
                         </div>
                         <div id="bloque_DetalleTotal">
