@@ -2,4 +2,5 @@
 
 Impoortante:
 
-Subir el tamaño del LOGIN - img txt
+Revisar el recorrido del array "Mis pedidos"
+
