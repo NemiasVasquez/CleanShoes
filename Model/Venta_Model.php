@@ -11,6 +11,43 @@ class Venta_Model{
         return $this->dataBase;
     }
 
+    public function getPedidosCliente_Estado($id_Cliente,$estado){
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.id_Direccion,orden.fecha_creacion FROM orden
+                                                    WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden = '$estado') ORDER BY orden.id_Orden DESC");
+
+        $i=0;
+        $ordenes=[];
+        while($fila = $consultaPedidos->fetch_assoc()){
+            $codigo_Orden = $fila["id_Orden"];
+            $ordenes[$i]=$fila;
+            
+            if($fila["id_Direccion"]!= NULL){
+                $id_Direccion = $fila["id_Direccion"];
+                $consulta_Direccion= $this->dataBase->query("SELECT direccion, distrito FROM direccion_envio WHERE id_Direccion_Envio = '$id_Direccion'");
+                if($fila_Direc = $consulta_Direccion->fetch_assoc()){
+                    $ordenes[$i]["Direccion"]=$fila_Direc["direccion"];
+                    $ordenes[$i]["Distrito"]=$fila_Direc["distrito"];
+                }
+            }
+
+            $consultaServicios=$this->dataBase->query("SELECT detalle_servicio.*, servicio.nombre,servicio.precio,servicio.categoria  FROM detalle_servicio 
+                                                       INNER JOIN servicio ON servicio.id_Servicio = detalle_servicio.id_Servicio
+                                                       WHERE detalle_servicio.id_Orden = '$codigo_Orden'");
+            $j=0;
+            while($fila2 = $consultaServicios->fetch_assoc()){
+                $ordenes[$i]["Servicios"][$j] = $fila2;
+                $j++; 
+            }
+            $i++;
+        }
+        
+        if(count($ordenes) > 0){
+            return $ordenes;
+        }else{
+            return false;
+        }
+    }
+
     public function getPedidosCliente($id_Cliente){
         $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.id_Direccion,orden.fecha_creacion FROM orden
                                                     WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden != 'Creación') ORDER BY orden.id_Orden DESC");

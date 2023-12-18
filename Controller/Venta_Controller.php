@@ -161,6 +161,20 @@ class Venta_Controller
         exit;
 
     }
+
+    public function FiltrarPedidos(){
+        $id_Cliente = $_SESSION["id_Cliente"];
+        if($_POST["select_TipoPedido"] != "NA"){
+            $tipoPedido = $_POST["select_TipoPedido"];
+            $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente_Estado($id_Cliente,$tipoPedido);
+        }else{
+            $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente($id_Cliente);
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
 }
 
 ?>

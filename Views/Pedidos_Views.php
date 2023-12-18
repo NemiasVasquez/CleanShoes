@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="Style/Pedidos_Style.css">
 
+    <script type="text/javascript" src="JavaScript/Pedidos_Ajax.js"></script>
+
     <title>Mis Pedidos - Clean Shoes</title>
 </head>
 <body>
@@ -27,14 +29,15 @@
                             </div>
                             <div>
                                 <select id="select_TipoPedido" name="select_TipoPedido">
-                                    <option value="NA">Elija un tipo de pedido para buscar</option>
-                                    <option value="Reserva">Pedidos en reserva.</option>
-                                    <option value="Pendiente">Pedidos pendiente de pago.</option>
+                                    <option value="NA">Todos los pedidos</option>
+                                    <option value="Cancelados">Pedidos Cancelados.</option>
+                                    <option value="Pendiente">Pedidos pendiente de aprobación.</option>
+                                    <option value="Aprobado">Pedidos pendiente de pago.</option>
                                     <option value="Pagado">Pedidos pagados.</option>
                                 </select>
                             </div>
                             <div id="bloque_BtnBuscar" name="bloque_BtnBuscar">
-                                <input type="submit" value="Buscar" id="btn_Buscar" name="btn_Buscar">
+                                <input type="submit" value="Buscar" id="btn_Buscar_Pedidos" name="btn_Buscar_Pedidos">
                             </div>
                         </form>
                     </div>
