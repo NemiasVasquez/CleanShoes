@@ -44,7 +44,7 @@ class Cliente_Controller{
             $_SESSION["nombres"] = $validacion[0]["nombres"];
             $_SESSION["apellidos"]=$validacion[0]["apellidos"];
             $_SESSION["estado"] = $validacion[0]["estado"];
-            $_SESSION["roles"] = $validacion[0]["rol"];
+            $_SESSION["rol"] = $validacion[0]["rol"];
         }
   
         header('Content-Type: application/json');

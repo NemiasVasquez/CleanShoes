@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2023 a las 18:24:42
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Tiempo de generación: 18-12-2023 a las 22:55:12
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,7 +56,8 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`id_Cliente`, `id_Persona`, `id_Usuario`, `fecha_creacion`) VALUES
 (3, 6, 6, '2023-12-10 14:20:01'),
 (4, 7, 7, '2023-12-10 14:58:47'),
-(5, 8, 8, '2023-12-10 15:08:57');
+(5, 8, 8, '2023-12-10 15:08:57'),
+(6, 9, 9, '2023-12-18 16:51:08');
 
 -- --------------------------------------------------------
 
@@ -154,7 +155,12 @@ INSERT INTO `detalle_servicio` (`id_DetalleServicio`, `id_Servicio`, `id_Orden`,
 (65, 4, 78, 3, 45),
 (66, 6, 78, 4, 140),
 (68, 13, 79, 1, 29),
-(69, 12, 79, 2, 38);
+(69, 12, 79, 2, 38),
+(71, 5, 80, 1, 25),
+(72, 4, 80, 1, 15),
+(73, 12, 80, 1, 19),
+(75, 5, 81, 1, 25),
+(76, 4, 81, 1, 15);
 
 -- --------------------------------------------------------
 
@@ -207,9 +213,11 @@ CREATE TABLE `orden` (
 --
 
 INSERT INTO `orden` (`id_Orden`, `id_Cliente`, `id_Direccion`, `total`, `tipoDespacho`, `tipoPago`, `descripcion`, `tiempoTotalEntrega`, `estado_pago`, `estado_orden`, `fecha_creacion`) VALUES
-(77, 3, 3, 155, 'Domicilio', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-17 10:59:53'),
-(78, 3, NULL, 185, 'Tienda', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-17 11:16:37'),
-(79, 3, NULL, 67, 'Tienda', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-17 11:17:39');
+(77, 3, 3, 155, 'Domicilio', NULL, NULL, NULL, NULL, 'Cancelado', '2023-12-17 10:59:53'),
+(78, 3, NULL, 185, 'Tienda', NULL, NULL, NULL, NULL, 'Cancelado', '2023-12-17 11:16:37'),
+(79, 3, NULL, 67, 'Tienda', NULL, NULL, NULL, NULL, 'Cancelado', '2023-12-17 11:17:39'),
+(80, 3, 13, 59, 'Domicilio', NULL, NULL, NULL, NULL, 'Cancelado', '2023-12-18 13:38:58'),
+(81, 3, 0, 40, 'Tienda', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-18 16:34:53');
 
 -- --------------------------------------------------------
 
@@ -233,7 +241,8 @@ CREATE TABLE `persona` (
 INSERT INTO `persona` (`id_Persona`, `nombres`, `apellidos`, `dni`, `correo`, `celular`) VALUES
 (6, 'Nemias David', 'Vasquez', '73116807', 'nemiasvasquezs@hotmail.com', '955651442'),
 (7, 'Dayra Fabiola', 'Vasquez Suarez', '87654321', 'dayra@hotmail.com', '955651442'),
-(8, 'Mildred Yolanda', 'Suarez Alvarado', '12312312', 'mildred@hotmail.com', '966651442');
+(8, 'Mildred Yolanda', 'Suarez Alvarado', '12312312', 'mildred@hotmail.com', '966651442'),
+(9, 'Xavier', 'Guevara', '12345678', 'xavierg@hotmail.com', '987654321');
 
 -- --------------------------------------------------------
 
@@ -307,7 +316,8 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_Usuario`, `usuario`, `password`, `rol`, `estado`, `fecha_creacion`) VALUES
 (6, 'NEMIASVS', 'nemias1234', 'Cliente', 'Activo', '2023-12-10 14:20:01'),
 (7, 'dayra@hotmail.com', 'Dayra123', 'Cliente', 'Activo', '2023-12-10 14:58:47'),
-(8, 'mildred@hotmail.com', 'Mildre123', 'Cliente', 'Activo', '2023-12-10 15:08:57');
+(8, 'mildred@hotmail.com', 'Mildre123', 'Cliente', 'Activo', '2023-12-10 15:08:57'),
+(9, 'xavier', 'xavier123', 'Administrador', 'Activo', '2023-12-18 16:49:06');
 
 --
 -- Índices para tablas volcadas
@@ -404,7 +414,7 @@ ALTER TABLE `boleta`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `descripcion`
@@ -422,7 +432,7 @@ ALTER TABLE `detalle_descripcion`
 -- AUTO_INCREMENT de la tabla `detalle_servicio`
 --
 ALTER TABLE `detalle_servicio`
-  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion_envio`
@@ -434,13 +444,13 @@ ALTER TABLE `direccion_envio`
 -- AUTO_INCREMENT de la tabla `orden`
 --
 ALTER TABLE `orden`
-  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id_Persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_Persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
@@ -458,7 +468,7 @@ ALTER TABLE `trabajador`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

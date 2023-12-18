@@ -20,7 +20,7 @@
     </header>
     <main class="interior">
         <div class="interior">
-            <?php if(isset($data["Pedidos"])){ ?>
+            <?php if($data["Pedidos"]!= false){ ?>
                 <div id="contenedor_Pedidos">
                     <div id="bloque_Buscar">
                         <form id="form_Buscar" name="form_Buscar">
@@ -120,7 +120,7 @@
                         <?php } ?>
                     </div>
 
-                    
+
                 </div>
 
 

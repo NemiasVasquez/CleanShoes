@@ -12,8 +12,10 @@
                     <li><a href="index.php?c=Cliente_Controller&a=QuienesSomos" <?php if(isset($QuienesSomos)){echo 'class="activo"';} ?>>¿Quiénes Somos?</a></li>
                     <li><a href="index.php?c=Servicio_Controller&a=Servicios" <?php if(isset($Servicios)){echo 'class="activo"';} ?>>Servicios</a></li>
                     <li><a href="index.php?c=Cliente_Controller&a=Resultados" <?php if(isset($Resultados)){echo 'class="activo"';} ?>>Resultados</a></li>
-                    <?php if(isset($_SESSION["id_Cliente"])) { ?>
+                    <?php if(isset($_SESSION["id_Cliente"]) && (isset($_SESSION["id_Cliente"]) && $_SESSION["rol"]=="Cliente")) { ?>
                         <li><a href="index.php?c=Venta_Controller&a=Pedidos_Views" <?php if(isset($Pedidos)){echo 'class="activo"';} ?>>Mis Pedidos</a></li> 
+                    <?php } else if(isset($_SESSION["id_Cliente"]) && (isset($_SESSION["id_Cliente"]) && $_SESSION["rol"]=="Administrador")) { ?>
+                        <li><a href="index.php?c=Venta_Controller&a=Registro_Pedidos_Views" <?php if(isset($Registro_Pedidos)){echo 'class="activo"';} ?>>Pedidos Pendientes</a></li> 
                     <?php } ?>
                 </ul>
             </nav>
