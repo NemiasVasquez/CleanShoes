@@ -23,19 +23,14 @@ $(document).ready(function(){
         
     });
 
-    $(".btn_Cancelar").on("click", function () {
-        // Obtener el ID de la orden desde el atributo data
+    $("#contenedorPedidos").on("click",".btn_Cancelar", function () {
         var idOrden = $(this).val();
-
         console.log(idOrden);
-
-        // Realizar la solicitud AJAX para cambiar el estado a "Cancelado"
         $.ajax({
             url: "index.php?c=Venta_Controller&a=CancelarPedido",
             method: "POST",
             data: { idOrden: idOrden },
             success: function (data) {
-                // Manejar la respuesta del servidor si es necesario
                 console.log(data.mensaje);
                 alert(data.mensaje);
                 construirPedidos(data);
@@ -46,11 +41,10 @@ $(document).ready(function(){
             }
         });
     });
-    
  
     function construirPedidos(data) {
         var contenedorPedidos = document.getElementById('contenedorPedidos');
-        contenedorPedidos.innerHTML = ''; // Limpiar el contenedor
+        contenedorPedidos.innerHTML = ''; 
 
         data.Pedidos.forEach(function (P) {
             var bloquePedido = document.createElement('div');
@@ -62,27 +56,24 @@ $(document).ready(function(){
             var seccion1 = document.createElement('div');
             seccion1.className = 'seccion1';
 
-            // Sección 1 - Parte 1
             var seccion1Parte1 = document.createElement('div');
             seccion1Parte1.className = 'seccion1_parte1';
             seccion1Parte1.innerHTML = '<p>Orden: ' + P.id_Orden + '</p>' +
                                       '<p>' + P.fecha_creacion.substring(0,10) + '</p>' +
-                                      '<p>Total: S/.' + P.total + '</p>';
+                                      '<p>Total: S/. ' + P.total + '</p>';
 
-            // Sección 1 - Parte 2
             var seccion1Parte2 = document.createElement('div');
             seccion1Parte2.className = 'seccion1_parte1';
             seccion1Parte2.innerHTML = '<p>Despacho: ' + P.tipoDespacho + '</p>' +
                                       '<p>' + P.estado_orden + '</p>';
 
-            // Sección 1 - Parte 3
+
             var seccion1Parte3 = document.createElement('div');
             seccion1Parte3.className = 'seccion1_parte1';
             if (P.Direccion !== undefined) {
                 seccion1Parte3.innerHTML = '<p>Envío: ' + P.Direccion + ' - ' + P.Distrito + '</p>';
             }
 
-            // Sección 1 - Parte 4 y 5 (Validación para tipoPago)
             if (P.tipoPago !== undefined) {
                 var seccion1Parte4 = document.createElement('div');
                 seccion1Parte4.className = 'seccion1_parte1';
@@ -94,7 +85,7 @@ $(document).ready(function(){
                 seccion1Parte5.innerHTML = '<p>' + P.tiempoTotalEntrega + '</p>';
             }
 
-            // Sección 1 - Parte 6 (Botón de Cancelar o Pagar)
+
             var seccion1Parte6 = document.createElement('div');
             seccion1Parte6.className = 'seccion1_parte1';
             if (P.estado_orden === 'Pendiente') {
@@ -103,7 +94,7 @@ $(document).ready(function(){
                 seccion1Parte6.innerHTML = '<button class="btn_Pagar" value="' + P.id_Orden + '">Pagar</button>';
             }
 
-            // Añadir las partes a la seccion1
+
             seccion1.appendChild(seccion1Parte1);
             seccion1.appendChild(seccion1Parte2);
             seccion1.appendChild(seccion1Parte3);
@@ -113,17 +104,14 @@ $(document).ready(function(){
             }
             seccion1.appendChild(seccion1Parte6);
 
-            // Añadir seccion1 al bloqueBarraLateral
             bloqueBarraLateral.appendChild(seccion1);
 
-            // Bloque DetallePedido
             var bloqueDetallePedido = document.createElement('div');
             bloqueDetallePedido.className = 'bloque_DetallePedido';
 
             var tituloPedido = document.createElement('div');
             tituloPedido.innerHTML=`<h3>Detalle del pedido:</h3>`;
 
-            // Detalle del pedido - Tabla
             var detalleTabla = document.createElement('table');
             detalleTabla.className = 'tabla_Servicios';
             var cabeceraTabla = document.createElement('thead');
@@ -136,7 +124,6 @@ $(document).ready(function(){
                                      '<th>SUBTOTAL</th>' +
                                      '</tr>';
 
-            // Detalle del pedido - Cuerpo de la tabla
             var cuerpoTabla = document.createElement('tbody');
             P.Servicios.forEach(function (S, index) {
                 var fila = document.createElement('tr');
@@ -150,27 +137,17 @@ $(document).ready(function(){
             });
 
             bloqueDetallePedido.appendChild(tituloPedido);
-            // Añadir cuerpoTabla a la tabla
+
             detalleTabla.appendChild(cabeceraTabla);
             detalleTabla.appendChild(cuerpoTabla);
 
-            // Añadir detalleTabla al bloqueDetallePedido
             bloqueDetallePedido.appendChild(detalleTabla);
 
-            // Añadir bloqueBarraLateral y bloqueDetallePedido al bloquePedido
             bloquePedido.appendChild(bloqueBarraLateral);
             bloquePedido.appendChild(bloqueDetallePedido);
 
-            // Añadir bloquePedido al contenedorPedidos
             contenedorPedidos.appendChild(bloquePedido);
         });
-    }
-
-
- 
-
-
-    
-    
+    } 
     
 });
