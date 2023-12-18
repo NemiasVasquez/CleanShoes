@@ -1,3 +1,42 @@
-#bloque_Pedidos{
-    padding-top: 200px;
+main{
+    padding: 170px 0px;
+}
+
+#contenedor_Pedidos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bloque_Pedido{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: 80%;
+    flex-flow: column;
+    padding: 20px;
+}
+
+.bloque_detalles_Boton{
+    display: flex;
+    flex-flow: row;
+}
+
+.bloque_Barra_Superior{
+    display: flex;
+    flex-flow: column;
+}
+
+.seccion1{
+    width: 80%;
+}
+
+.seccion1_parte1{
+    display: flex;
+    flex-flow: row;
+}
+
+.bloque_Barra_Superior, .tabla_Servicios{
+    
 }

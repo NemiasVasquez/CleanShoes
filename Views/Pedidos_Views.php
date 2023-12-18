@@ -16,77 +16,102 @@
     <header>
         <?php include 'Plantillas/Header.php'; ?>
     </header>
-    <main class="interior"></main>
-        <div id="bloque_Pedidos">
-            <div id="bloque_Buscar">
-                <form id="form_Buscar" name="form_Buscar">
-                    <div>
-                        <label for="select_TipoPedido">Seleccione el tipo de pedido:</label>
-                    </div>
-                    <div>
-                        <select id="select_TipoPedido" name="select_TipoPedido">
-                            <option value="NA">Elija un tipo de pedido para buscar</option>
-                            <option value="Reserva">Pedidos en reserva.</option>
-                            <option value="Pendiente">Pedidos pendiente de pago.</option>
-                            <option value="Pagado">Pedidos pagados.</option>
-                        </select>
-                    </div>
-                    <div id="bloque_BtnBuscar" name="bloque_BtnBuscar">
-                        <input type="submit" value="Buscar" id="btn_Buscar" name="btn_Buscar">
-                    </div>
-                </form>
-            </div>
-            <div id="bloque_Tabla">
-                <table id="tabla_Pedidos">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>ID ORDEN</th>
-                            <th>TIPO ENVIO</th>
-                            <th>DIRECCION</th>
-                            <th>TOTAL</th>
-                            <th>FECHA CREACIÓN</th>
-                            <th>ESTADO</th>
-                        </tr>
-                    </thead>
-                    <?php $contador=1; ?>
-                    <?php foreach($data["Pedidos"] as $P){ ?>
-                        <tr class="tabla_elementos">
-                            <th scope="row"><?php echo $contador ?></th>
-                            <th><?php echo $P["id_Orden"]; ?></th>
-                            <th><?php echo $P["tipoDespacho"]; ?></th>
-                            <?php if(isset($P["Direccion"])){?>
-                                <th><?php echo $P["Direccion"]." - ".$P["Distrito"]; ?></th>
-                            <?php } else { ?>
-                                <th> - </th>
+    <main class="interior">
+        <div class="interior">
+            <div id="contenedor_Pedidos">
+                <div id="bloque_Buscar">
+                    <form id="form_Buscar" name="form_Buscar">
+                        <div>
+                            <label for="select_TipoPedido">Seleccione el tipo de pedido:</label>
+                        </div>
+                        <div>
+                            <select id="select_TipoPedido" name="select_TipoPedido">
+                                <option value="NA">Elija un tipo de pedido para buscar</option>
+                                <option value="Reserva">Pedidos en reserva.</option>
+                                <option value="Pendiente">Pedidos pendiente de pago.</option>
+                                <option value="Pagado">Pedidos pagados.</option>
+                            </select>
+                        </div>
+                        <div id="bloque_BtnBuscar" name="bloque_BtnBuscar">
+                            <input type="submit" value="Buscar" id="btn_Buscar" name="btn_Buscar">
+                        </div>
+                    </form>
+                </div>
+                <?php $contador=1; ?>
+                <?php foreach($data["Pedidos"] as $P){ ?>
+                    <div class="bloque_Pedido">
+                        <div class="bloque_Barra_Superior">
+                            <div class="bloque_detalles_Boton">
+                                <div class="seccion1">
+                                    <div class="seccion1_parte1">
+                                        <p><?php echo "Fecha: ".date("Y-m-d",strtotime($P["fecha_creacion"])); ?></p>
+                                        <p><?php echo "Estado".$P["estado_orden"]; ?></p>
+                                        <p><?php echo "Total: "."S/.".$P["total"]; ?></p>
+                                    </div>
+                                    <div class="seccion1_parte1">
+                                        <p><?php echo $contador ?></p>
+                                        <p><?php echo "Orden: ".$P["id_Orden"]; ?></p>
+                                        <p><?php echo "Despacho: ".$P["tipoDespacho"]; ?></p>
+                                    </div>
+                                </div>
+  
+                                <div>
+                                    <?php if($P["estado_orden"] == "Pendiente"){ ?>
+                                        <button id="<?php echo $P["id_Orden"]; ?>">Cancelar</button>
+                                    <?php } else{ ?>
+                                        <button id="<?php echo $P["id_Orden"]; ?>">Pagar</button>
+                                    <?php } ?>
+                                </div>    
+                            </div>
+
+                            <div class="seccion2">
+                                <?php if(isset($P["Direccion"])){?>
+                                    <p><?php echo "Dirección: ".$P["Direccion"]." - ".$P["Distrito"]; ?></p>
+                                <?php } ?>
+                            </div>
+
+                            <?php if(isset($P["tipoPago"])){ ?>
+                                <div class="seccion2">
+                                    <p><?php echo $P["tipoPago"]; ?></p>
+                                    <p><?php echo $P["tipoPago"]; ?></p>
+                                </div>
                             <?php } ?>
-                            <th><?php echo $P["total"]; ?></th>
-                            <th><?php echo $P["fecha_creacion"]; ?></th>
-                            <th><?php echo $P["estado_orden"]; ?></th>
-                            <!--
-                            <td id="celda_Acciones">
-                                <button class="btn_RestarUnidadServicio" value="<?php ?>"><img src="Imagenes/Carrito/restar.png" alt="Imagen para restar servicios"></button>
-                                <p id="contadorServicios"></p>
-                                <button class="btn_SumarUnidadServicio" value="<?php ?>"><img src="Imagenes/Carrito/sumar.png" alt="Imagen para sumar servicios"></button>
-                                <button class="btn_EliminarServicioCarrito" value="<?php ?>" ><img src="Imagenes/Carrito/eliminar.png" alt="Imagen para eliminar un producto"></button>
-                            </td>
-                            <!-->
-                        </tr>
-                        <?php $contadorS =1; ?>
-                        <?php foreach($P["Servicios"] as $S ){ ?>
-                            <th scope="row"><?php echo $contadorS ?></th>
-                            <th><?php echo $S["nombre"]; ?></th>
-                            <th><?php echo $S["precio"]; ?></th>
-                            <th><?php echo $S["categoria"]; ?></th>
-                            <th><?php echo $S["cantidad"]; ?></th>
-                            <th><?php echo $S["subTotal"]; ?></th>
-                            <?php $contadorS++; ?>
-                        <?php } ?>
+                            <?php if(isset($P["tipoPago"])){ ?>
+                                <div class="seccion2">
+                                    <p><?php echo $P["tiempoTotalEntrega"]; ?></p>
+                                </div>
+                            <?php } ?>
+                           
+                        </div>
+                        <?php $contadorS = 1; ?>
+                        <table class="tabla_Servicios">
+                            <thead>
+                                <tr class="cabecera">
+                                    <th>#</th>
+                                    <th>NOMBRE</th>
+                                    <th>PRECIO</th>
+                                    <th>CATEGORIA</th>
+                                    <th>CANTIDAD</th>
+                                    <th>SUBTOTAL</th>
+                                </tr>
+                            </thead>
+                            <?php foreach($P["Servicios"] as $S ){ ?>
+                                
+                                    <td><?php echo $contadorS ?></td>
+                                    <td><?php echo $S["nombre"]; ?></td>
+                                    <td><?php echo "S/".$S["precio"]; ?></td>
+                                    <td><?php echo $S["categoria"]; ?></td>
+                                    <td><?php echo $S["cantidad"]; ?></td>
+                                    <td><?php echo "S/".$S["subTotal"]; ?></td>
+                                
+                                </tr>
+                                <?php $contadorS++; ?>
+                            <?php } ?>
+                        </table>
 
                         <?php $contador++; ?>
-                    <?php } ?>
-
-                </table>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </main>
