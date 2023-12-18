@@ -102,6 +102,19 @@ select{
     font-size: 15pt;
 }
 
+.btn_Pagar{
+    padding: 5px;
+    border-radius: 1em;
+    background-color: greenyellow;
+    font-size: 13pt;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.btn_Pagar:hover{
+    font-size: 15pt;
+}
+
 thead{
     background-color: beige;
 }

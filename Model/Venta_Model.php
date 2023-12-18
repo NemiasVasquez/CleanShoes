@@ -200,7 +200,15 @@ class Venta_Model{
         }else{
             return false;
         }
+    }
 
+    public function CambiarEstadoPedido($id_Orden , $estado){
+        $consulta = $this->dataBase->query("UPDATE orden SET estado_orden = '$estado' WHERE id_Orden ='$id_Orden' ");
+        if($consulta){ 
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

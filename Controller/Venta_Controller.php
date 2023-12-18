@@ -175,6 +175,24 @@ class Venta_Controller
         echo json_encode($data);
         exit;
     }
+
+    public function CancelarPedido(){
+        $id_orden = $_POST["idOrden"];
+        $estado = "Cancelado";
+        $id_Cliente = $_SESSION["id_Cliente"];
+        $consulta = $this->Venta_Modelo->CambiarEstadoPedido($id_orden,$estado);
+        if($consulta){
+            $data=["mensaje"=>"Orden cancelada."];
+        }else{
+            $data=["mensaje"=>"ERROR!, La orden no ha podido ser cancelada."];
+        }
+
+        $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente($id_Cliente);
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
 }
 
 ?>
