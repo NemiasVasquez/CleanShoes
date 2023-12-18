@@ -13,7 +13,7 @@ class Venta_Model{
 
     public function getPedidosCliente($id_Cliente){
         $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.id_Direccion,orden.fecha_creacion FROM orden
-                                                    WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden != 'Creación')");
+                                                    WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden != 'Creación') ORDER BY orden.id_Orden DESC");
 
         $i=0;
         $ordenes=[];
