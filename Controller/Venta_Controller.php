@@ -42,6 +42,7 @@ class Venta_Controller
        
         if($id_Orden == false){
             $consulta = $this->Venta_Modelo->setOrdenInicial($codigo_Cliente, $estado);
+            $id_Orden = $this->Venta_Modelo->get_Id_Orden_Creacion($codigo_Cliente, $estado);
         }
 
         $consulta2 = $this->Venta_Modelo->set_Detalle_Servicio($id_Servicio, $id_Orden);
@@ -188,6 +189,46 @@ class Venta_Controller
         }
 
         $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente($id_Cliente);
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
+    /* Pedidos Pendientes */
+    public function Pedidos_Pendientes(){
+        $Pedidos_Pendientes = true;
+        $data["Pedidos"]=$this->Venta_Modelo->getPedidos();
+        require_once "Views/Registro_Pedidos_Views.php";
+    }
+
+    public function RechazarPedido(){
+        $id_Orden = $_POST["idOrden"];
+        $estado = "Rechazado";
+        $consulta = $this->Venta_Modelo->CambiarEstadoPedido($id_Orden,$estado);
+        if($consulta){
+            $data=["mensaje"=>"Pedido Rechazado."];
+            $data["Pedidos"] = $this->Venta_Modelo->getPedidos();
+        }else{
+            $data=["mensaje"=>"ERROR!,el pedido no ha sido rechazado."];
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
+    public function AceptarPedido(){
+        $id_Orden = $_POST["idOrden"];
+        $estado = "Aceptado";
+        $estadoPago = "Pendiente";
+        $consulta = $this->Venta_Modelo->CambiarEstadoPedidoAceptado($id_Orden,$estado,$estadoPago);
+        if($consulta){
+            $data=["mensaje"=>"Pedido Aceptado."];
+            $data["Pedidos"] = $this->Venta_Modelo->getPedidos();
+        }else{
+            $data=["mensaje"=>"ERROR!,el pedido no ha sido aceptado."];
+        }
 
         header('Content-Type: application/json');
         echo json_encode($data);

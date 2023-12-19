@@ -15,7 +15,7 @@
                     <?php if(isset($_SESSION["id_Cliente"]) && (isset($_SESSION["id_Cliente"]) && $_SESSION["rol"]=="Cliente")) { ?>
                         <li><a href="index.php?c=Venta_Controller&a=Pedidos_Views" <?php if(isset($Pedidos)){echo 'class="activo"';} ?>>Mis Pedidos</a></li> 
                     <?php } else if(isset($_SESSION["id_Cliente"]) && (isset($_SESSION["id_Cliente"]) && $_SESSION["rol"]=="Administrador")) { ?>
-                        <li><a href="index.php?c=Venta_Controller&a=Registro_Pedidos_Views" <?php if(isset($Registro_Pedidos)){echo 'class="activo"';} ?>>Pedidos Pendientes</a></li> 
+                        <li><a href="index.php?c=Venta_Controller&a=Pedidos_Pendientes" <?php if(isset($Pedidos_Pendientes)){echo 'class="activo"';} ?>>Pedidos Pendientes</a></li> 
                     <?php } ?>
                 </ul>
             </nav>
@@ -24,6 +24,7 @@
             <div>
                 <a href="index.php?c=Venta_Controller&a=Carrito_Views"><img src="Imagenes/Header/Carrito.png" alt="Ícono de un carrito de compras"></a>
             </div>
+            
             <div id="bloque_Perfil">
                 <a href=<?php if(isset($_SESSION["id_Cliente"])){echo "index.php?c=Cliente_Controller&a=PerfilCliente";}else{echo "index.php?c=Cliente_Controller&a=LoginViews";} ?> >
                     <img src="Imagenes/Header/Usuario.png" alt="Ícono de un usuario">
@@ -39,8 +40,6 @@
                     </a>
                 </div> 
             <?php } ?>
-       
-            
         </div> 
     </div>
 </div>

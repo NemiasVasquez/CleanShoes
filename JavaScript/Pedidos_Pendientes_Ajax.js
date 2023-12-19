@@ -23,11 +23,30 @@ $(document).ready(function(){
         
     });
 
-    $("#contenedorPedidos").on("click",".btn_Cancelar", function () {
+    $("#contenedorPedidos").on("click",".btn_Rechazar", function () {
         var idOrden = $(this).val();
         console.log(idOrden);
         $.ajax({
-            url: "index.php?c=Venta_Controller&a=CancelarPedido",
+            url: "index.php?c=Venta_Controller&a=RechazarPedido",
+            method: "POST",
+            data: { idOrden: idOrden },
+            success: function (data) {
+                console.log(data.mensaje);
+                alert(data.mensaje);
+                construirPedidos(data);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error en la solicitud Ajax:", status, error);
+                console.log("Respuesta del servidor:", xhr.responseText);
+            }
+        });
+    });
+
+    $("#contenedorPedidos").on("click",".btn_Aceptar", function () {
+        var idOrden = $(this).val();
+        console.log(idOrden);
+        $.ajax({
+            url: "index.php?c=Venta_Controller&a=AceptarPedido",
             method: "POST",
             data: { idOrden: idOrden },
             success: function (data) {
@@ -62,6 +81,13 @@ $(document).ready(function(){
                                       '<p>' + P.fecha_creacion.substring(0,10) + '</p>' +
                                       '<p>Total: S/. ' + P.total + '</p>';
 
+            var seccionPArte7 = document.createElement('div');
+            seccionPArte7.className='seccion1_parte1';
+            seccion1Parte1.innerHTML=' <p> '+ P.nombres + ' ' + P.apellidos + ' </p>'
+                                     '<p>'+P.dni +'</p>'   ; 
+
+            
+            
             var seccion1Parte2 = document.createElement('div');
             seccion1Parte2.className = 'seccion1_parte1';
             seccion1Parte2.innerHTML = '<p>Despacho: ' + P.tipoDespacho + '</p>' +
@@ -85,17 +111,18 @@ $(document).ready(function(){
                 seccion1Parte5.innerHTML = '<p>' + P.tiempoTotalEntrega + '</p>';
             }
 
+
             var seccion1Parte6 = document.createElement('div');
             seccion1Parte6.className = 'seccion1_parte1';
-            if (P.estado_orden === 'Pendiente') {
-                seccion1Parte6.innerHTML = '<button class="btn_Cancelar" value="' + P.id_Orden + '">Cancelar</button>';
-            } 
             
-            if (P.estado_orden == 'Aceptado') {
-                seccion1Parte6.innerHTML = '<button class="btn_Pagar" value="' + P.id_Orden + '">Pagar</button>';
-            }
+            seccion1Parte6.innerHTML = '<button class="btn_Rechazar" value="' + P.id_Orden + '">Rechazar</button>';
+        
+            seccion1Parte8.innerHTML = '<button class="btn_Aceptar" value="' + P.id_Orden + '">Aceptar</button>';
+        
+
 
             seccion1.appendChild(seccion1Parte1);
+            seccion1.appendChild(seccion1Parte7);
             seccion1.appendChild(seccion1Parte2);
             seccion1.appendChild(seccion1Parte3);
             if (P.tipoPago !== undefined) {
@@ -103,6 +130,7 @@ $(document).ready(function(){
                 seccion1.appendChild(seccion1Parte5);
             }
             seccion1.appendChild(seccion1Parte6);
+            seccion1.appendChild(seccion1Parte8);
 
             bloqueBarraLateral.appendChild(seccion1);
 

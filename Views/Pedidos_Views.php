@@ -32,8 +32,9 @@
                                     <option value="NA">Todos los pedidos</option>
                                     <option value="Cancelado">Pedidos Cancelados.</option>
                                     <option value="Pendiente">Pedidos pendiente de aprobación.</option>
-                                    <option value="Aprobado">Pedidos pendiente de pago.</option>
+                                    <option value="Aceptado">Pedidos pendiente de pago.</option>
                                     <option value="Pagado">Pedidos pagados.</option>
+                                    <option value="Rechazado">Pedidos rechazados.</option>
                                 </select>
                             </div>
                             <div id="bloque_BtnBuscar" name="bloque_BtnBuscar">
@@ -78,7 +79,9 @@
                                         <div class="seccion1_parte1">
                                             <?php if($P["estado_orden"] == "Pendiente"){ ?>
                                                 <button class="btn_Cancelar" value="<?php echo $P["id_Orden"]; ?>">Cancelar</button>
-                                            <?php } else if($P["estado_orden"] != "Cancelado"){ ?>
+                                            <?php } ?>
+                                            
+                                            <?php if($P["estado_orden"] == "Aceptado"  ){ ?>
                                                 <button class="btn_Pagar"  value="<?php echo $P["id_Orden"]; ?>">Pagar</button>
                                             <?php } ?>
                                         </div> 
