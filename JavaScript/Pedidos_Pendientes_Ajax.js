@@ -78,8 +78,8 @@ $(document).ready(function(){
             var seccion1Parte1 = document.createElement('div');
             seccion1Parte1.className = 'seccion1_parte1';
             seccion1Parte1.innerHTML = '<p>Orden: ' + P.id_Orden + '</p>' +
-                                      '<p>' + P.fecha_creacion.substring(0,10) + '</p>' +
-                                      '<p>Total: S/. ' + P.total + '</p>';
+                                        '<p>' + P.estado_orden + '</p>'+
+                                        '<p>Total: S/. ' + P.total + '</p>';
 
             var seccion1Parte7 = document.createElement('div');
             seccion1Parte7.className='seccion1_parte1';
@@ -89,7 +89,8 @@ $(document).ready(function(){
             var seccion1Parte2 = document.createElement('div');
             seccion1Parte2.className = 'seccion1_parte1';
             seccion1Parte2.innerHTML = '<p>Despacho: ' + P.tipoDespacho + '</p>' +
-                                      '<p>' + P.estado_orden + '</p>';
+                                        '<p>' + P.fecha_creacion.substring(0,10) + '</p>';
+                                      
 
             var seccion1Parte3 = document.createElement('div');
             seccion1Parte3.className = 'seccion1_parte1';
@@ -101,11 +102,14 @@ $(document).ready(function(){
                 var seccion1Parte4 = document.createElement('div');
                 seccion1Parte4.className = 'seccion1_parte1';
                 seccion1Parte4.innerHTML = '<p>' + P.tipoPago + '</p>' +
-                                          '<p>' + P.tipoPago + '</p>';
+                                          '<p>'+'Estado de pago: ' + P.estado_pago + '</p>';
 
-                var seccion1Parte5 = document.createElement('div');
-                seccion1Parte5.className = 'seccion1_parte1';
-                seccion1Parte5.innerHTML = '<p>' + P.tiempoTotalEntrega + '</p>';
+                if(P.tiempoTotalEntrega != undefined){
+                    var seccion1Parte5 = document.createElement('div');
+                    seccion1Parte5.className = 'seccion1_parte1';
+                    seccion1Parte5.innerHTML = '<p>' + P.tiempoTotalEntrega + '</p>';
+                }
+              
             }
 
             var seccion1Parte6 = document.createElement('div');
@@ -124,9 +128,12 @@ $(document).ready(function(){
             seccion1.appendChild(seccion1Parte7);
             seccion1.appendChild(seccion1Parte2);
             seccion1.appendChild(seccion1Parte3);
-            if (P.tipoPago !== undefined) {
+            if (P.tipoPago != undefined && P.estado_orden != "Rechazado") {
                 seccion1.appendChild(seccion1Parte4);
-                seccion1.appendChild(seccion1Parte5);
+                if(P.tiempoTotalEntrega != undefined){
+                    seccion1.appendChild(seccion1Parte5);
+                }
+                
             }
 
             if(P.estado_orden == "Pendiente") {

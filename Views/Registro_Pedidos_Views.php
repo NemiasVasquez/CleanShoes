@@ -28,7 +28,7 @@
                         <div>
                             <select id="select_TipoPedido" name="select_TipoPedido">
                                 <option value="NA">Todos los pedidos Pendientes</option>
-                                <option value="Cancelado">Pedidos Rechazados.</option>
+                                <option value="Rechazado">Pedidos Rechazados.</option>
                                 <option value="Pendiente">Pedidos pendientes.</option>
                                 <option value="Aceptado">Pedidos pendiente de pago.</option>
                                 <option value="Pagado">Pedidos pagados.</option>
@@ -46,8 +46,7 @@
                                 <div class="seccion1">
                                     <div class="seccion1_parte1">
                                         <p><?php echo "Orden: ".$P["id_Orden"]; ?></p>
-                                        <p><?php echo date("Y-m-d",strtotime($P["fecha_creacion"])); ?></p>
-                                        
+                                        <p><?php echo $P["estado_orden"]; ?></p>
                                         <p><?php echo "Total: "."S/.".$P["total"]; ?></p>
                                     </div>
                                     <div class="seccion1_parte1">
@@ -57,7 +56,8 @@
                                     <div class="seccion1_parte1">
             
                                         <p><?php echo "Despacho: ".$P["tipoDespacho"]; ?></p>
-                                        <p><?php echo $P["estado_orden"]; ?></p>
+                                        <p><?php echo date("Y-m-d",strtotime($P["fecha_creacion"])); ?></p>
+                                        
                                     </div>
                                     <div class="seccion1_parte1">
                                         <?php if(isset($P["Direccion"])){?>
@@ -68,13 +68,14 @@
                                     <?php if(isset($P["tipoPago"])){ ?>
                                         <div class="seccion1_parte1">
                                             <p><?php echo $P["tipoPago"]; ?></p>
-                                            <p><?php echo $P["tipoPago"]; ?></p>
+                                            <p><?php echo "Estado de pago: ".$P["estado_pago"]; ?></p>
                                         </div>
                                     <?php } ?>
-                                    <?php if(isset($P["tipoPago"])){ ?>
+                                    <?php if(isset($P["tiempoTotalEntrega"])){ ?>
                                         <div class="seccion1_parte1">
                                             <p><?php echo $P["tiempoTotalEntrega"]; ?></p>
                                         </div>
+
                                     <?php } ?>  
                                     <?php if($P["estado_orden"]!="Aceptado"){ ?>
                                         <div class="seccion1_parte1">

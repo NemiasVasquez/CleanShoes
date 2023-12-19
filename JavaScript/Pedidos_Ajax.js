@@ -2,7 +2,6 @@ $(document).ready(function(){
    
     $("#form_Buscar").on("submit",function(event){
         event.preventDefault();
-        
         $.ajax({
             url:"index.php?c=Venta_Controller&a=FiltrarPedidos",
             method:"POST",
@@ -44,6 +43,10 @@ $(document).ready(function(){
 
     function construirPedidos(data) {
         var contenedorPedidos = document.getElementById('contenedorPedidos');
+        if (!contenedorPedidos) {
+            console.error("El contenedor de pedidos no existe.");
+            return;
+        }
         contenedorPedidos.innerHTML = ''; 
 
         data.Pedidos.forEach(function (P) {
@@ -58,36 +61,39 @@ $(document).ready(function(){
 
             var seccion1Parte1 = document.createElement('div');
             seccion1Parte1.className = 'seccion1_parte1';
-            seccion1Parte1.innerHTML = '<p>Orden: ' + P.id_Orden + '</p>' +
-                                      '<p>' + P.fecha_creacion.substring(0,10) + '</p>' +
-                                      '<p>Total: S/. ' + P.total + '</p>';
+            seccion1Parte1.innerHTML =  '<p>Orden: ' + P.id_Orden + '</p>' +
+                                        '<p>' + P.estado_orden + '</p>'+
+                                        '<p>Total: S/. ' + P.total + '</p>';
 
             var seccion1Parte2 = document.createElement('div');
             seccion1Parte2.className = 'seccion1_parte1';
             seccion1Parte2.innerHTML = '<p>Despacho: ' + P.tipoDespacho + '</p>' +
-                                      '<p>' + P.estado_orden + '</p>';
+                                       '<p>' + P.fecha_creacion.substring(0,10) + '</p>' ;
 
-
-            var seccion1Parte3 = document.createElement('div');
-            seccion1Parte3.className = 'seccion1_parte1';
-            if (P.Direccion !== undefined) {
-                seccion1Parte3.innerHTML = '<p>Envío: ' + P.Direccion + ' - ' + P.Distrito + '</p>';
+          
+            if (P.Direccion != undefined ) {
+                var seccion1Parte3 = document.createElement('div');
+                seccion1Parte3.className = 'seccion1_parte1';
+                seccion1Parte3.innerHTML = '<p>Envío: ' + P.Direccion + ' - ' + P.Distrito + '</p>';                  
             }
 
-            if (P.tipoPago !== undefined) {
+            if (P.tipoPago != undefined) {
                 var seccion1Parte4 = document.createElement('div');
                 seccion1Parte4.className = 'seccion1_parte1';
                 seccion1Parte4.innerHTML = '<p>' + P.tipoPago + '</p>' +
-                                          '<p>' + P.tipoPago + '</p>';
+                                          '<p>'+'Estado de pago:'+  P.estado_pago + '</p>';
 
-                var seccion1Parte5 = document.createElement('div');
-                seccion1Parte5.className = 'seccion1_parte1';
-                seccion1Parte5.innerHTML = '<p>' + P.tiempoTotalEntrega + '</p>';
+                if(P.tiempoTotalEntrega != undefined){
+                    var seccion1Parte5 = document.createElement('div');
+                    seccion1Parte5.className = 'seccion1_parte1';
+                    seccion1Parte5.innerHTML = '<p>' + P.tiempoTotalEntrega + '</p>';
+                }
+               
             }
 
             var seccion1Parte6 = document.createElement('div');
             seccion1Parte6.className = 'seccion1_parte1';
-            if (P.estado_orden === 'Pendiente') {
+            if (P.estado_orden == 'Pendiente') {
                 seccion1Parte6.innerHTML = '<button class="btn_Cancelar" value="' + P.id_Orden + '">Cancelar</button>';
             } 
             
@@ -97,13 +103,21 @@ $(document).ready(function(){
 
             seccion1.appendChild(seccion1Parte1);
             seccion1.appendChild(seccion1Parte2);
-            seccion1.appendChild(seccion1Parte3);
-            if (P.tipoPago !== undefined) {
-                seccion1.appendChild(seccion1Parte4);
-                seccion1.appendChild(seccion1Parte5);
+            if (P.Direccion != undefined ) {
+                seccion1.appendChild(seccion1Parte3);
             }
-            seccion1.appendChild(seccion1Parte6);
-
+            
+            if (P.tipoPago != undefined) {
+                seccion1.appendChild(seccion1Parte4);
+                if(P.tiempoTotalEntrega != undefined){
+                    seccion1.appendChild(seccion1Parte5);
+                }
+              
+            }
+            if((P.estado_orden == "Pendiente" || P.estado_orden == "Aceptado") && P.estado_pago !="Pagado") {
+                seccion1.appendChild(seccion1Parte6);
+            }
+            
             bloqueBarraLateral.appendChild(seccion1);
 
             var bloqueDetallePedido = document.createElement('div');
@@ -150,7 +164,5 @@ $(document).ready(function(){
         });
     } 
 
-   
 
-    
 });

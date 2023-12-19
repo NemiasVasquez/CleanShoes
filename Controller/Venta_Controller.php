@@ -164,12 +164,21 @@ class Venta_Controller
 
     public function FiltrarPedidos(){
         $id_Cliente = $_SESSION["id_Cliente"];
-        if($_POST["select_TipoPedido"] != "NA"){
-            $tipoPedido = $_POST["select_TipoPedido"];
-            $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente_Estado($id_Cliente,$tipoPedido);
+        $tipoPedido = $_POST["select_TipoPedido"];
+        if($tipoPedido != "NA"){
+            if($tipoPedido =="Pagado"){
+                $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente_Pago_Estado($id_Cliente,$tipoPedido);
+            } else if($tipoPedido =="Aceptado"){
+                $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente_Orden_Estado($id_Cliente,$tipoPedido);
+            }else{
+                $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente_Estado($id_Cliente,$tipoPedido);
+            }
+          
         }else{
             $data["Pedidos"] = $this->Venta_Modelo->getPedidosCliente($id_Cliente);
         }
+
+       
 
         header('Content-Type: application/json');
         echo json_encode($data);
@@ -202,9 +211,17 @@ class Venta_Controller
     }
 
     public function FiltrarPedidosPendientes(){
-        if($_POST["select_TipoPedido"] != "NA"){
-            $tipoPedido = $_POST["select_TipoPedido"];
-            $data["Pedidos"] = $this->Venta_Modelo->getPedidos_Estado($tipoPedido);
+        $tipoPedido = $_POST["select_TipoPedido"];
+
+        if($tipoPedido != "NA"){
+            if($tipoPedido == "Aceptado"){
+                $data["Pedidos"] = $this->Venta_Modelo->getPedidos_Estado($tipoPedido);
+            }else if($tipoPedido=="Pagado"){
+                $data["Pedidos"] = $this->Venta_Modelo->getPedidos_Pago_Estado($tipoPedido);
+            }else{
+                $data["Pedidos"] = $this->Venta_Modelo->getPedidos_Estado_Neutro($tipoPedido);
+            }
+            
         }else{
             $data["Pedidos"] = $this->Venta_Modelo->getPedidos();
         }
@@ -253,6 +270,24 @@ class Venta_Controller
         $data["Pedidos"]=$this->Venta_Modelo->getOrden($id_Orden);
         require_once "Views/Portal_Pago_Views.php";
     }
-}
 
+    public function Pagar(){
+        $tipoPago = $_POST["select_TipoPago"];
+
+        $id_Orden = $_POST["id_Orden"];
+
+        $estado_Pago ="Pagado";
+
+        $consulta = $this->Venta_Modelo->pagar($id_Orden,$estado_Pago,$tipoPago);
+        if($consulta){
+            $data=["mensaje"=>"Producto Pagado."];
+        }else{
+            $data=["mensaje"=>"El producto no ha podido ser Pagado."];
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+}
 ?>

@@ -50,14 +50,14 @@
                                     <div class="seccion1">
                                         <div class="seccion1_parte1">
                                             <p><?php echo "Orden: ".$P["id_Orden"]; ?></p>
-                                            <p><?php echo date("Y-m-d",strtotime($P["fecha_creacion"])); ?></p>
-                                            
+                                            <p><?php echo $P["estado_orden"]; ?></p>
                                             <p><?php echo "Total: "."S/.".$P["total"]; ?></p>
                                         </div>
                                         <div class="seccion1_parte1">
                 
                                             <p><?php echo "Despacho: ".$P["tipoDespacho"]; ?></p>
-                                            <p><?php echo $P["estado_orden"]; ?></p>
+                                            <p><?php echo date("Y-m-d",strtotime($P["fecha_creacion"])); ?></p>
+                                            
                                         </div>
                                         <div class="seccion1_parte1">
                                             <?php if(isset($P["Direccion"])){?>
@@ -65,24 +65,19 @@
                                             <?php } ?>
                                         </div>
 
-                                        <?php if(isset($P["tipoPago"])){ ?>
+                                        <?php if(isset($P["estado_pago"])){ ?>
                                             <div class="seccion1_parte1">
                                                 <p><?php echo $P["tipoPago"]; ?></p>
-                                                <p><?php echo $P["tipoPago"]; ?></p>
+                                                <p><?php echo "Estado de pago: ".$P["estado_pago"]; ?></p>
                                             </div>
                                         <?php } ?>
-                                        <?php if(isset($P["tipoPago"])){ ?>
-                                            <div class="seccion1_parte1">
-                                                <p><?php echo $P["tiempoTotalEntrega"]; ?></p>
-                                            </div>
-                                        <?php } ?>  
                                         
                                         <div class="seccion1_parte1">
                                             <?php if($P["estado_orden"]=="Pendiente"){ ?>
                                                 <button class="btn_Cancelar" value="<?php echo $P["id_Orden"]; ?>">Cancelar</button>
                                             <?php } ?>
                                             
-                                            <?php if($P["estado_orden"] == "Aceptado"){ ?>
+                                            <?php if($P["estado_orden"] == "Aceptado" &&  $P["estado_pago"]!="Pagado"){ ?>
                                                 <form  action="index.php?c=Venta_Controller&a=PortalPagos_Views&id=<?php echo $P["id_Orden"]; ?>" method="POST" >    
                                                     <input type="submit" class="btn_Pagar" value="Pagar"></input>
                                                 </form>

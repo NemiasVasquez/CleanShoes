@@ -11,10 +11,45 @@ class Venta_Model{
         return $this->dataBase;
     }
 
-    public function getPedidosCliente_Estado($id_Cliente,$estado){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.id_Direccion,orden.fecha_creacion FROM orden
-                                                    WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden = '$estado') ORDER BY orden.id_Orden DESC");
+    public function getPedidosCliente_Orden_Estado($id_Cliente,$tipoPedido){
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.tipoPago,orden.id_Direccion,orden.fecha_creacion FROM orden
+        WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden = '$tipoPedido' AND orden.estado_pago = 'Pendiente') ORDER BY orden.id_Orden DESC");
+        $i=0;
+        $ordenes=[];
+        while($fila = $consultaPedidos->fetch_assoc()){
+        $codigo_Orden = $fila["id_Orden"];
+        $ordenes[$i]=$fila;
 
+        if($fila["id_Direccion"]!= NULL){
+        $id_Direccion = $fila["id_Direccion"];
+        $consulta_Direccion= $this->dataBase->query("SELECT direccion, distrito FROM direccion_envio WHERE id_Direccion_Envio = '$id_Direccion'");
+        if($fila_Direc = $consulta_Direccion->fetch_assoc()){
+        $ordenes[$i]["Direccion"]=$fila_Direc["direccion"];
+        $ordenes[$i]["Distrito"]=$fila_Direc["distrito"];
+        }
+        }
+
+        $consultaServicios=$this->dataBase->query("SELECT detalle_servicio.*, servicio.nombre,servicio.precio,servicio.categoria  FROM detalle_servicio 
+                INNER JOIN servicio ON servicio.id_Servicio = detalle_servicio.id_Servicio
+                WHERE detalle_servicio.id_Orden = '$codigo_Orden'");
+        $j=0;
+        while($fila2 = $consultaServicios->fetch_assoc()){
+        $ordenes[$i]["Servicios"][$j] = $fila2;
+        $j++; 
+        }
+        $i++;
+        }
+
+        if(count($ordenes) > 0){
+        return $ordenes;
+        }else{
+        return false;
+        }
+    }
+
+    public function getPedidosCliente_Estado($id_Cliente,$estado){
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.tipoPago,orden.id_Direccion,orden.fecha_creacion FROM orden
+                                                    WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden = '$estado' ) ORDER BY orden.id_Orden DESC");
         $i=0;
         $ordenes=[];
         while($fila = $consultaPedidos->fetch_assoc()){
@@ -48,8 +83,44 @@ class Venta_Model{
         }
     }
 
+    public function getPedidosCliente_Pago_Estado($id_Cliente,$estado){
+            $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.tipoPago,orden.id_Direccion,orden.fecha_creacion FROM orden
+                                                       WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_pago = '$estado') ORDER BY orden.id_Orden DESC");
+            $i=0;
+            $ordenes=[];
+            while($fila = $consultaPedidos->fetch_assoc()){
+                $codigo_Orden = $fila["id_Orden"];
+                $ordenes[$i]=$fila;
+
+                if($fila["id_Direccion"]!= NULL){
+                    $id_Direccion = $fila["id_Direccion"];
+                    $consulta_Direccion= $this->dataBase->query("SELECT direccion, distrito FROM direccion_envio WHERE id_Direccion_Envio = '$id_Direccion'");
+                    if($fila_Direc = $consulta_Direccion->fetch_assoc()){
+                        $ordenes[$i]["Direccion"]=$fila_Direc["direccion"];
+                        $ordenes[$i]["Distrito"]=$fila_Direc["distrito"];
+                    }
+                }
+
+                $consultaServicios=$this->dataBase->query("SELECT detalle_servicio.*, servicio.nombre,servicio.precio,servicio.categoria  FROM detalle_servicio 
+                        INNER JOIN servicio ON servicio.id_Servicio = detalle_servicio.id_Servicio
+                        WHERE detalle_servicio.id_Orden = '$codigo_Orden'");
+                $j=0;
+                while($fila2 = $consultaServicios->fetch_assoc()){
+                    $ordenes[$i]["Servicios"][$j] = $fila2;
+                    $j++; 
+                }
+                $i++;
+            }
+
+            if(count($ordenes) > 0){
+                return $ordenes;
+            }else{
+                return false;
+            }
+    }
+
     public function getPedidosCliente($id_Cliente){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.id_Direccion,orden.fecha_creacion FROM orden
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.tipoPago,orden.id_Direccion,orden.fecha_creacion FROM orden
                                                     WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden != 'Creación') ORDER BY orden.id_Orden DESC");
 
         $i=0;
@@ -86,7 +157,7 @@ class Venta_Model{
     }
 
     public function getPedidos(){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.id_Direccion,orden.fecha_creacion, persona.nombres,persona.apellidos,persona.dni FROM orden
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.tipoPago,orden.id_Direccion,orden.fecha_creacion, persona.nombres,persona.apellidos,persona.dni FROM orden
                                                     INNER JOIN cliente ON cliente.id_Cliente = orden.id_Cliente
                                                     INNER JOIN persona ON persona.id_Persona = Cliente.id_Persona
                                                     WHERE orden.estado_orden != 'Creación' AND  orden.estado_orden != 'Cancelado' AND  orden.estado_orden != 'Rechazado'
@@ -126,7 +197,7 @@ class Venta_Model{
     }
 
     public function getOrden($id_Orden){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.id_Direccion,orden.fecha_creacion, persona.nombres,persona.apellidos,persona.dni FROM orden
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.tipoPago,orden.id_Direccion,orden.fecha_creacion, persona.nombres,persona.apellidos,persona.dni FROM orden
                                                     INNER JOIN cliente ON cliente.id_Cliente = orden.id_Cliente
                                                     INNER JOIN persona ON persona.id_Persona = Cliente.id_Persona
                                                     WHERE orden.id_Orden = '$id_Orden' ");
@@ -164,8 +235,8 @@ class Venta_Model{
     }
 
 
-    public function getPedidos_Estado($estado){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.id_Direccion,orden.fecha_creacion,persona.nombres,persona.apellidos,persona.dni FROM orden
+    public function getPedidos_Estado_Neutro($estado){
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.tipoPago,orden.id_Direccion,orden.fecha_creacion,persona.nombres,persona.apellidos,persona.dni FROM orden
                                                     INNER JOIN cliente ON cliente.id_Cliente = orden.id_Cliente
                                                     INNER JOIN persona ON persona.id_Persona = cliente.id_Persona
                                                     WHERE orden.estado_orden = '$estado' ORDER BY orden.id_Orden DESC");
@@ -203,6 +274,84 @@ class Venta_Model{
         }
     }
 
+
+    public function getPedidos_Estado($estado){
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.tipoPago,orden.id_Direccion,orden.fecha_creacion,persona.nombres,persona.apellidos,persona.dni FROM orden
+                                                    INNER JOIN cliente ON cliente.id_Cliente = orden.id_Cliente
+                                                    INNER JOIN persona ON persona.id_Persona = cliente.id_Persona
+                                                    WHERE orden.estado_orden = '$estado' AND orden.estado_pago ='Pendiente' ORDER BY orden.id_Orden DESC");
+
+        $i=0;
+        $ordenes=[];
+        while($fila = $consultaPedidos->fetch_assoc()){
+            $codigo_Orden = $fila["id_Orden"];
+            $ordenes[$i]=$fila;
+            
+            if($fila["id_Direccion"]!= NULL){
+                $id_Direccion = $fila["id_Direccion"];
+                $consulta_Direccion= $this->dataBase->query("SELECT direccion, distrito FROM direccion_envio WHERE id_Direccion_Envio = '$id_Direccion'");
+                if($fila_Direc = $consulta_Direccion->fetch_assoc()){
+                    $ordenes[$i]["Direccion"]=$fila_Direc["direccion"];
+                    $ordenes[$i]["Distrito"]=$fila_Direc["distrito"];
+                }
+            }
+
+            $consultaServicios=$this->dataBase->query("SELECT detalle_servicio.*, servicio.nombre,servicio.precio,servicio.categoria  FROM detalle_servicio 
+                                                       INNER JOIN servicio ON servicio.id_Servicio = detalle_servicio.id_Servicio
+                                                       WHERE detalle_servicio.id_Orden = '$codigo_Orden'");
+            $j=0;
+            while($fila2 = $consultaServicios->fetch_assoc()){
+                $ordenes[$i]["Servicios"][$j] = $fila2;
+                $j++; 
+            }
+            $i++;
+        }
+        
+        if(count($ordenes) > 0){
+            return $ordenes;
+        }else{
+            return false;
+        }
+    }
+
+    public function getPedidos_Pago_Estado($estado){
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.tipoPago,orden.id_Direccion,orden.fecha_creacion,persona.nombres,persona.apellidos,persona.dni FROM orden
+        INNER JOIN cliente ON cliente.id_Cliente = orden.id_Cliente
+        INNER JOIN persona ON persona.id_Persona = cliente.id_Persona
+        WHERE  orden.estado_pago ='$estado' ORDER BY orden.id_Orden DESC");
+
+        $i=0;
+        $ordenes=[];
+        while($fila = $consultaPedidos->fetch_assoc()){
+        $codigo_Orden = $fila["id_Orden"];
+        $ordenes[$i]=$fila;
+
+        if($fila["id_Direccion"]!= NULL){
+        $id_Direccion = $fila["id_Direccion"];
+        $consulta_Direccion= $this->dataBase->query("SELECT direccion, distrito FROM direccion_envio WHERE id_Direccion_Envio = '$id_Direccion'");
+        if($fila_Direc = $consulta_Direccion->fetch_assoc()){
+        $ordenes[$i]["Direccion"]=$fila_Direc["direccion"];
+        $ordenes[$i]["Distrito"]=$fila_Direc["distrito"];
+        }
+        }
+
+        $consultaServicios=$this->dataBase->query("SELECT detalle_servicio.*, servicio.nombre,servicio.precio,servicio.categoria  FROM detalle_servicio 
+                INNER JOIN servicio ON servicio.id_Servicio = detalle_servicio.id_Servicio
+                WHERE detalle_servicio.id_Orden = '$codigo_Orden'");
+        $j=0;
+        while($fila2 = $consultaServicios->fetch_assoc()){
+        $ordenes[$i]["Servicios"][$j] = $fila2;
+        $j++; 
+        }
+        $i++;
+}
+
+if(count($ordenes) > 0){
+return $ordenes;
+}else{
+return false;
+}
+    }
 
     public function setOrdenInicial($id_Cliente,$estado){
         $consulta = $this->dataBase->query("INSERT INTO orden(id_Cliente,estado_Orden) VALUES ('$id_Cliente','$estado')");
@@ -332,6 +481,16 @@ class Venta_Model{
         $consulta = $this->dataBase->query("UPDATE orden SET estado_orden = '$estado', estado_pago ='$estadoPago' 
                                             WHERE id_Orden ='$id_Orden' ");
         if($consulta){ 
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function pagar($id_Orden,$estado_Pago,$tipoPago){
+        $consulta = $this->dataBase->query("UPDATE orden SET estado_pago = '$estado_Pago', tipoPago = '$tipoPago'
+                                            WHERE id_Orden ='$id_Orden' ");
+        if($consulta){
             return true;
         }else{
             return false;

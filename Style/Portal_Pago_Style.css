@@ -33,6 +33,7 @@ main{
     padding: 10px 12px;
     font-size: 13pt;
     border-radius: 0.5em;
+    cursor:pointer;
     transition: 1s;
 }
 

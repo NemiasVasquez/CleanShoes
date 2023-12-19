@@ -146,12 +146,12 @@
                                 <img id="yape" src="Imagenes/Portal_Pago/yape.jpg" alt="QR Yape">
                             </div>
                             <div>
-                                <label for="codigoPago">Codigo de pago: </label>
-                                <input type="text" name="codigoPago" id="codigoPago"></input>
+                                <label for="codigoPago_Yape">Codigo de pago: </label>
+                                <input type="text" name="codigoPago_Yape" id="codigoPago_Yape"></input>
                             </div>
                         </div>
                         <div id="bloque_btnPago">
-                            <input type="submit" name="btn_Pagar" id="btn_Pagar" value="Pagar">
+                            <button type="submit" id="btn_Pagar" name="btn_Pagar" value="<?php echo $data["Pedidos"][0]["id_Orden"];?>">Pagar</button>
                         </div>
                     </form>
                 </div>
