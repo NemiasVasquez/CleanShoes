@@ -41,7 +41,7 @@ $(document).ready(function(){
             }
         });
     });
- 
+
     function construirPedidos(data) {
         var contenedorPedidos = document.getElementById('contenedorPedidos');
         contenedorPedidos.innerHTML = ''; 
@@ -149,5 +149,8 @@ $(document).ready(function(){
             contenedorPedidos.appendChild(bloquePedido);
         });
     } 
+
+   
+
     
 });

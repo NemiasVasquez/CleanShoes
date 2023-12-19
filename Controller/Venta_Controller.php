@@ -246,6 +246,13 @@ class Venta_Controller
         echo json_encode($data);
         exit;
     }
+
+    /* PORTAL PAGOS */
+
+    public function PortalPagos_Views($id_Orden){
+        $data["Orden"]=$this->Venta_Modelo->getOrden($id_Orden);
+        require_once "Views/Portal_Pago_Views.php";
+    }
 }
 
 ?>

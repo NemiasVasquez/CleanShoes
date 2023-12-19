@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="Style/Pedidos_Style.css">
 
     <script type="text/javascript" src="JavaScript/Pedidos_Ajax.js"></script>
+   
 
     <title>Mis Pedidos - Clean Shoes</title>
 </head>
@@ -77,12 +78,14 @@
                                         <?php } ?>  
                                         
                                         <div class="seccion1_parte1">
-                                            <?php if($P["estado_orden"] == "Pendiente"){ ?>
+                                            <?php if($P["estado_orden"]=="Pendiente"){ ?>
                                                 <button class="btn_Cancelar" value="<?php echo $P["id_Orden"]; ?>">Cancelar</button>
                                             <?php } ?>
                                             
-                                            <?php if($P["estado_orden"] == "Aceptado"  ){ ?>
-                                                <button class="btn_Pagar"  value="<?php echo $P["id_Orden"]; ?>">Pagar</button>
+                                            <?php if($P["estado_orden"] == "Aceptado"){ ?>
+                                                <form  action="index.php?c=Venta_Controller&a=PortalPagos_Views&id=<?php echo $P["id_Orden"]; ?>" method="POST" >    
+                                                    <input type="submit" class="btn_Pagar" value="Pagar"></input>
+                                                </form>
                                             <?php } ?>
                                         </div> 
                                     </div>

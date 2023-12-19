@@ -91,7 +91,6 @@
                                             
                                         </div> 
                                     <?php } ?>
-
                                 </div>
                             </div>
                             <div class="bloque_DetallePedido">
