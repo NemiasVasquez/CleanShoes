@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-12-2023 a las 09:34:33
+-- Tiempo de generación: 19-12-2023 a las 21:56:26
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -175,7 +175,11 @@ INSERT INTO `detalle_servicio` (`id_DetalleServicio`, `id_Servicio`, `id_Orden`,
 (92, 17, 86, 2, 120),
 (93, 19, 86, 1, 30),
 (94, 12, 87, 2, 38),
-(95, 16, 87, 1, 10);
+(95, 16, 87, 1, 10),
+(96, 5, 88, 2, 50),
+(97, 12, 88, 1, 19),
+(98, 13, 88, 1, 29),
+(99, 15, 88, 1, 59);
 
 -- --------------------------------------------------------
 
@@ -234,12 +238,13 @@ INSERT INTO `orden` (`id_Orden`, `id_Cliente`, `id_Direccion`, `total`, `tipoDes
 (79, 3, NULL, 67, 'Tienda', NULL, NULL, NULL, NULL, 'Cancelado', '2023-12-17 11:17:39'),
 (80, 3, 13, 59, 'Domicilio', NULL, NULL, NULL, NULL, 'Cancelado', '2023-12-18 13:38:58'),
 (81, 3, 0, 40, 'Tienda', NULL, NULL, NULL, NULL, 'Rechazado', '2023-12-18 16:34:53'),
-(82, 3, 12, 123, 'Domicilio', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-18 20:41:11'),
+(82, 3, 12, 123, 'Domicilio', 'Yape', NULL, NULL, 'Pagado', 'Aceptado', '2023-12-18 20:41:11'),
 (83, 3, 3, 35, 'Domicilio', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-18 20:44:02'),
-(84, 3, 0, 282, 'Tienda', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-18 20:44:17'),
+(84, 3, 0, 282, 'Tienda', 'Yape', NULL, NULL, 'Pagado', 'Aceptado', '2023-12-18 20:44:17'),
 (85, 3, 12, 205, 'Domicilio', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-19 00:10:06'),
-(86, 3, 3, 169, 'Domicilio', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-19 00:19:15'),
-(87, 3, 3, 48, 'Domicilio', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-19 00:20:08');
+(86, 3, 3, 169, 'Domicilio', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-19 00:19:15'),
+(87, 3, 3, 48, 'Domicilio', 'Yape', NULL, NULL, 'Pagado', 'Aceptado', '2023-12-19 00:20:08'),
+(88, 3, 12, 157, 'Domicilio', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-19 15:14:36');
 
 -- --------------------------------------------------------
 
@@ -454,7 +459,7 @@ ALTER TABLE `detalle_descripcion`
 -- AUTO_INCREMENT de la tabla `detalle_servicio`
 --
 ALTER TABLE `detalle_servicio`
-  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion_envio`
@@ -466,7 +471,7 @@ ALTER TABLE `direccion_envio`
 -- AUTO_INCREMENT de la tabla `orden`
 --
 ALTER TABLE `orden`
-  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
