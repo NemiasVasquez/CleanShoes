@@ -1,0 +1,53 @@
+main{
+    padding-top: 110px;
+}
+
+#titulo_Portal{
+    display: flex;
+    justify-content: center;
+}
+
+#form_Pago{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#form_Pago div{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 13pt;
+}
+
+#form_Pago div select{
+    border-radius: 1em;
+}
+
+#bloque_btnPago{
+    display: flex;
+    justify-content: right;
+    padding: 30px 0px;
+}
+
+#btn_Pagar{
+    background-color: greenyellow;
+    padding: 10px 12px;
+    font-size: 13pt;
+    border-radius: 0.5em;
+    transition: 1s;
+}
+
+#btn_Pagar:hover{
+    background-color: rgb(156, 248, 17);
+    padding: 10px 12px;
+    font-size: 14pt;
+}
+
+#tarjeta{
+    width: 250px;
+    height: 180px;
+}
+
+#yape{
+    width: 200px;
+    height: 300px;
+}

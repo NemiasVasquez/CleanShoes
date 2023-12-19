@@ -92,7 +92,7 @@ $(document).ready(function(){
             } 
             
             if (P.estado_orden == 'Aceptado') {
-                seccion1Parte6.innerHTML = '<button class="btn_Pagar" value="' + P.id_Orden + '">Pagar</button>';
+                seccion1Parte6.innerHTML = '<form action="index.php?c=Venta_Controller&a=PortalPagos_Views&id='+P.id_Orden+'" method="POST"><input type="submit" class="btn_Pagar" value="Pagar" ></input></form>';
             }
 
             seccion1.appendChild(seccion1Parte1);
