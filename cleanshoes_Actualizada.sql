@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-12-2023 a las 22:55:12
+-- Tiempo de generación: 19-12-2023 a las 09:34:33
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -160,7 +160,22 @@ INSERT INTO `detalle_servicio` (`id_DetalleServicio`, `id_Servicio`, `id_Orden`,
 (72, 4, 80, 1, 15),
 (73, 12, 80, 1, 19),
 (75, 5, 81, 1, 25),
-(76, 4, 81, 1, 15);
+(76, 4, 81, 1, 15),
+(80, 4, 82, 1, 15),
+(81, 6, 82, 2, 70),
+(82, 12, 82, 2, 38),
+(84, 6, 83, 1, 35),
+(85, 5, 84, 1, 25),
+(86, 15, 84, 3, 177),
+(87, 18, 84, 1, 80),
+(88, 4, 85, 1, 15),
+(89, 18, 85, 2, 160),
+(90, 19, 85, 1, 30),
+(91, 12, 86, 1, 19),
+(92, 17, 86, 2, 120),
+(93, 19, 86, 1, 30),
+(94, 12, 87, 2, 38),
+(95, 16, 87, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -186,7 +201,8 @@ INSERT INTO `direccion_envio` (`id_Direccion_Envio`, `id_Cliente`, `distrito`, `
 (4, 4, 'CHICLAYO', 'Avenida Lambayeque 1979', 'Frente a Lima gas', 'Activo'),
 (5, 5, 'JLO', 'Av. Chiclayo 1975', 'A dos cuadras de la despensa', 'Activo'),
 (12, 3, 'Chiclayo', 'Calle Eligas Aguirre 4855', 'Frente al mercado', 'Activo'),
-(13, 3, 'La victoria', 'Lambayeque 445', 'Frente al parde', 'Activo');
+(13, 3, 'La victoria', 'Lambayeque 445', 'Frente al parde', 'Activo'),
+(14, 6, 'Atusparias', 'Diego Ferré 317', 'Frente a Campodónico', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -217,7 +233,13 @@ INSERT INTO `orden` (`id_Orden`, `id_Cliente`, `id_Direccion`, `total`, `tipoDes
 (78, 3, NULL, 185, 'Tienda', NULL, NULL, NULL, NULL, 'Cancelado', '2023-12-17 11:16:37'),
 (79, 3, NULL, 67, 'Tienda', NULL, NULL, NULL, NULL, 'Cancelado', '2023-12-17 11:17:39'),
 (80, 3, 13, 59, 'Domicilio', NULL, NULL, NULL, NULL, 'Cancelado', '2023-12-18 13:38:58'),
-(81, 3, 0, 40, 'Tienda', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-18 16:34:53');
+(81, 3, 0, 40, 'Tienda', NULL, NULL, NULL, NULL, 'Rechazado', '2023-12-18 16:34:53'),
+(82, 3, 12, 123, 'Domicilio', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-18 20:41:11'),
+(83, 3, 3, 35, 'Domicilio', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-18 20:44:02'),
+(84, 3, 0, 282, 'Tienda', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-18 20:44:17'),
+(85, 3, 12, 205, 'Domicilio', NULL, NULL, NULL, 'Pendiente', 'Aceptado', '2023-12-19 00:10:06'),
+(86, 3, 3, 169, 'Domicilio', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-19 00:19:15'),
+(87, 3, 3, 48, 'Domicilio', NULL, NULL, NULL, NULL, 'Pendiente', '2023-12-19 00:20:08');
 
 -- --------------------------------------------------------
 
@@ -432,19 +454,19 @@ ALTER TABLE `detalle_descripcion`
 -- AUTO_INCREMENT de la tabla `detalle_servicio`
 --
 ALTER TABLE `detalle_servicio`
-  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id_DetalleServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion_envio`
 --
 ALTER TABLE `direccion_envio`
-  MODIFY `id_Direccion_Envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_Direccion_Envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `orden`
 --
 ALTER TABLE `orden`
-  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_Orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
