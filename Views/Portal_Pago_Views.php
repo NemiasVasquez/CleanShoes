@@ -114,27 +114,30 @@
                             </select>
                         </div>
                         <div id="bloque_TarjetaDebito">
-                            <div>
+                            <div id="bloque_img">
                                 <img id="tarjeta" src="Imagenes/Portal_Pago/tarjetaCredito.png" alt="Tarjeta de débito">
                             </div>
-                            <div>
-                                <div>
+                            <div id="seccion_datos_tarjeta">
+                                <div class="bloqueDatos">
                                     <label for="numeroDebito">Número de tarjeta: </label>
                                     <input type="text" name="numeroDebito" id="numeroDebito">
                                 </div>
-                                <div>
+                                
+                                <div id="fecha_tarjeta" class="bloqueDatos" >
                                     <label for="fechaDebito">Fecha: </label>
                                     <input type="text" name="fechaDebito" id="fechaDebito"></input>
                                 </div>
-                                <div>
+                                <div id="csv_tarjeta" class="bloqueDatos" >
                                     <label for="csvDebito">CSV: </label>
                                     <input type="text" name="csvDebito" id="csvDebito"></input>
                                 </div>
-                                <div>
+                                
+                                <div class="bloqueDatos">
                                     <label for="nombreDebito">Nombre: </label>
                                     <input type="text" name="nombreDebito" id="nombreDebito"></input>
                                 </div>
-                                <div>
+
+                                <div class="bloqueDatos">
                                     <label for="apellidosDebito">Apellidos: </label>
                                     <input type="text" name="apellidosDebito" id="apellidosDebito"></input>
                                 </div>
@@ -142,10 +145,10 @@
                         </div>
 
                         <div id="bloque_Yape">
-                            <div>
+                            <div id="bloque_img_Yape">
                                 <img id="yape" src="Imagenes/Portal_Pago/yape.jpg" alt="QR Yape">
                             </div>
-                            <div>
+                            <div id="bloque_codigo">
                                 <label for="codigoPago_Yape">Codigo de pago: </label>
                                 <input type="text" name="codigoPago_Yape" id="codigoPago_Yape"></input>
                             </div>

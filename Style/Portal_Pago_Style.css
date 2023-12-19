@@ -30,8 +30,8 @@ main{
 
 #btn_Pagar{
     background-color: greenyellow;
-    padding: 10px 12px;
-    font-size: 13pt;
+    padding: 15px 20px;
+    font-size: 15pt;
     border-radius: 0.5em;
     cursor:pointer;
     transition: 1s;
@@ -39,8 +39,23 @@ main{
 
 #btn_Pagar:hover{
     background-color: rgb(156, 248, 17);
-    padding: 10px 12px;
-    font-size: 14pt;
+    padding: 15px 20px;
+    font-size: 17pt;
+}
+
+#bloque_img_Yape,#bloque_codigo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#bloque_codigo label{
+    font-size: 15pt;
+}
+
+#bloque_codigo input{
+    padding: 5px 10px;
 }
 
 #tarjeta{
@@ -48,7 +63,43 @@ main{
     height: 180px;
 }
 
+#bloque_Yape{
+    padding-top: 40px;
+    display: flex;
+    flex-flow: row;
+}
+
 #yape{
     width: 200px;
     height: 300px;
 }
+
+#bloque_TarjetaDebito{
+    display: flex;
+    flex-flow: row;
+    padding: 50px 0px 0px 0px;
+}
+
+#seccion_datos_tarjeta{
+    display: flex;
+    flex-flow: column;
+}
+
+.bloqueDatos input{
+    padding: 5px 10px;
+}
+
+.bloqueDatos{
+    display: flex;
+    flex-flow: column;
+    justify-content: left;
+    padding-top: 10px;
+}
+
+#bloque_img{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
