@@ -68,7 +68,6 @@ class Venta_Controller
         }else{
             $data=["mensaje"=>"No se logró eliminar"];
         }
-
         header('Content-Type: application/json');
         echo json_encode($data);
         exit;
@@ -202,6 +201,19 @@ class Venta_Controller
         require_once "Views/Registro_Pedidos_Views.php";
     }
 
+    public function FiltrarPedidosPendientes(){
+        if($_POST["select_TipoPedido"] != "NA"){
+            $tipoPedido = $_POST["select_TipoPedido"];
+            $data["Pedidos"] = $this->Venta_Modelo->getPedidos_Estado($tipoPedido);
+        }else{
+            $data["Pedidos"] = $this->Venta_Modelo->getPedidos();
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+
     public function RechazarPedido(){
         $id_Orden = $_POST["idOrden"];
         $estado = "Rechazado";
@@ -212,10 +224,10 @@ class Venta_Controller
         }else{
             $data=["mensaje"=>"ERROR!,el pedido no ha sido rechazado."];
         }
-
         header('Content-Type: application/json');
         echo json_encode($data);
         exit;
+
     }
 
     public function AceptarPedido(){

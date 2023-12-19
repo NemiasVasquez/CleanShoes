@@ -4,7 +4,7 @@ $(document).ready(function(){
         event.preventDefault();
         
         $.ajax({
-            url:"index.php?c=Venta_Controller&a=FiltrarPedidos",
+            url:"index.php?c=Venta_Controller&a=FiltrarPedidosPendientes",
             method:"POST",
             data:$('#form_Buscar').serialize(),
             success:function(data){
@@ -81,18 +81,15 @@ $(document).ready(function(){
                                       '<p>' + P.fecha_creacion.substring(0,10) + '</p>' +
                                       '<p>Total: S/. ' + P.total + '</p>';
 
-            var seccionPArte7 = document.createElement('div');
-            seccionPArte7.className='seccion1_parte1';
-            seccion1Parte1.innerHTML=' <p> '+ P.nombres + ' ' + P.apellidos + ' </p>'
+            var seccion1Parte7 = document.createElement('div');
+            seccion1Parte7.className='seccion1_parte1';
+            seccion1Parte7.innerHTML=' <p> '+ P.nombres + ' ' + P.apellidos + ' </p>'+
                                      '<p>'+P.dni +'</p>'   ; 
 
-            
-            
             var seccion1Parte2 = document.createElement('div');
             seccion1Parte2.className = 'seccion1_parte1';
             seccion1Parte2.innerHTML = '<p>Despacho: ' + P.tipoDespacho + '</p>' +
                                       '<p>' + P.estado_orden + '</p>';
-
 
             var seccion1Parte3 = document.createElement('div');
             seccion1Parte3.className = 'seccion1_parte1';
@@ -111,16 +108,18 @@ $(document).ready(function(){
                 seccion1Parte5.innerHTML = '<p>' + P.tiempoTotalEntrega + '</p>';
             }
 
-
             var seccion1Parte6 = document.createElement('div');
             seccion1Parte6.className = 'seccion1_parte1';
             
-            seccion1Parte6.innerHTML = '<button class="btn_Rechazar" value="' + P.id_Orden + '">Rechazar</button>';
+            seccion1Parte6.innerHTML =
+            '<button class="btn_Rechazar" value="' + P.id_Orden + '">Rechazar</button>'+
         
-            seccion1Parte8.innerHTML = '<button class="btn_Aceptar" value="' + P.id_Orden + '">Aceptar</button>';
-        
-
-
+            '<button class="btn_Aceptar" value="' + P.id_Orden + '">Aceptar</button>';
+            
+            var seccion1Parte8 = document.createElement('div');
+            seccion1Parte8.className = 'seccion1_parte1';
+            seccion1Parte8.innerHTML ='<p>'+'Pago: '+P.estado_pago +'</p>';
+            
             seccion1.appendChild(seccion1Parte1);
             seccion1.appendChild(seccion1Parte7);
             seccion1.appendChild(seccion1Parte2);
@@ -129,8 +128,14 @@ $(document).ready(function(){
                 seccion1.appendChild(seccion1Parte4);
                 seccion1.appendChild(seccion1Parte5);
             }
-            seccion1.appendChild(seccion1Parte6);
-            seccion1.appendChild(seccion1Parte8);
+
+            if(P.estado_orden == "Pendiente") {
+                seccion1.appendChild(seccion1Parte6);
+            }
+
+            if(P.estado_orden =="Aceptado"){
+                seccion1.appendChild(seccion1Parte8);
+            }
 
             bloqueBarraLateral.appendChild(seccion1);
 

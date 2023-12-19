@@ -76,14 +76,22 @@
                                             <p><?php echo $P["tiempoTotalEntrega"]; ?></p>
                                         </div>
                                     <?php } ?>  
-                                    
-                                    <div class="seccion1_parte1">
+                                    <?php if($P["estado_orden"]!="Aceptado"){ ?>
+                                        <div class="seccion1_parte1">
                                         
                                             <button class="btn_Rechazar" value="<?php echo $P["id_Orden"]; ?>">Rechazar</button>
-                                      
+                                    
                                             <button class="btn_Aceptar"  value="<?php echo $P["id_Orden"]; ?>">Aceptar</button>
                                         
-                                    </div> 
+                                        </div> 
+                                    <?php } ?>
+                                    <?php if($P["estado_orden"]=="Aceptado"){ ?>
+                                        <div class="seccion1_parte1">
+                                            <p>Pago: <?php echo $P["estado_pago"]; ?></p>
+                                            
+                                        </div> 
+                                    <?php } ?>
+
                                 </div>
                             </div>
                             <div class="bloque_DetallePedido">

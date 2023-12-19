@@ -12,7 +12,7 @@ class Venta_Model{
     }
 
     public function getPedidosCliente_Estado($id_Cliente,$estado){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.id_Direccion,orden.fecha_creacion FROM orden
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.id_Direccion,orden.fecha_creacion FROM orden
                                                     WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden = '$estado') ORDER BY orden.id_Orden DESC");
 
         $i=0;
@@ -49,7 +49,7 @@ class Venta_Model{
     }
 
     public function getPedidosCliente($id_Cliente){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.id_Direccion,orden.fecha_creacion FROM orden
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.id_Direccion,orden.fecha_creacion FROM orden
                                                     WHERE (orden.id_Cliente = '$id_Cliente' AND orden.estado_orden != 'Creación') ORDER BY orden.id_Orden DESC");
 
         $i=0;
@@ -86,7 +86,7 @@ class Venta_Model{
     }
 
     public function getPedidos(){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.id_Direccion,orden.fecha_creacion, persona.nombres,persona.apellidos,persona.dni FROM orden
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.id_Direccion,orden.fecha_creacion, persona.nombres,persona.apellidos,persona.dni FROM orden
                                                     INNER JOIN cliente ON cliente.id_Cliente = orden.id_Cliente
                                                     INNER JOIN persona ON persona.id_Persona = Cliente.id_Persona
                                                     WHERE orden.estado_orden != 'Creación' AND  orden.estado_orden != 'Cancelado' AND  orden.estado_orden != 'Rechazado'
@@ -126,7 +126,9 @@ class Venta_Model{
     }
 
     public function getPedidos_Estado($estado){
-        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.id_Direccion,orden.fecha_creacion FROM orden
+        $consultaPedidos = $this->dataBase->query("SELECT orden.id_Orden, orden.id_Cliente, orden.total, orden.tipoDespacho, orden.estado_orden,orden.estado_pago,orden.id_Direccion,orden.fecha_creacion,persona.nombres,persona.apellidos,persona.dni FROM orden
+                                                    INNER JOIN cliente ON cliente.id_Cliente = orden.id_Cliente
+                                                    INNER JOIN persona ON persona.id_Persona = cliente.id_Persona
                                                     WHERE orden.estado_orden = '$estado' ORDER BY orden.id_Orden DESC");
 
         $i=0;
@@ -296,6 +298,6 @@ class Venta_Model{
             return false;
         }
     }
-  
+
 }
 ?>
